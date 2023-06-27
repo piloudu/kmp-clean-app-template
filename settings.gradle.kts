@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -28,7 +30,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Multimodule template"
+rootProject.name = "MultimoduleTemplate"
 
 include(":app")
 include(":core-data")

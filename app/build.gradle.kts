@@ -80,8 +80,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core-ui"))
-    implementation(project(":feature-mymodel"))
+    implementation(projects.coreUi)
+    implementation(projects.featureMymodel)
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)

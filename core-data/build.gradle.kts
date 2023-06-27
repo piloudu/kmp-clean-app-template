@@ -50,7 +50,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core-database"))
+    implementation(projects.coreDatabase)
 
     // Arch Components
     implementation(libs.hilt.android)
