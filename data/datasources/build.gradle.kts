@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
+@Suppress("DSL_SCOPE_VIOLATION") // Remove when fixed https://youtrack.jetbrains.com/issue/KTIJ-19369
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -22,7 +22,7 @@ plugins {
 }
 
 android {
-    namespace = "android.template.domain"
+    namespace = "android.template.data.repositories"
     compileSdk = 33
 
     defaultConfig {
@@ -46,4 +46,17 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+}
+
+dependencies {
+    implementation(projects.data.database)
+
+    // Koin Dependency Injection
+    implementation(libs.koin.core)
+
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Local tests: jUnit, coroutines, Android runner
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
