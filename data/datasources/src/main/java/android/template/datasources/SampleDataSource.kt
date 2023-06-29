@@ -1,4 +1,5 @@
 package android.template.datasources
 
-class SampleDataSource {
+interface SampleDataSource {
+    fun getData(): List<Int>
 }
