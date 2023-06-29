@@ -30,7 +30,6 @@ android {
         minSdk = 21
         targetSdk = 33
 
-        testInstrumentationRunner = "android.template.core.testing.HiltTestRunner"
     }
 
     buildFeatures {

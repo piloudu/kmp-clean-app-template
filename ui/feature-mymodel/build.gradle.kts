@@ -28,7 +28,6 @@ android {
     defaultConfig {
         minSdk = 21
 
-        testInstrumentationRunner = "android.template.core.testing.HiltTestRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
