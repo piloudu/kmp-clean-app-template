@@ -82,7 +82,7 @@ dependencies {
     implementation(projects.coreUi)
     implementation(projects.featureMymodel)
     implementation(projects.data)
-    implementation(projects.coreDatabase)
+    implementation(projects.database)
     // TODO: Fix cyclic dependency
 //    implementation(projects.testApp)
 

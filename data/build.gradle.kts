@@ -50,7 +50,7 @@ android {
 }
 
 dependencies {
-    implementation(projects.coreDatabase)
+    implementation(projects.database)
 
     // Koin Dependency Injection
     implementation(libs.koin.core)

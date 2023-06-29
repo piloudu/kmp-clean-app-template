@@ -34,7 +34,7 @@ rootProject.name = "MultimoduleTemplate"
 
 include(":app")
 include(":data")
-include(":core-database")
+include(":database")
 include(":core-testing")
 include(":core-ui")
 include(":feature-mymodel")
