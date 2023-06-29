@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 rootProject.name = "MultimoduleTemplate"
 
 include(":app")
-include(":data")
+include(":repositories")
 include(":database")
 include(":core-testing")
 include(":core-ui")

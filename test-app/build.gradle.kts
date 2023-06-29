@@ -51,7 +51,7 @@ android {
 }
 
 dependencies {
-    implementation(projects.data)
+    implementation(projects.repositories)
     implementation(projects.coreTesting)
     implementation(projects.featureMymodel)
 
