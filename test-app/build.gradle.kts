@@ -51,7 +51,6 @@ android {
 }
 
 dependencies {
-    implementation(projects.app)
     implementation(projects.coreData)
     implementation(projects.coreTesting)
     implementation(projects.featureMymodel)
@@ -59,9 +58,8 @@ dependencies {
     // Testing
     implementation(libs.androidx.test.core)
 
-    // Hilt and instrumented tests.
-    implementation(libs.hilt.android.testing)
-    kapt(libs.hilt.android.compiler)
+    // Koin tests.
+    implementation(libs.koin.test)
 
     // Compose
     implementation(libs.androidx.compose.ui.test.junit4)

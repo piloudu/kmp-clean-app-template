@@ -16,11 +16,10 @@
 
 package android.template.core.data
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import android.template.core.database.MyModel
 import android.template.core.database.MyModelDao
-import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 interface MyModelRepository {
     val myModels: Flow<List<String>>
@@ -28,8 +27,8 @@ interface MyModelRepository {
     suspend fun add(name: String)
 }
 
-class DefaultMyModelRepository @Inject constructor(
-    private val myModelDao: MyModelDao
+class DefaultMyModelRepository(
+    private val myModelDao: MyModelDao,
 ) : MyModelRepository {
 
     override val myModels: Flow<List<String>> =

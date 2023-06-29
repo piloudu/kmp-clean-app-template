@@ -18,7 +18,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.hilt.gradle)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.kapt)
 }
@@ -82,21 +81,23 @@ android {
 dependencies {
     implementation(projects.coreUi)
     implementation(projects.featureMymodel)
+    implementation(projects.coreData)
+    implementation(projects.coreDatabase)
+    // TODO: Fix cyclic dependency
+//    implementation(projects.testApp)
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
 
-    // Hilt Dependency Injection
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    // Koin Dependency Injection
+    implementation(libs.koin.compose)
 
     // Arch Components
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.hilt.navigation.compose)
 
     // Compose
     val composeBom = platform(libs.androidx.compose.bom)

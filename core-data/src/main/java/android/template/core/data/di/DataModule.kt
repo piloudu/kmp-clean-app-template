@@ -16,29 +16,20 @@
 
 package android.template.core.data.di
 
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import android.template.core.data.DefaultMyModelRepository
+import android.template.core.data.MyModelRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
-import android.template.core.data.MyModelRepository
-import android.template.core.data.DefaultMyModelRepository
-import javax.inject.Inject
-import javax.inject.Singleton
+import org.koin.core.module.Module
+import org.koin.core.module.dsl.factoryOf
+import org.koin.dsl.bind
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-interface DataModule {
-
-    @Singleton
-    @Binds
-    fun bindsMyModelRepository(
-        myModelRepository: DefaultMyModelRepository
-    ): MyModelRepository
+val dataModule: Module = module {
+    factoryOf(::DefaultMyModelRepository) bind MyModelRepository::class
 }
 
-class FakeMyModelRepository @Inject constructor() : MyModelRepository {
+class FakeMyModelRepository : MyModelRepository {
     override val myModels: Flow<List<String>> = flowOf(fakeMyModels)
 
     override suspend fun add(name: String) {

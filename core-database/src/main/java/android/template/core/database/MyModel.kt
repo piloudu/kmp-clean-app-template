@@ -25,7 +25,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Entity
 data class MyModel(
-    val name: String
+    val name: String,
 ) {
     @PrimaryKey(autoGenerate = true)
     var uid: Int = 0

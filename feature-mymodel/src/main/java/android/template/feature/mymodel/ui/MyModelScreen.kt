@@ -35,17 +35,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MyModelScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = hiltViewModel()) {
+fun MyModelScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = koinViewModel()) {
     val items by viewModel.uiState.collectAsStateWithLifecycle()
     if (items is Success) {
         MyModelScreen(
             items = (items as Success).data,
             onSave = { name -> viewModel.addMyModel(name) },
-            modifier = modifier
+            modifier = modifier,
         )
     }
 }
@@ -54,17 +55,17 @@ fun MyModelScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = h
 internal fun MyModelScreen(
     items: List<String>,
     onSave: (name: String) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Column(modifier) {
         var nameMyModel by remember { mutableStateOf("Compose") }
         Row(
             modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             TextField(
                 value = nameMyModel,
-                onValueChange = { nameMyModel = it }
+                onValueChange = { nameMyModel = it },
             )
 
             Button(modifier = Modifier.width(96.dp), onClick = { onSave(nameMyModel) }) {

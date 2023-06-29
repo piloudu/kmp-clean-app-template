@@ -52,9 +52,8 @@ android {
 dependencies {
     implementation(projects.coreDatabase)
 
-    // Arch Components
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
+    // Koin Dependency Injection
+    implementation(libs.koin.core)
 
     implementation(libs.kotlinx.coroutines.android)
 

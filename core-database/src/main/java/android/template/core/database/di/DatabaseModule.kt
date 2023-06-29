@@ -17,31 +17,20 @@
 package android.template.core.database.di
 
 import android.content.Context
-import androidx.room.Room
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
 import android.template.core.database.AppDatabase
 import android.template.core.database.MyModelDao
-import javax.inject.Singleton
+import androidx.room.Room
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.module.Module
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-class DatabaseModule {
-    @Provides
-    fun provideMyModelDao(appDatabase: AppDatabase): MyModelDao {
-        return appDatabase.myModelDao()
-    }
-
-    @Provides
-    @Singleton
-    fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
-        return Room.databaseBuilder(
-            appContext,
-            AppDatabase::class.java,
-            "MyModel"
-        ).build()
-    }
+val databaseModule: Module = module {
+    factory<MyModelDao> { get<AppDatabase>().myModelDao() }
+    factory<AppDatabase> { buildRoomDatabase(androidContext()) }
 }
+
+private fun buildRoomDatabase(appContext: Context) = Room.databaseBuilder(
+    appContext,
+    AppDatabase::class.java,
+    "MyModel",
+).build()

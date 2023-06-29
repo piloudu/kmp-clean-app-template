@@ -66,7 +66,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.hilt.navigation.compose)
 
     // Compose
     implementation(libs.androidx.compose.ui)
@@ -78,15 +77,14 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    // Hilt Dependency Injection
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
-    // Hilt and instrumented tests.
-    androidTestImplementation(libs.hilt.android.testing)
-    kaptAndroidTest(libs.hilt.android.compiler)
-    // Hilt and Robolectric tests.
-    testImplementation(libs.hilt.android.testing)
-    kaptTest(libs.hilt.android.compiler)
+    // Koin Dependency Injection
+    implementation(libs.koin.compose)
+
+    // Koin Test
+    androidTestImplementation(libs.koin.test)
+
+    // Koin Test
+    testImplementation(libs.koin.test)
 
     // Local tests: jUnit, coroutines, Android runner
     testImplementation(libs.junit)
