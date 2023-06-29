@@ -81,7 +81,7 @@ android {
 dependencies {
     implementation(projects.coreUi)
     implementation(projects.featureMymodel)
-    implementation(projects.coreData)
+    implementation(projects.data)
     implementation(projects.coreDatabase)
     // TODO: Fix cyclic dependency
 //    implementation(projects.testApp)
