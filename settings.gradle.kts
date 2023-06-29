@@ -33,9 +33,9 @@ dependencyResolutionManagement {
 rootProject.name = "MultimoduleTemplate"
 
 include(":app")
+include(":ui:core")
+include(":ui:feature-mymodel")
 include(":data:repositories")
 include(":data:database")
 include(":testing:core-testing")
-include(":core-ui")
-include(":feature-mymodel")
 include(":testing:test-app")

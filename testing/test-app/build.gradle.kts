@@ -53,7 +53,7 @@ android {
 dependencies {
     implementation(projects.data.repositories)
     implementation(projects.testing.coreTesting)
-    implementation(projects.featureMymodel)
+    implementation(projects.ui.featureMymodel)
 
     // Testing
     implementation(libs.androidx.test.core)
