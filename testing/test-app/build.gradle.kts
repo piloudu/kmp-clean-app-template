@@ -22,14 +22,13 @@ plugins {
 }
 
 android {
-    namespace = "android.template.test.navigation"
+    namespace = "android.template.testing.test.app"
     compileSdk = 33
     targetProjectPath = ":app"
 
     defaultConfig {
         minSdk = 21
         targetSdk = 33
-
     }
 
     buildFeatures {
@@ -51,7 +50,7 @@ android {
 
 dependencies {
     implementation(projects.data.repositories)
-    implementation(projects.testing.coreTesting)
+    implementation(projects.testing.core)
     implementation(projects.ui.featureMymodel)
 
     // Testing

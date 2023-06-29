@@ -23,7 +23,7 @@ plugins {
 }
 
 android {
-    namespace = "android.template.core.database"
+    namespace = "android.template.data.database"
     compileSdk = 33
 
     defaultConfig {

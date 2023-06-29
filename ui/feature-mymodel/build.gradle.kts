@@ -22,7 +22,7 @@ plugins {
 }
 
 android {
-    namespace = "android.template.feature.mymodel"
+    namespace = "android.template.ui.feature.mymodel"
     compileSdk = 33
 
     defaultConfig {
@@ -56,7 +56,7 @@ android {
 dependencies {
     implementation(projects.data.repositories)
     implementation(projects.ui.core)
-    androidTestImplementation(projects.testing.coreTesting)
+    androidTestImplementation(projects.testing.core)
 
     // Core Android dependencies
     implementation(libs.androidx.activity.compose)

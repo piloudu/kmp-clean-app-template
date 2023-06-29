@@ -21,7 +21,7 @@ plugins {
 }
 
 android {
-    namespace = "android.template.core.ui"
+    namespace = "android.template.ui.core"
     compileSdk = 33
 
     defaultConfig {

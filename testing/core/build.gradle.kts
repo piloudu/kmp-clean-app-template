@@ -22,7 +22,7 @@ plugins {
 }
 
 android {
-    namespace = "android.template.core.testing"
+    namespace = "android.template.testing.core"
     compileSdk = 33
 
     defaultConfig {
