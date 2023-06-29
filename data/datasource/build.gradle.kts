@@ -20,7 +20,7 @@ plugins {
 }
 
 android {
-    namespace = "android.template.data.repositories"
+    namespace = "android.template.data.datasource"
     compileSdk = 33
 
     defaultConfig {
