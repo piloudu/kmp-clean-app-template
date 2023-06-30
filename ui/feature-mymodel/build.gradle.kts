@@ -15,39 +15,19 @@
  */
 
 plugins {
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.custom.library.convention)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
     namespace = "android.template.ui.feature.mymodel"
-    compileSdk = 33
-
-    defaultConfig {
-        minSdk = 21
-
-        consumerProguardFiles("consumer-rules.pro")
-    }
 
     buildFeatures {
         compose = true
-        aidl = false
-        buildConfig = false
-        renderScript = false
-        shaders = false
     }
 
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
     }
 }
 

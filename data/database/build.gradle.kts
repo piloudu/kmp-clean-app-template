@@ -15,42 +15,21 @@
  */
 
 plugins {
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.custom.library.convention)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "android.template.data.database"
-    compileSdk = 33
 
     defaultConfig {
-        minSdk = 21
-
-        consumerProguardFiles("consumer-rules.pro")
-
         // The schemas directory contains a schema file for each version of the Room database.
         // This is required to enable Room auto migrations.
         // See https://developer.android.com/reference/kotlin/androidx/room/AutoMigration.
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
-    }
-
-    buildFeatures {
-        aidl = false
-        buildConfig = false
-        renderScript = false
-        shaders = false
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
     }
 }
 
