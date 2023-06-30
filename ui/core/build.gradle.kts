@@ -16,7 +16,6 @@
 
 plugins {
     alias(libs.plugins.compose.convention)
-    alias(libs.plugins.kotlin.android)
 }
 
 android {

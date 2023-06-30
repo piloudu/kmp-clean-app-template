@@ -16,7 +16,6 @@
 
 plugins {
     alias(libs.plugins.custom.library.convention)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
 }
 

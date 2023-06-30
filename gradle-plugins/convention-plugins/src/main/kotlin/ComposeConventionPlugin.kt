@@ -13,9 +13,9 @@ class ComposeConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply(libs.plugins.custom.library.convention.get().pluginId)
             }
-            
+
             extensions.configure<LibraryExtension> {
-                buildFeatures { 
+                buildFeatures {
                     compose = true
                 }
 
