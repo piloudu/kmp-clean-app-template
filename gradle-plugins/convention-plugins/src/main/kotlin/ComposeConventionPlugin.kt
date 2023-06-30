@@ -19,8 +19,8 @@ class ComposeConventionPlugin : Plugin<Project> {
                     compose = true
                 }
 
-                defaultConfig {
-                    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                composeOptions {
+                    kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
                 }
             }
         }
