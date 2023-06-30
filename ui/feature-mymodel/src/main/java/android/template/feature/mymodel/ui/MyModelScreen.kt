@@ -37,6 +37,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.immutableListOf
+import kotlinx.collections.immutable.persistentListOf
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -45,7 +48,7 @@ fun MyModelScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = k
     if (items is Success) {
         MyModelScreen(
             items = (items as Success).data,
-            onSave = { name -> viewModel.addMyModel(name) },
+            onSave = viewModel::addMyModel,
             modifier = modifier,
         )
     }
@@ -53,7 +56,7 @@ fun MyModelScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = k
 
 @Composable
 internal fun MyModelScreen(
-    items: List<String>,
+    items: ImmutableList<String>,
     onSave: (name: String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -84,7 +87,7 @@ internal fun MyModelScreen(
 @Composable
 private fun DefaultPreview() {
     MyApplicationTheme {
-        MyModelScreen(listOf("Compose", "Room", "Kotlin"), onSave = {})
+        MyModelScreen(persistentListOf("Compose", "Room", "Kotlin"), onSave = {})
     }
 }
 
@@ -92,6 +95,6 @@ private fun DefaultPreview() {
 @Composable
 private fun PortraitPreview() {
     MyApplicationTheme {
-        MyModelScreen(listOf("Compose", "Room", "Kotlin"), onSave = {})
+        MyModelScreen(persistentListOf("Compose", "Room", "Kotlin"), onSave = {})
     }
 }

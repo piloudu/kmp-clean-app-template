@@ -22,6 +22,8 @@ import android.template.feature.mymodel.ui.MyModelUiState.Loading
 import android.template.feature.mymodel.ui.MyModelUiState.Success
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -34,9 +36,13 @@ class MyModelViewModel(
 ) : ViewModel() {
 
     val uiState: StateFlow<MyModelUiState> = myModelRepository
-        .myModels.map<List<String>, MyModelUiState> { Success(data = it) }
+        .myModels.map<List<String>, MyModelUiState> { Success(data = it.toImmutableList()) }
         .catch { emit(Error(it)) }
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), Loading)
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = Loading,
+        )
 
     fun addMyModel(name: String) {
         viewModelScope.launch {
@@ -48,5 +54,5 @@ class MyModelViewModel(
 sealed interface MyModelUiState {
     object Loading : MyModelUiState
     data class Error(val throwable: Throwable) : MyModelUiState
-    data class Success(val data: List<String>) : MyModelUiState
+    data class Success(val data: ImmutableList<String>) : MyModelUiState
 }
