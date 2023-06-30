@@ -15,35 +15,12 @@
  */
 
 plugins {
-    alias(libs.plugins.android.test)
+    alias(libs.plugins.test.convention)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
     namespace = "android.template.testing.test.app"
-    compileSdk = 33
-    targetProjectPath = ":app"
-
-    defaultConfig {
-        minSdk = 21
-        targetSdk = 33
-    }
-
-    buildFeatures {
-        aidl = false
-        buildConfig = false
-        renderScript = false
-        shaders = false
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
-    }
 }
 
 dependencies {

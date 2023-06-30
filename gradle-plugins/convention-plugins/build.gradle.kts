@@ -12,6 +12,10 @@ gradlePlugin {
             id = "android.template.compose"
             implementationClass = "ComposeConventionPlugin"
         }
+        register("androidTestConvention") {
+            id = "android.template.test"
+            implementationClass = "AndroidTestConventionPlugin"
+        }
     }
 }
 
