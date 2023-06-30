@@ -1,4 +1,3 @@
-import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.TestExtension
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.JavaVersion
@@ -6,8 +5,6 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.the
-import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 class AndroidTestConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -16,7 +13,7 @@ class AndroidTestConventionPlugin : Plugin<Project> {
 
             with(pluginManager) {
                 apply(libs.plugins.android.test.get().pluginId)
-                apply(libs.plugins.kotlin.android.get().pluginId)
+                apply(libs.plugins.kotlin.compiler.convention.get().pluginId)
             }
 
             extensions.configure<TestExtension> {
@@ -38,12 +35,6 @@ class AndroidTestConventionPlugin : Plugin<Project> {
                 compileOptions {
                     sourceCompatibility = JavaVersion.VERSION_17
                     targetCompatibility = JavaVersion.VERSION_17
-                }
-            }
-
-            tasks.withType<KotlinCompile>().configureEach {
-                kotlinOptions {
-                    jvmTarget = JavaVersion.VERSION_17.toString()
                 }
             }
         }

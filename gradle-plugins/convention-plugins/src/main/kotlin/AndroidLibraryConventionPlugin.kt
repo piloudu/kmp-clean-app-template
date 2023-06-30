@@ -17,7 +17,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
 
             with(pluginManager) {
                 apply(libs.plugins.android.library.get().pluginId)
-                apply(libs.plugins.kotlin.android.get().pluginId)
+                apply(libs.plugins.kotlin.compiler.convention.get().pluginId)
             }
 
             extensions.configure<LibraryExtension> {
@@ -36,12 +36,6 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 compileOptions {
                     sourceCompatibility = JavaVersion.VERSION_17
                     targetCompatibility = JavaVersion.VERSION_17
-                }
-            }
-
-            tasks.withType<KotlinCompile>().configureEach {
-                kotlinOptions {
-                    jvmTarget = JavaVersion.VERSION_17.toString()
                 }
             }
         }

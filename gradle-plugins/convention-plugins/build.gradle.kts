@@ -16,6 +16,10 @@ gradlePlugin {
             id = "android.template.test"
             implementationClass = "AndroidTestConventionPlugin"
         }
+        register("kotlinCompilerConventionPlugin") {
+            id = "android.template.kotlin.compiler"
+            implementationClass = "KotlinCompilerConventionPlugin"
+        }
     }
 }
 
