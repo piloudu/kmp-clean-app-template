@@ -15,7 +15,7 @@
  */
 
 plugins {
-    alias(libs.plugins.custom.library.convention)
+    alias(libs.plugins.compose.convention)
     alias(libs.plugins.kotlin.android)
 }
 
@@ -24,14 +24,6 @@ android {
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
     }
 }
 

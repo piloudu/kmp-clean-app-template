@@ -15,20 +15,12 @@
  */
 
 plugins {
-    alias(libs.plugins.custom.library.convention)
+    alias(libs.plugins.compose.convention)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
     namespace = "android.template.ui.feature.mymodel"
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-    }
 }
 
 dependencies {

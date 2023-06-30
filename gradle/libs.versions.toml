@@ -61,3 +61,4 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 # Custom plugins
 custom-library-convention = { id = "android.template.library", version.ref = "customPlugins" }
+compose-convention = { id = "android.template.compose", version.ref = "customPlugins" }

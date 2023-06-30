@@ -4,9 +4,13 @@ plugins {
 
 gradlePlugin {
     plugins {
-        register("androidLibrary") {
+        register("androidLibraryConvention") {
             id = "android.template.library"
             implementationClass = "AndroidLibraryConventionPlugin"
+        }
+        register("composeConvention") {
+            id = "android.template.compose"
+            implementationClass = "ComposeConventionPlugin"
         }
     }
 }
