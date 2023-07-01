@@ -16,6 +16,7 @@
 
 plugins {
     alias(libs.plugins.custom.library.convention)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
@@ -25,10 +26,9 @@ android {
 dependencies {
     implementation(projects.data.database)
 
-    // Koin Dependency Injection
     implementation(libs.koin.core)
-
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.serialization)
 
     // Local tests: jUnit, coroutines, Android runner
     testImplementation(libs.junit)
