@@ -5,6 +5,7 @@ import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.getting
 import org.gradle.kotlin.dsl.the
 
 class AndroidApplicationConventionPlugin : Plugin<Project> {
@@ -32,12 +33,15 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 }
 
                 buildTypes {
-                    getByName("release") {
-                        isMinifyEnabled = false
+                    release {
+                        isMinifyEnabled = true
                         proguardFiles(
                             getDefaultProguardFile("proguard-android-optimize.txt"),
                             "proguard-rules.pro",
                         )
+                    }
+                    debug {
+                        isMinifyEnabled = true
                     }
                 }
 
