@@ -1,8 +1,8 @@
-
+import android.template.gradle.convention.plugins.common.configureAndroid
+import android.template.gradle.convention.plugins.common.configureCompose
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import com.google.devtools.ksp.gradle.KspExtension
 import org.gradle.accessors.dm.LibrariesForLibs
-import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -20,10 +20,10 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<BaseAppModuleExtension> {
-                compileSdk = 33
+                configureAndroid()
+                configureCompose(libs)
 
                 defaultConfig {
-                    minSdk = 21
                     targetSdk = 33
                     versionCode = 1
                     versionName = "1.0"
@@ -36,25 +36,11 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 buildTypes {
                     getByName("release") {
                         isMinifyEnabled = false
-                        proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+                        proguardFiles(
+                            getDefaultProguardFile("proguard-android-optimize.txt"),
+                            "proguard-rules.pro",
+                        )
                     }
-                }
-
-                compileOptions {
-                    sourceCompatibility = JavaVersion.VERSION_17
-                    targetCompatibility = JavaVersion.VERSION_17
-                }
-
-                buildFeatures {
-                    compose = true
-                    aidl = false
-                    buildConfig = false
-                    renderScript = false
-                    shaders = false
-                }
-
-                composeOptions {
-                    kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
                 }
 
                 packagingOptions {

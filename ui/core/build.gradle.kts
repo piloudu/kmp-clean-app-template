@@ -15,7 +15,7 @@
  */
 
 plugins {
-    alias(libs.plugins.compose.convention)
+    alias(libs.plugins.custom.library.with.compose.convention)
 }
 
 android {

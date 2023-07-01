@@ -9,7 +9,7 @@ gradlePlugin {
             implementationClass = "AndroidLibraryConventionPlugin"
         }
         register("composeConvention") {
-            id = "android.template.compose"
+            id = "android.template.library.with.compose"
             implementationClass = "ComposeConventionPlugin"
         }
         register("androidTestConvention") {

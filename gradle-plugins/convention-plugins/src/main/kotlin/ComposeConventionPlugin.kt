@@ -1,3 +1,4 @@
+import android.template.gradle.convention.plugins.common.configureCompose
 import com.android.build.gradle.LibraryExtension
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Plugin
@@ -14,13 +15,7 @@ class ComposeConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<LibraryExtension> {
-                buildFeatures {
-                    compose = true
-                }
-
-                composeOptions {
-                    kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-                }
+                configureCompose(libs)
             }
         }
     }
