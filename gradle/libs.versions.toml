@@ -60,8 +60,9 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
 # Custom plugins
-custom-library-convention = { id = "android.template.library", version.ref = "customPlugins" }
 custom-application-convention = { id = "android.template.application", version.ref = "customPlugins" }
-test-convention = { id = "android.template.test", version.ref = "customPlugins" }
+custom-library-convention = { id = "android.template.library", version.ref = "customPlugins" }
 custom-library-with-compose-convention = { id = "android.template.library.with.compose", version.ref = "customPlugins" }
+custom-ksp-convention = { id = "android.template.ksp", version.ref = "customPlugins" }
 kotlin-compiler-convention = { id = "android.template.kotlin.compiler", version.ref = "customPlugins" }
+test-convention = { id = "android.template.test", version.ref = "customPlugins" }

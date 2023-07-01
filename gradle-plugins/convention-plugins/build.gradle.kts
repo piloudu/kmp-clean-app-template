@@ -4,6 +4,10 @@ plugins {
 
 gradlePlugin {
     plugins {
+        register("androidApplicationConvention") {
+            id = "android.template.application"
+            implementationClass = "AndroidApplicationConventionPlugin"
+        }
         register("androidLibraryConvention") {
             id = "android.template.library"
             implementationClass = "AndroidLibraryConventionPlugin"
@@ -12,17 +16,17 @@ gradlePlugin {
             id = "android.template.library.with.compose"
             implementationClass = "ComposeConventionPlugin"
         }
-        register("androidTestConvention") {
-            id = "android.template.test"
-            implementationClass = "AndroidTestConventionPlugin"
-        }
         register("kotlinCompilerConvention") {
             id = "android.template.kotlin.compiler"
             implementationClass = "KotlinCompilerConventionPlugin"
         }
-        register("androidApplicationConvention") {
-            id = "android.template.application"
-            implementationClass = "AndroidApplicationConventionPlugin"
+        register("kspConvention") {
+            id = "android.template.ksp"
+            implementationClass = "KspConventionPlugin"
+        }
+        register("androidTestConvention") {
+            id = "android.template.test"
+            implementationClass = "AndroidTestConventionPlugin"
         }
     }
 }

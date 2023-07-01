@@ -16,6 +16,7 @@
 
 plugins {
     alias(libs.plugins.custom.application.convention)
+    alias(libs.plugins.custom.ksp.convention)
 }
 
 android {

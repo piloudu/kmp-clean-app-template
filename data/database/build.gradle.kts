@@ -16,20 +16,11 @@
 
 plugins {
     alias(libs.plugins.custom.library.convention)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.custom.ksp.convention)
 }
 
 android {
     namespace = "android.template.data.database"
-
-    defaultConfig {
-        // The schemas directory contains a schema file for each version of the Room database.
-        // This is required to enable Room auto migrations.
-        // See https://developer.android.com/reference/kotlin/androidx/room/AutoMigration.
-        ksp {
-            arg("room.schemaLocation", "$projectDir/schemas")
-        }
-    }
 }
 
 dependencies {

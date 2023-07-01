@@ -1,7 +1,6 @@
 import android.template.gradle.convention.plugins.common.configureAndroid
 import android.template.gradle.convention.plugins.common.configureCompose
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import com.google.devtools.ksp.gradle.KspExtension
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -16,7 +15,6 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply(libs.plugins.android.application.get().pluginId)
                 apply(libs.plugins.kotlin.compiler.convention.get().pluginId)
-                apply(libs.plugins.ksp.get().pluginId)
             }
 
             extensions.configure<BaseAppModuleExtension> {
@@ -48,11 +46,6 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                         excludes += "/META-INF/{AL2.0,LGPL2.1}"
                     }
                 }
-            }
-
-            extensions.configure<KspExtension> {
-                // Enable room auto-migrations
-                arg("room.schemaLocation", "$projectDir/schemas")
             }
         }
     }
