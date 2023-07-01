@@ -11,6 +11,7 @@ internal object Service {
     // TODO: Read data from the "data.json" file
     fun getData(): Flow<ProductApiModel> {
         return flow {
+            Thread.sleep(10_000)
             emit(
                 ProductApiModel(
                     id = 1,

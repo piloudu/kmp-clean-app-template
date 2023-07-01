@@ -21,6 +21,7 @@ import android.template.feature.mymodel.ui.MyModelUiState.Success
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -41,7 +42,18 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun MyModelScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = koinViewModel()) {
     val items by viewModel.uiState.collectAsStateWithLifecycle()
+    var count: Int by remember { mutableStateOf(0) }
+    var isButtonVisible by remember { mutableStateOf(true) }
+
+    if (isButtonVisible) {
+        Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
+            Button(modifier = Modifier.fillMaxWidth(), onClick = { count++ }) {
+                Text(text = "Count is: $count")
+            }
+        }
+    }
     if (items is Success) {
+        isButtonVisible = false
         MyModelScreen(
             productUiModel = (items as Success).data,
             onSave = viewModel::addMyModel,
