@@ -1,12 +1,13 @@
 package android.template.domain.usecases
 
+import android.template.domain.models.ProductModel
 import android.template.domain.repositories.MyModelRepository
 import kotlinx.coroutines.flow.Flow
 
 internal class GetModelUseCase(
     private val myModelRepository: MyModelRepository,
-) : () -> Flow<List<String>> {
-    override fun invoke(): Flow<List<String>> {
-        return myModelRepository.myModels
+) : suspend () -> Flow<ProductModel> {
+    override suspend fun invoke(): Flow<ProductModel> {
+        return myModelRepository.getMyModels()
     }
 }

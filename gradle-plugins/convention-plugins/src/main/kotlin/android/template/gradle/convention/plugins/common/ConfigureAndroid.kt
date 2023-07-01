@@ -6,7 +6,7 @@ import org.gradle.api.JavaVersion
 fun CommonExtension<*, *, *, *>.configureAndroid() {
     compileSdk = 33
 
-    defaultConfig.minSdk = 21
+    defaultConfig.minSdk = 26
 
     buildFeatures {
         aidl = false

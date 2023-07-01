@@ -26,7 +26,7 @@ import org.koin.dsl.module
 
 val databaseModule: Module = module {
     factory<MyModelDao> { get<AppDatabase>().myModelDao() }
-    factory<AppDatabase> { buildRoomDatabase(androidContext()) }
+    single<AppDatabase> { buildRoomDatabase(androidContext()) }
 }
 
 private fun buildRoomDatabase(appContext: Context) = Room.databaseBuilder(
