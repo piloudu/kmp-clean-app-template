@@ -1,7 +1,7 @@
 package android.template.domain.models
 
 data class ProductModel(
-    val name: String?,
+    val name: String,
     val price: Price
 )
 

@@ -36,8 +36,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -45,7 +43,7 @@ fun MyModelScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = k
     val items by viewModel.uiState.collectAsStateWithLifecycle()
     if (items is Success) {
         MyModelScreen(
-            items = (items as Success).data,
+            productUiModel = (items as Success).data,
             onSave = viewModel::addMyModel,
             modifier = modifier,
         )
@@ -54,7 +52,7 @@ fun MyModelScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = k
 
 @Composable
 internal fun MyModelScreen(
-    items: ImmutableList<String>,
+    productUiModel: ProductUiModel,
     onSave: (name: String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -73,9 +71,7 @@ internal fun MyModelScreen(
                 Text("Save")
             }
         }
-        items.forEach {
-            Text("Saved item: $it")
-        }
+        Text("Saved item: ${productUiModel.name}")
     }
 }
 
@@ -85,7 +81,7 @@ internal fun MyModelScreen(
 @Composable
 private fun DefaultPreview() {
     MyApplicationTheme {
-        MyModelScreen(persistentListOf("Compose", "Room", "Kotlin"), onSave = {})
+        MyModelScreen(ProductUiModel(name = "Product 1", price = null), onSave = {})
     }
 }
 
@@ -93,6 +89,6 @@ private fun DefaultPreview() {
 @Composable
 private fun PortraitPreview() {
     MyApplicationTheme {
-        MyModelScreen(persistentListOf("Compose", "Room", "Kotlin"), onSave = {})
+        MyModelScreen(ProductUiModel(name = "Product 1", price = null), onSave = {})
     }
 }

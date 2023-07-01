@@ -16,14 +16,14 @@
 
 package android.template.feature.mymodel.ui
 
+import android.template.domain.models.ProductModel
+import android.template.domain.usecases.AddModelUseCase
+import android.template.domain.usecases.GetModelUseCase
 import android.template.feature.mymodel.ui.MyModelUiState.Error
 import android.template.feature.mymodel.ui.MyModelUiState.Loading
 import android.template.feature.mymodel.ui.MyModelUiState.Success
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.toImmutableList
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -32,12 +32,12 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class MyModelViewModel(
-    getModelUseCase: () -> Flow<List<String>>,
-    private val addModelUseCase: suspend (String) -> Unit,
+    getModelUseCase: GetModelUseCase,
+    private val addModelUseCase: AddModelUseCase,
 ) : ViewModel() {
 
     val uiState: StateFlow<MyModelUiState> = getModelUseCase()
-        .map<List<String>, MyModelUiState> { Success(data = it.toImmutableList()) }
+        .map<ProductModel, MyModelUiState> { Success(data = it.toUiModel()) }
         .catch { emit(Error(it)) }
         .stateIn(
             scope = viewModelScope,
@@ -50,10 +50,4 @@ class MyModelViewModel(
             addModelUseCase(name)
         }
     }
-}
-
-sealed interface MyModelUiState {
-    object Loading : MyModelUiState
-    data class Error(val throwable: Throwable) : MyModelUiState
-    data class Success(val data: ImmutableList<String>) : MyModelUiState
 }

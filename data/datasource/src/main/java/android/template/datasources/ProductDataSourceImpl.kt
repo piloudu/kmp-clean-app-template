@@ -5,7 +5,7 @@ import android.template.datasources.service.Service
 import kotlinx.coroutines.flow.Flow
 
 internal class ProductDataSourceImpl : ProductDataSource {
-    override suspend fun getData(): Flow<ProductApiModel> {
+    override fun getData(): Flow<ProductApiModel> {
         return Service.getData()
     }
 }

@@ -32,7 +32,7 @@ internal class DefaultMyModelRepository(
     private val productDataSource: ProductDataSource,
 ) : MyModelRepository {
 
-    override suspend fun getMyModels(): Flow<ProductModel> {
+    override fun getMyModels(): Flow<ProductModel> {
         return productDataSource.getData().map(ProductApiModel::toDomainModel)
     }
 

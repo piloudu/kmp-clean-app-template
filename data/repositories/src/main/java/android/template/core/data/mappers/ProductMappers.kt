@@ -6,7 +6,7 @@ import android.template.domain.models.ProductModel
 
 fun ProductApiModel.toDomainModel(): ProductModel {
     return ProductModel(
-        name = this.name,
+        name = this.name.orEmpty(),
         price = Price(value = this.price),
     )
 }

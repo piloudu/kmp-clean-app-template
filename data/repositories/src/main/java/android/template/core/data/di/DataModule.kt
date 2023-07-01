@@ -17,6 +17,8 @@
 package android.template.core.data.di
 
 import android.template.core.data.DefaultMyModelRepository
+import android.template.domain.models.Price
+import android.template.domain.models.ProductModel
 import android.template.domain.repositories.MyModelRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -30,7 +32,9 @@ val dataModule: Module = module {
 }
 
 class FakeMyModelRepository : MyModelRepository {
-    override val myModels: Flow<List<String>> = flowOf(fakeMyModels)
+    override fun getMyModels(): Flow<ProductModel> {
+        return flowOf(ProductModel(name = "", price = Price(value = null)))
+    }
 
     override suspend fun add(name: String) {
         throw NotImplementedError()
