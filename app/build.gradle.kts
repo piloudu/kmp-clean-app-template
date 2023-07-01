@@ -15,14 +15,13 @@
  */
 
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.custom.application.convention)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
 }
 
 android {
     namespace = "android.template"
-    compileSdk = 33
 
     defaultConfig {
         applicationId = "android.template"
