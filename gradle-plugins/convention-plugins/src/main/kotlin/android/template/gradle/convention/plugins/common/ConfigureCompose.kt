@@ -1,5 +1,6 @@
 package android.template.gradle.convention.plugins.common
 
+import ENABLE_COMPOSE_COMPILER_REPORTS
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Project
@@ -17,16 +18,18 @@ fun Project.configureCompose(commonExtension: CommonExtension<*, *, *, *>, libs:
 
     tasks.withType<KotlinCompile> {
         kotlinOptions {
-            freeCompilerArgs += listOf(
-                "-P",
-                "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
-                    project.buildDir.absolutePath + "/compose_metrics",
-            )
-            freeCompilerArgs += listOf(
-                "-P",
-                "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
-                    project.buildDir.absolutePath + "/compose_metrics",
-            )
+            if (project.findProperty(ENABLE_COMPOSE_COMPILER_REPORTS) == true) {
+                freeCompilerArgs += listOf(
+                    "-P",
+                    "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
+                        project.buildDir.absolutePath + "/compose_metrics",
+                )
+                freeCompilerArgs += listOf(
+                    "-P",
+                    "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
+                        project.buildDir.absolutePath + "/compose_metrics",
+                )
+            }
         }
     }
 }

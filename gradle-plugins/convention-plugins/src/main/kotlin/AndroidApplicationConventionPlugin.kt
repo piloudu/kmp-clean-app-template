@@ -5,8 +5,10 @@ import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.getting
+import org.gradle.kotlin.dsl.extra
 import org.gradle.kotlin.dsl.the
+
+const val ENABLE_COMPOSE_COMPILER_REPORTS: String = "enableComposeCompilerReports"
 
 class AndroidApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -42,6 +44,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                     }
                     debug {
                         isMinifyEnabled = true
+                        extra.set(ENABLE_COMPOSE_COMPILER_REPORTS, true)
                     }
                 }
 
