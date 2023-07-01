@@ -17,7 +17,7 @@
 package android.template.core.data.di
 
 import android.template.core.data.DefaultMyModelRepository
-import android.template.core.data.MyModelRepository
+import android.template.domain.repositories.MyModelRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import org.koin.core.module.Module

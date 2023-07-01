@@ -1,6 +1,6 @@
 package android.template.domain.usecases
 
-import android.template.core.data.MyModelRepository
+import android.template.domain.repositories.MyModelRepository
 
 class AddModelUseCase(
     private val myModelRepository: MyModelRepository,

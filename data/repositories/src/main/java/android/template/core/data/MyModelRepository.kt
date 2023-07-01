@@ -18,14 +18,10 @@ package android.template.core.data
 
 import android.template.core.database.MyModel
 import android.template.core.database.MyModelDao
+import android.template.domain.repositories.MyModelRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-interface MyModelRepository {
-    val myModels: Flow<List<String>>
-
-    suspend fun add(name: String)
-}
 
 class DefaultMyModelRepository(
     private val myModelDao: MyModelDao,

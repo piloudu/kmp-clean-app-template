@@ -24,6 +24,8 @@ android {
 
 dependencies {
     implementation(projects.data.database)
+    implementation(projects.data.datasource)
+    implementation(projects.domain)
 
     // Koin Dependency Injection
     implementation(libs.koin.core)

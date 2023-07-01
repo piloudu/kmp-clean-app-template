@@ -23,8 +23,6 @@ android {
 }
 
 dependencies {
-    // Project dependencies
-    implementation(projects.data.repositories)
 
     // Library dependencies
     implementation(libs.kotlinx.coroutines.android)
