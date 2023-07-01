@@ -36,6 +36,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
 
                 buildTypes {
                     release {
+                        // Enable R8 for release builds
                         isMinifyEnabled = true
                         proguardFiles(
                             getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -43,7 +44,10 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                         )
                     }
                     debug {
-                        isMinifyEnabled = true
+                        // Disable R8 for debug builds
+                        isMinifyEnabled = false
+
+                        // Enable Compose Compiler reports for debug builds
                         extra.set(ENABLE_COMPOSE_COMPILER_REPORTS, true)
                     }
                 }
