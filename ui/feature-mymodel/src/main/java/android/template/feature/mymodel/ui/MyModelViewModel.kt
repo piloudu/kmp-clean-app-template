@@ -16,7 +16,7 @@
 
 package android.template.feature.mymodel.ui
 
-import android.template.core.data.MyModelRepository
+import android.template.domain.usecases.AddModelUseCase
 import android.template.feature.mymodel.ui.MyModelUiState.Error
 import android.template.feature.mymodel.ui.MyModelUiState.Loading
 import android.template.feature.mymodel.ui.MyModelUiState.Success
@@ -24,6 +24,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -32,11 +33,12 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class MyModelViewModel(
-    private val myModelRepository: MyModelRepository,
+    private val getModelUseCase: () -> Flow<List<String>>,
+    private val addModelUseCase: suspend (String) -> Unit,
 ) : ViewModel() {
 
-    val uiState: StateFlow<MyModelUiState> = myModelRepository
-        .myModels.map<List<String>, MyModelUiState> { Success(data = it.toImmutableList()) }
+    val uiState: StateFlow<MyModelUiState> = getModelUseCase()
+        .map<List<String>, MyModelUiState> { Success(data = it.toImmutableList()) }
         .catch { emit(Error(it)) }
         .stateIn(
             scope = viewModelScope,
@@ -46,7 +48,7 @@ class MyModelViewModel(
 
     fun addMyModel(name: String) {
         viewModelScope.launch {
-            myModelRepository.add(name)
+            addModelUseCase(name)
         }
     }
 }

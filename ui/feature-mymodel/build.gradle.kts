@@ -23,7 +23,8 @@ android {
 }
 
 dependencies {
-    implementation(projects.data.repositories)
+//    implementation(projects.data.repositories)
+    implementation(projects.domain)
     implementation(projects.ui.core)
     androidTestImplementation(projects.testing.core)
 

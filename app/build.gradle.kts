@@ -29,6 +29,7 @@ dependencies {
     implementation(projects.data.repositories)
     implementation(projects.data.database)
     implementation(projects.data.datasource)
+    implementation(projects.domain)
     // TODO: Fix cyclic dependency
 //    implementation(projects.testApp)
 

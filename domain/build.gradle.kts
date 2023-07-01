@@ -21,3 +21,12 @@ plugins {
 android {
     namespace = "android.template.domain"
 }
+
+dependencies {
+    // Project dependencies
+    implementation(projects.data.repositories)
+
+    // Library dependencies
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.koin.core)
+}
