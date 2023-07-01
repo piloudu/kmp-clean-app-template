@@ -9,11 +9,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun Project.configureCompose(commonExtension: CommonExtension<*, *, *, *>, libs: LibrariesForLibs) {
     commonExtension.buildFeatures {
-        this.compose = true
+        compose = true
     }
 
     commonExtension.composeOptions {
-        this.kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
+        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
     }
 
     tasks.withType<KotlinCompile> {

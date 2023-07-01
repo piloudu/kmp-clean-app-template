@@ -4,6 +4,7 @@ import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.extra
 import org.gradle.kotlin.dsl.the
 
 class AndroidLibraryConventionPlugin : Plugin<Project> {
@@ -16,6 +17,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 apply(libs.plugins.android.library.get().pluginId)
                 apply(libs.plugins.kotlin.compiler.convention.get().pluginId)
             }
+
+            extra.set(ENABLE_COMPOSE_COMPILER_REPORTS, true)
 
             extensions.configure<LibraryExtension> {
                 configureAndroid()

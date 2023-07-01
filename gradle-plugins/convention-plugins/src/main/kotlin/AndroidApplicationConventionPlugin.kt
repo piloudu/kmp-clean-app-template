@@ -5,7 +5,6 @@ import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.extra
 import org.gradle.kotlin.dsl.the
 
 const val ENABLE_COMPOSE_COMPILER_REPORTS: String = "enableComposeCompilerReports"
@@ -48,7 +47,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                         isMinifyEnabled = false
 
                         // Enable Compose Compiler reports for debug builds
-                        extra.set(ENABLE_COMPOSE_COMPILER_REPORTS, true)
+//                        extra.set(ENABLE_COMPOSE_COMPILER_REPORTS, true)
                     }
                 }
 
