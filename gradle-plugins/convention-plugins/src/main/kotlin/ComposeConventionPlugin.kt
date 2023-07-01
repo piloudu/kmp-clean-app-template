@@ -15,7 +15,7 @@ class ComposeConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<LibraryExtension> {
-                configureCompose(libs)
+                this@with.configureCompose(this, libs)
             }
         }
     }

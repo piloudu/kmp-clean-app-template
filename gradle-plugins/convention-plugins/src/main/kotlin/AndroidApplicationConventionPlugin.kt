@@ -19,7 +19,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
 
             extensions.configure<BaseAppModuleExtension> {
                 configureAndroid()
-                configureCompose(libs)
+                this@with.configureCompose(this, libs)
 
                 defaultConfig {
                     targetSdk = 33
