@@ -22,8 +22,7 @@ import android.template.domain.repositories.MyModelRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-
-class DefaultMyModelRepository(
+internal class DefaultMyModelRepository(
     private val myModelDao: MyModelDao,
 ) : MyModelRepository {
 

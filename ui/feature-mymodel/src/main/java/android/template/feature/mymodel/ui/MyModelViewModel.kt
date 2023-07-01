@@ -16,7 +16,6 @@
 
 package android.template.feature.mymodel.ui
 
-import android.template.domain.usecases.AddModelUseCase
 import android.template.feature.mymodel.ui.MyModelUiState.Error
 import android.template.feature.mymodel.ui.MyModelUiState.Loading
 import android.template.feature.mymodel.ui.MyModelUiState.Success
@@ -33,7 +32,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class MyModelViewModel(
-    private val getModelUseCase: () -> Flow<List<String>>,
+    getModelUseCase: () -> Flow<List<String>>,
     private val addModelUseCase: suspend (String) -> Unit,
 ) : ViewModel() {
 
