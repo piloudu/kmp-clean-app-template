@@ -15,6 +15,7 @@
  */
 
 plugins {
+    // Declare the plugins used without applying them in order to register the version
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.test) apply false
