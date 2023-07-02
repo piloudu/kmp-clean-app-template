@@ -8,10 +8,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -35,11 +38,17 @@ private fun CatScreen(
     modifier: Modifier,
     uiModel: CatUiModel,
 ) {
+    val localConfiguration = LocalConfiguration.current
+    val imageModifier = Modifier.size(
+        width = (localConfiguration.screenWidthDp - 40).dp,
+        height = (localConfiguration.screenHeightDp - 80).dp,
+    )
     Column(
         modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        CatImage(modifier, uiModel.url, uiModel.mimeType)
+        CatImage(modifier = imageModifier, url = uiModel.url)
         if (uiModel.owner.isNotEmpty()) {
             Spacer(modifier = Modifier.height(20.dp))
             Text(text = "The owner of this cat is ${uiModel.owner}")
@@ -48,7 +57,7 @@ private fun CatScreen(
 }
 
 @Composable
-fun CatImage(modifier: Modifier, url: String, mimeType: String) {
+fun CatImage(modifier: Modifier = Modifier, url: String) {
     GlideImage(
         modifier = modifier,
         imageModel = { url },
