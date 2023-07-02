@@ -27,10 +27,7 @@ dependencies {
     implementation(projects.ui.core)
     implementation(projects.ui.featureMymodel)
     implementation(projects.ui.navigation)
-    implementation(projects.data.repositories)
-    implementation(projects.data.database)
-    implementation(projects.data.datasource)
-    implementation(projects.domain)
+    implementation(projects.di)
     // TODO: Fix cyclic dependency
 //    implementation(projects.testApp)
 

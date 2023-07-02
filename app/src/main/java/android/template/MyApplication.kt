@@ -17,7 +17,7 @@
 package android.template
 
 import android.app.Application
-import android.template.di.koinModules
+import com.example.di.koinModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
