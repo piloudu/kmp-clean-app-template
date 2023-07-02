@@ -21,6 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import kotlinx.collections.immutable.PersistentList
+import kotlinx.collections.immutable.persistentListOf
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -48,7 +50,7 @@ fun MainScreen(modifier: Modifier = Modifier, viewModel: MainViewModel = koinVie
 
 @Composable
 internal fun MainScreen(
-    productsUiModels: List<ProductUiModel>,
+    productsUiModels: PersistentList<ProductUiModel>,
     onSave: (name: String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -79,7 +81,7 @@ internal fun MainScreen(
 @Composable
 private fun DefaultPreview() {
     MyApplicationTheme {
-        MainScreen(listOf(ProductUiModel(name = "Product 1", price = null)), onSave = {})
+        MainScreen(persistentListOf(ProductUiModel(name = "Product 1", price = null)), onSave = {})
     }
 }
 
@@ -87,6 +89,6 @@ private fun DefaultPreview() {
 @Composable
 private fun PortraitPreview() {
     MyApplicationTheme {
-        MainScreen(listOf(ProductUiModel(name = "Product 1", price = null)), onSave = {})
+        MainScreen(persistentListOf(ProductUiModel(name = "Product 1", price = null)), onSave = {})
     }
 }

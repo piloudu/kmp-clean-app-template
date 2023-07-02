@@ -1,6 +1,8 @@
 package android.template.feature.main.ui
 
 import android.template.domain.models.ProductModel
+import kotlinx.collections.immutable.PersistentList
+import kotlinx.collections.immutable.toPersistentList
 
 data class ProductUiModel(
     val name: String,
@@ -14,6 +16,6 @@ fun ProductModel.toUiModel(): ProductUiModel {
     )
 }
 
-fun List<ProductModel>.toUiModel(): List<ProductUiModel> {
-    return this.map(ProductModel::toUiModel)
+fun List<ProductModel>.toUiModel(): PersistentList<ProductUiModel> {
+    return this.map(ProductModel::toUiModel).toPersistentList()
 }
