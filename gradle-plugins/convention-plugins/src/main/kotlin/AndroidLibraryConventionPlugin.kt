@@ -1,3 +1,4 @@
+import android.template.gradle.convention.plugins.common.ENABLE_COMPOSE_COMPILER_REPORTS
 import android.template.gradle.convention.plugins.common.configureAndroid
 import com.android.build.gradle.LibraryExtension
 import org.gradle.accessors.dm.LibrariesForLibs

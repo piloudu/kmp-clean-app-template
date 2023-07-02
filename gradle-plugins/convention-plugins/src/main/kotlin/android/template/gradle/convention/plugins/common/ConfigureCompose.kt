@@ -1,11 +1,12 @@
 package android.template.gradle.convention.plugins.common
 
-import ENABLE_COMPOSE_COMPILER_REPORTS
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+const val ENABLE_COMPOSE_COMPILER_REPORTS: String = "enableComposeCompilerReports"
 
 fun Project.configureCompose(commonExtension: CommonExtension<*, *, *, *>, libs: LibrariesForLibs) {
     commonExtension.buildFeatures {
