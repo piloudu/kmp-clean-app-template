@@ -22,7 +22,7 @@ plugins {
 dependencies {
     implementation(projects.data.repositories)
     implementation(projects.testing.core)
-    implementation(projects.ui.featureMymodel)
+    implementation(projects.ui.featureMain)
 
     // Testing
     implementation(libs.androidx.test.core)

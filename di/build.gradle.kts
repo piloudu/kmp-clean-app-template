@@ -5,7 +5,7 @@ plugins {
 dependencies {
     // Project dependencies
     implementation(projects.ui.core)
-    implementation(projects.ui.featureMymodel)
+    implementation(projects.ui.featureMain)
     implementation(projects.data.repositories)
     implementation(projects.data.database)
     implementation(projects.data.datasource)

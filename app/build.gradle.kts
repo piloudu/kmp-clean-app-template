@@ -21,7 +21,7 @@ plugins {
 
 dependencies {
     implementation(projects.ui.core)
-    implementation(projects.ui.featureMymodel)
+    implementation(projects.ui.featureMain)
     implementation(projects.ui.navigation)
     implementation(projects.di)
     // TODO: Fix cyclic dependency

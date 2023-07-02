@@ -19,8 +19,6 @@ plugins {
 }
 
 android {
-    namespace = "android.template.testing.core"
-
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
