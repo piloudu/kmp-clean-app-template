@@ -11,9 +11,9 @@ internal class CatDataSourceImpl(
 ) : CatDataSource {
     val service = networkClient.retrofit.create(CatService::class.java)
     
-    override fun getDog(): Flow<CatApiModel> {
+    override fun getCat(): Flow<CatApiModel> {
         return flow { 
-            service.getSubscribedNewsletterSections()
+            service.getCat()
         }
     }
 }

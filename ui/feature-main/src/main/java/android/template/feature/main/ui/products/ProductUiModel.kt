@@ -1,4 +1,4 @@
-package android.template.feature.main.ui
+package android.template.feature.main.ui.products
 
 import android.template.domain.models.ProductModel
 import kotlinx.collections.immutable.PersistentList

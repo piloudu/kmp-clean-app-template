@@ -1,7 +1,7 @@
-package android.template.feature.main.ui
+package android.template.feature.main.ui.products
 
 import android.template.core.ui.MyApplicationTheme
-import android.template.feature.main.ui.MainUiState.Success
+import android.template.feature.main.ui.products.MainProductsUiState.Success
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,7 +26,7 @@ import kotlinx.collections.immutable.persistentListOf
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MainScreen(modifier: Modifier = Modifier, viewModel: MainViewModel = koinViewModel()) {
+fun MainScreen(modifier: Modifier = Modifier, viewModel: MainProductsViewModel = koinViewModel()) {
     val items by viewModel.uiState.collectAsStateWithLifecycle()
     var count: Int by remember { mutableStateOf(0) }
     var isButtonVisible by remember { mutableStateOf(true) }

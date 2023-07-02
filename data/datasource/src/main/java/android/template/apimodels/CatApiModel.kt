@@ -6,17 +6,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class CatApiModel(
     @SerialName("id")
-    val id: String,
+    val id: String?,
     @SerialName("validated")
-    val validated: Boolean,
+    val validated: Boolean?,
     @SerialName("owner")
-    val owner: String,
+    val owner: String?,
     @SerialName("file")
-    val file: String,
+    val file: String?,
     @SerialName("mimetype")
-    val mimeType: String,
+    val mimeType: String?,
     @SerialName("size")
-    val size: Double,
+    val size: Double?,
     @SerialName("url")
-    val url: Double,
+    val url: String?,
 )

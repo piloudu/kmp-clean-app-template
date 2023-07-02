@@ -1,6 +1,8 @@
 package android.template.feature.main.ui
 
 import android.template.core.data.MyModelRepository
+import android.template.feature.main.ui.products.MainProductsViewModel
+import android.template.feature.main.ui.products.MainProductsUiState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -15,17 +17,17 @@ import org.junit.Test
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @OptIn(ExperimentalCoroutinesApi::class) // TODO: Remove when stable
-class MainViewModelTest {
+class MainProductsViewModelTest {
     @Test
     fun uiState_initiallyLoading() = runTest {
-        val viewModel = MainViewModel(FakeMyModelRepository())
-        assertEquals(viewModel.uiState.first(), MainUiState.Loading)
+        val viewModel = MainProductsViewModel(FakeMyModelRepository())
+        assertEquals(viewModel.uiState.first(), MainProductsUiState.Loading)
     }
 
     @Test
     fun uiState_onItemSaved_isDisplayed() = runTest {
-        val viewModel = MainViewModel(FakeMyModelRepository())
-        assertEquals(viewModel.uiState.first(), MainUiState.Loading)
+        val viewModel = MainProductsViewModel(FakeMyModelRepository())
+        assertEquals(viewModel.uiState.first(), MainProductsUiState.Loading)
     }
 }
 

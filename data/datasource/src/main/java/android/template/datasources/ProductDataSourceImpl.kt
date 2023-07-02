@@ -15,7 +15,7 @@ internal class ProductDataSourceImpl(
 
     override fun getData(): Flow<List<ProductApiModel>> {
         val data = runBlocking {
-            service.getSubscribedNewsletterSections()
+            service.getCat()
         }
         println("The dog data is $data")
 

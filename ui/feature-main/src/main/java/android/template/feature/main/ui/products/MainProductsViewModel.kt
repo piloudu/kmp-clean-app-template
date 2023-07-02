@@ -1,11 +1,11 @@
-package android.template.feature.main.ui
+package android.template.feature.main.ui.products
 
 import android.template.domain.models.ProductModel
 import android.template.domain.usecases.AddModelUseCase
 import android.template.domain.usecases.GetProductsUseCase
-import android.template.feature.main.ui.MainUiState.Error
-import android.template.feature.main.ui.MainUiState.Loading
-import android.template.feature.main.ui.MainUiState.Success
+import android.template.feature.main.ui.products.MainProductsUiState.Error
+import android.template.feature.main.ui.products.MainProductsUiState.Loading
+import android.template.feature.main.ui.products.MainProductsUiState.Success
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.SharingStarted
@@ -15,13 +15,13 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class MainViewModel(
+class MainProductsViewModel(
     getProductsUseCase: GetProductsUseCase,
     private val addProductUseCase: AddModelUseCase,
 ) : ViewModel() {
 
-    val uiState: StateFlow<MainUiState> = getProductsUseCase()
-        .map<List<ProductModel>, MainUiState> { Success(data = it.toUiModel()) }
+    val uiState: StateFlow<MainProductsUiState> = getProductsUseCase()
+        .map<List<ProductModel>, MainProductsUiState> { Success(data = it.toUiModel()) }
         .catch { emit(Error(it)) }
         .stateIn(
             scope = viewModelScope,

@@ -1,5 +1,6 @@
 package android.template.feature.main.ui
 
+import android.template.feature.main.ui.products.MainScreen
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
