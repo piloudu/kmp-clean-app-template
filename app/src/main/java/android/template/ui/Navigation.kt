@@ -17,6 +17,7 @@
 package android.template.ui
 
 import android.template.feature.mymodel.ui.MyModelScreen
+import android.template.navigation.Destinations
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -29,8 +30,8 @@ import androidx.navigation.compose.rememberNavController
 fun MainNavigation() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "main") {
-        composable("main") { MyModelScreen(modifier = Modifier.padding(16.dp)) }
+    NavHost(navController = navController, startDestination = Destinations.MyModelScreen.route) {
+        composable(Destinations.MyModelScreen.route) { MyModelScreen(modifier = Modifier.padding(16.dp)) }
         // TODO: Add more destinations
     }
 }
