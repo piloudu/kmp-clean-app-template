@@ -40,7 +40,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MyModelScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = koinViewModel()) {
+fun MainScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = koinViewModel()) {
     val items by viewModel.uiState.collectAsStateWithLifecycle()
     var count: Int by remember { mutableStateOf(0) }
     var isButtonVisible by remember { mutableStateOf(true) }
@@ -54,7 +54,7 @@ fun MyModelScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = k
     }
     if (items is Success) {
         isButtonVisible = false
-        MyModelScreen(
+        MainScreen(
             productUiModel = (items as Success).data,
             onSave = viewModel::addMyModel,
             modifier = modifier,
@@ -63,7 +63,7 @@ fun MyModelScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = k
 }
 
 @Composable
-internal fun MyModelScreen(
+internal fun MainScreen(
     productUiModel: ProductUiModel,
     onSave: (name: String) -> Unit,
     modifier: Modifier = Modifier,
@@ -93,7 +93,7 @@ internal fun MyModelScreen(
 @Composable
 private fun DefaultPreview() {
     MyApplicationTheme {
-        MyModelScreen(ProductUiModel(name = "Product 1", price = null), onSave = {})
+        MainScreen(ProductUiModel(name = "Product 1", price = null), onSave = {})
     }
 }
 
@@ -101,6 +101,6 @@ private fun DefaultPreview() {
 @Composable
 private fun PortraitPreview() {
     MyApplicationTheme {
-        MyModelScreen(ProductUiModel(name = "Product 1", price = null), onSave = {})
+        MainScreen(ProductUiModel(name = "Product 1", price = null), onSave = {})
     }
 }
