@@ -1,6 +1,6 @@
 package android.template.api.service
 
-import android.template.apimodels.CatApiModel
+import android.template.api.apimodels.CatApiModel
 import retrofit2.http.GET
 
 interface CatService {

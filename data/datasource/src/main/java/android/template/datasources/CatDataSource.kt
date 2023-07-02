@@ -1,6 +1,6 @@
 package android.template.datasources
 
-import android.template.apimodels.CatApiModel
+import android.template.api.apimodels.CatApiModel
 import kotlinx.coroutines.flow.Flow
 
 interface CatDataSource {

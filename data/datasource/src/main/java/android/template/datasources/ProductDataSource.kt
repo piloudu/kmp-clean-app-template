@@ -1,6 +1,6 @@
 package android.template.datasources
 
-import android.template.apimodels.ProductApiModel
+import android.template.api.apimodels.ProductApiModel
 import kotlinx.coroutines.flow.Flow
 
 interface ProductDataSource {

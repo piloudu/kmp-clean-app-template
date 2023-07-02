@@ -1,4 +1,4 @@
-package android.template.apimodels
+package android.template.api.apimodels
 
 import kotlinx.serialization.Serializable
 

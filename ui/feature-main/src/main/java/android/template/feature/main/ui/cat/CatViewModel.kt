@@ -2,7 +2,6 @@ package android.template.feature.main.ui.cat
 
 import android.template.domain.models.CatModel
 import android.template.domain.usecases.GetCatUseCase
-import android.template.feature.main.ui.products.toUiModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.SharingStarted

@@ -1,6 +1,6 @@
 package android.template.core.data.repositories
 
-import android.template.apimodels.ProductApiModel
+import android.template.api.apimodels.ProductApiModel
 import android.template.core.data.mappers.toDomainModel
 import android.template.core.database.ProductDao
 import android.template.core.database.ProductDatabaseModel

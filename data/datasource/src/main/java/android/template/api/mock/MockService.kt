@@ -1,6 +1,6 @@
 package android.template.api.mock
 
-import android.template.apimodels.ProductApiModel
+import android.template.api.apimodels.ProductApiModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

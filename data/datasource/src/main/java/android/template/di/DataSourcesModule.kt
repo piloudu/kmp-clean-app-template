@@ -1,6 +1,7 @@
 package android.template.di
 
-import android.template.api.interceptors.getCatNetworkInterceptor
+import android.template.api.apimodels.BASE_CAT_URL
+import android.template.api.interceptors.getCatLocalInterceptor
 import android.template.api.retrofit.NetworkClient
 import android.template.datasources.CatDataSource
 import android.template.datasources.CatDataSourceImpl
@@ -16,8 +17,8 @@ val dataSourcesModule: Module = module {
     factoryOf(::CatDataSourceImpl) bind CatDataSource::class
     single {
         NetworkClient(
-            baseUrl = "https://cataas.com/",
-            networkInterceptor = getCatNetworkInterceptor(),
+            baseUrl = BASE_CAT_URL,
+            localInterceptor = getCatLocalInterceptor(),
         )
     }
 }

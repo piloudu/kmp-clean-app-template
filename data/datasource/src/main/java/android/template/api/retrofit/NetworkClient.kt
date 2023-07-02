@@ -14,6 +14,9 @@ class NetworkClient(
     localInterceptor: Interceptor? = null,
 ) {
     private val contentType: MediaType = "application/json".toMediaType()
+    private val json: Json = Json {
+        ignoreUnknownKeys = true
+    }
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
         .client(
@@ -22,7 +25,7 @@ class NetworkClient(
                 localInterceptor = localInterceptor,
             ),
         )
-        .addConverterFactory(Json.asConverterFactory(contentType))
+        .addConverterFactory(json.asConverterFactory(contentType))
         .build()
 }
 
