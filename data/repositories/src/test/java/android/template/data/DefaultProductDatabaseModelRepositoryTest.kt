@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import android.template.core.data.ProductsRepositoryImpl
+import android.template.core.data.repositories.ProductsRepositoryImpl
 import android.template.core.database.ProductDatabaseModel
 import android.template.core.database.ProductDao
 

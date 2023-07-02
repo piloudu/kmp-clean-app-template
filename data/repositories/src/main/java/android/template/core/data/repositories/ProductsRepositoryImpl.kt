@@ -1,10 +1,10 @@
-package android.template.core.data
+package android.template.core.data.repositories
 
+import android.template.apimodels.ProductApiModel
 import android.template.core.data.mappers.toDomainModel
 import android.template.core.database.ProductDao
 import android.template.core.database.ProductDatabaseModel
 import android.template.datasources.ProductDataSource
-import android.template.datasources.apimodels.ProductApiModel
 import android.template.domain.models.ProductModel
 import android.template.domain.repositories.ProductsRepository
 import kotlinx.coroutines.flow.Flow

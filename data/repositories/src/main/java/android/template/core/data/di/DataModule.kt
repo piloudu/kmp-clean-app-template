@@ -1,6 +1,6 @@
 package android.template.core.data.di
 
-import android.template.core.data.ProductsRepositoryImpl
+import android.template.core.data.repositories.ProductsRepositoryImpl
 import android.template.domain.models.Price
 import android.template.domain.models.ProductModel
 import android.template.domain.repositories.ProductsRepository

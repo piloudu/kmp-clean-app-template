@@ -1,19 +1,17 @@
 package android.template.datasources
 
-import android.template.datasources.apimodels.ProductApiModel
-import android.template.datasources.service.mock.MockService
-import android.template.datasources.service.retrofit.NetworkClient
+import android.template.api.mock.MockService
+import android.template.api.retrofit.NetworkClient
+import android.template.api.service.CatService
+import android.template.apimodels.ProductApiModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import retrofit2.http.GET
 
 internal class ProductDataSourceImpl(
     networkClient: NetworkClient,
 ) : ProductDataSource {
 
-    private val service: DogService = networkClient.retrofit.create(DogService::class.java)
+    private val service: CatService = networkClient.retrofit.create(CatService::class.java)
 
     override fun getData(): Flow<List<ProductApiModel>> {
         val data = runBlocking {
@@ -24,16 +22,3 @@ internal class ProductDataSourceImpl(
         return MockService.getData()
     }
 }
-
-interface DogService {
-    @GET("random")
-    suspend fun getSubscribedNewsletterSections(): DogApiModel
-}
-
-@Serializable
-data class DogApiModel(
-    @SerialName("message")
-    val message: String,
-    @SerialName("status")
-    val status: String,
-)

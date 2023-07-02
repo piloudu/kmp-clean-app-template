@@ -1,4 +1,4 @@
-package android.template.datasources.service.retrofit
+package android.template.api.retrofit
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
@@ -8,11 +8,20 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
-class NetworkClient(baseUrl: String) {
+class NetworkClient(
+    baseUrl: String,
+    networkInterceptor: Interceptor? = null,
+    localInterceptor: Interceptor? = null,
+) {
     private val contentType: MediaType = "application/json".toMediaType()
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
-        .client(buildOkHttpClient())
+        .client(
+            buildOkHttpClient(
+                networkInterceptor = networkInterceptor,
+                localInterceptor = localInterceptor,
+            ),
+        )
         .addConverterFactory(Json.asConverterFactory(contentType))
         .build()
 }

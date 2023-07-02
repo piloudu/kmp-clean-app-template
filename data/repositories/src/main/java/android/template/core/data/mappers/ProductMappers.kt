@@ -1,6 +1,6 @@
 package android.template.core.data.mappers
 
-import android.template.datasources.apimodels.ProductApiModel
+import android.template.apimodels.ProductApiModel
 import android.template.domain.models.Price
 import android.template.domain.models.ProductModel
 
