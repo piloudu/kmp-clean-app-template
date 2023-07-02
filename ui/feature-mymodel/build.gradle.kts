@@ -18,10 +18,6 @@ plugins {
     alias(libs.plugins.custom.library.with.compose.convention)
 }
 
-android {
-    namespace = "android.template.ui.feature.mymodel"
-}
-
 dependencies {
 //    implementation(projects.data.repositories)
     implementation(projects.domain)

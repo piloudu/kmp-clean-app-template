@@ -19,10 +19,6 @@ plugins {
     alias(libs.plugins.kotlinx.serialization)
 }
 
-android {
-    namespace = "android.template.data.datasource"
-}
-
 dependencies {
     implementation(projects.data.database)
 

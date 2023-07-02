@@ -19,10 +19,6 @@ plugins {
     alias(libs.plugins.custom.ksp.convention)
 }
 
-android {
-    namespace = "android.template"
-}
-
 dependencies {
     implementation(projects.ui.core)
     implementation(projects.ui.featureMymodel)

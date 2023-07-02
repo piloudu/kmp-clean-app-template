@@ -19,10 +19,6 @@ plugins {
     alias(libs.plugins.custom.ksp.convention)
 }
 
-android {
-    namespace = "android.template.data.database"
-}
-
 dependencies {
     // Arch Components
     implementation(libs.androidx.room.runtime)

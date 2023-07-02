@@ -19,10 +19,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
 }
 
-android {
-    namespace = "android.template.testing.test.app"
-}
-
 dependencies {
     implementation(projects.data.repositories)
     implementation(projects.testing.core)

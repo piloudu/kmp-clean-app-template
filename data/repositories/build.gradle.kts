@@ -18,10 +18,6 @@ plugins {
     alias(libs.plugins.custom.library.convention)
 }
 
-android {
-    namespace = "android.template.data.repositories"
-}
-
 dependencies {
     implementation(projects.data.database)
     implementation(projects.data.datasource)

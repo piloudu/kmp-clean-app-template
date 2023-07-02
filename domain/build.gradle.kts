@@ -18,10 +18,6 @@ plugins {
     alias(libs.plugins.custom.library.convention)
 }
 
-android {
-    namespace = "android.template.domain"
-}
-
 dependencies {
 
     // Library dependencies

@@ -17,7 +17,7 @@ class AndroidTestConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<TestExtension> {
-                configureAndroid()
+                configureAndroid(this@with)
                 targetProjectPath = ":app"
 
                 defaultConfig {

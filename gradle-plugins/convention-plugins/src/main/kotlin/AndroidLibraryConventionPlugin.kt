@@ -22,7 +22,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             extra.set(ENABLE_COMPOSE_COMPILER_REPORTS, true)
 
             extensions.configure<LibraryExtension> {
-                configureAndroid()
+                configureAndroid(this@with)
                 defaultConfig.consumerProguardFile("consumer-rules.pro")
             }
         }

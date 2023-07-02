@@ -2,10 +2,6 @@ plugins {
     alias(libs.plugins.custom.library.convention)
 }
 
-android {
-    namespace = "android.template.di"
-}
-
 dependencies {
     // Project dependencies
     implementation(projects.ui.core)
