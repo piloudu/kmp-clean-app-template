@@ -1,6 +1,6 @@
 package android.template.ui
 
-import android.template.feature.mymodel.ui.MainScreen
+import android.template.feature.main.ui.MainScreen
 import android.template.navigation.Destinations
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable

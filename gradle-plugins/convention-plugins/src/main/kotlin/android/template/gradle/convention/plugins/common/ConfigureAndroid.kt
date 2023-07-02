@@ -13,7 +13,6 @@ fun CommonExtension<*, *, *, *>.configureAndroid(project: Project) {
     } else {
         project.name
     }
-    println(projectName)
 
     namespace = "android.template.${projectName.replace("-", ".")}"
     compileSdk = 33

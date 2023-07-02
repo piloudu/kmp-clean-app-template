@@ -15,7 +15,7 @@ internal class ProductDataSourceImpl(
 
     private val service: DogService = networkClient.retrofit.create(DogService::class.java)
 
-    override fun getData(): Flow<ProductApiModel> {
+    override fun getData(): Flow<List<ProductApiModel>> {
         val data = runBlocking {
             service.getSubscribedNewsletterSections()
         }

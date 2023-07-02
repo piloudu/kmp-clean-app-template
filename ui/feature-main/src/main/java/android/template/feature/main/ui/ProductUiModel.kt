@@ -1,4 +1,4 @@
-package android.template.feature.mymodel.ui
+package android.template.feature.main.ui
 
 import android.template.domain.models.ProductModel
 
@@ -12,4 +12,8 @@ fun ProductModel.toUiModel(): ProductUiModel {
         name = this.name,
         price = this.price.value,
     )
+}
+
+fun List<ProductModel>.toUiModel(): List<ProductUiModel> {
+    return this.map(ProductModel::toUiModel)
 }

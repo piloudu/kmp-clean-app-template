@@ -1,9 +1,9 @@
 package android.template.core.data.di
 
-import android.template.core.data.DefaultMyModelRepository
+import android.template.core.data.ProductsRepositoryImpl
 import android.template.domain.models.Price
 import android.template.domain.models.ProductModel
-import android.template.domain.repositories.MyModelRepository
+import android.template.domain.repositories.ProductsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import org.koin.core.module.Module
@@ -12,12 +12,12 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val dataModule: Module = module {
-    factoryOf(::DefaultMyModelRepository) bind MyModelRepository::class
+    factoryOf(::ProductsRepositoryImpl) bind ProductsRepository::class
 }
 
-class FakeMyModelRepository : MyModelRepository {
-    override fun getMyModels(): Flow<ProductModel> {
-        return flowOf(ProductModel(name = "", price = Price(value = null)))
+class FakeProductsRepository : ProductsRepository {
+    override fun getProductModels(): Flow<List<ProductModel>> {
+        return flowOf(listOf(ProductModel(name = "", price = Price(value = null))))
     }
 
     override suspend fun add(name: String) {

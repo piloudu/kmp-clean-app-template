@@ -1,7 +1,7 @@
-package android.template.feature.mymodel.ui
+package android.template.feature.main.ui
 
 import android.template.core.ui.MyApplicationTheme
-import android.template.feature.mymodel.ui.MyModelUiState.Success
+import android.template.feature.main.ui.MainUiState.Success
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,7 +24,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MainScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = koinViewModel()) {
+fun MainScreen(modifier: Modifier = Modifier, viewModel: MainViewModel = koinViewModel()) {
     val items by viewModel.uiState.collectAsStateWithLifecycle()
     var count: Int by remember { mutableStateOf(0) }
     var isButtonVisible by remember { mutableStateOf(true) }
@@ -39,8 +39,8 @@ fun MainScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = koin
     if (items is Success) {
         isButtonVisible = false
         MainScreen(
-            productUiModel = (items as Success).data,
-            onSave = viewModel::addMyModel,
+            productsUiModels = (items as Success).data,
+            onSave = viewModel::addProduct,
             modifier = modifier,
         )
     }
@@ -48,7 +48,7 @@ fun MainScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = koin
 
 @Composable
 internal fun MainScreen(
-    productUiModel: ProductUiModel,
+    productsUiModels: List<ProductUiModel>,
     onSave: (name: String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -67,7 +67,9 @@ internal fun MainScreen(
                 Text("Save")
             }
         }
-        Text("Saved item: ${productUiModel.name}")
+        productsUiModels.forEach { productUiModel ->
+            Text("Saved item: ${productUiModel.name}")
+        }
     }
 }
 
@@ -77,7 +79,7 @@ internal fun MainScreen(
 @Composable
 private fun DefaultPreview() {
     MyApplicationTheme {
-        MainScreen(ProductUiModel(name = "Product 1", price = null), onSave = {})
+        MainScreen(listOf(ProductUiModel(name = "Product 1", price = null)), onSave = {})
     }
 }
 
@@ -85,6 +87,6 @@ private fun DefaultPreview() {
 @Composable
 private fun PortraitPreview() {
     MyApplicationTheme {
-        MainScreen(ProductUiModel(name = "Product 1", price = null), onSave = {})
+        MainScreen(listOf(ProductUiModel(name = "Product 1", price = null)), onSave = {})
     }
 }

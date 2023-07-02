@@ -1,4 +1,4 @@
-package android.template.feature.mymodel.ui
+package android.template.feature.main.ui
 
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -14,7 +14,7 @@ import org.junit.runner.RunWith
  * UI tests for [MainScreen].
  */
 @RunWith(AndroidJUnit4::class)
-class MyModelScreenTest {
+class MainScreenTest {
 
     @get:Rule
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()
@@ -25,6 +25,7 @@ class MyModelScreenTest {
             MainScreen(FAKE_DATA, onSave = {})
         }
     }
+
     @Test
     fun firstItem_exists() {
         composeTestRule.onNodeWithText(FAKE_DATA.first()).assertExists().performClick()

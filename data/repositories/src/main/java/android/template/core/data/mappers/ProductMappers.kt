@@ -11,9 +11,17 @@ fun ProductApiModel.toDomainModel(): ProductModel {
     )
 }
 
+fun List<ProductApiModel>.toDomainModel(): List<ProductModel> {
+    return this.map(ProductApiModel::toDomainModel)
+}
+
 fun ProductModel.toApiModel(): ProductApiModel {
     return ProductApiModel(
         name = this.name,
         price = this.price.value,
     )
+}
+
+fun List<ProductModel>.toApiModel(): List<ProductApiModel> {
+    return this.map(ProductModel::toApiModel)
 }

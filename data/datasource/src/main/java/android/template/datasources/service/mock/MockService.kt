@@ -9,14 +9,16 @@ import kotlinx.coroutines.flow.flowOn
 internal object MockService {
 
     // TODO: Read data from the "data.json" file
-    fun getData(): Flow<ProductApiModel> {
+    fun getData(): Flow<List<ProductApiModel>> {
         return flow {
             Thread.sleep(10_000)
             emit(
-                ProductApiModel(
-                    id = 1,
-                    name = "Product 1",
-                    price = 234.56,
+                listOf(
+                    ProductApiModel(
+                        id = 1,
+                        name = "Product 1",
+                        price = 234.56,
+                    ),
                 ),
             )
         }.flowOn(Dispatchers.IO)
