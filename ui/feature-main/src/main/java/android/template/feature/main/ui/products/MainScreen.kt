@@ -5,8 +5,10 @@ import android.template.feature.main.ui.products.MainProductsUiState.Success
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
@@ -26,7 +28,11 @@ import kotlinx.collections.immutable.persistentListOf
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun MainScreen(modifier: Modifier = Modifier, viewModel: MainProductsViewModel = koinViewModel()) {
+fun MainScreen(
+    modifier: Modifier = Modifier,
+    viewModel: MainProductsViewModel = koinViewModel(),
+    onClickNext: () -> Unit = { },
+) {
     val items by viewModel.uiState.collectAsStateWithLifecycle()
     var count: Int by remember { mutableStateOf(0) }
     var isButtonVisible by remember { mutableStateOf(true) }
@@ -41,18 +47,20 @@ fun MainScreen(modifier: Modifier = Modifier, viewModel: MainProductsViewModel =
     if (items is Success) {
         isButtonVisible = false
         MainScreen(
+            modifier = modifier,
             productsUiModels = (items as Success).data,
             onSave = viewModel::addProduct,
-            modifier = modifier,
+            onClickNext = onClickNext,
         )
     }
 }
 
 @Composable
 internal fun MainScreen(
-    productsUiModels: PersistentList<ProductUiModel>,
-    onSave: (name: String) -> Unit,
     modifier: Modifier = Modifier,
+    productsUiModels: PersistentList<ProductUiModel>,
+    onSave: (name: String) -> Unit = { },
+    onClickNext: () -> Unit = { },
 ) {
     Column(modifier) {
         var nameMyModel by remember { mutableStateOf("Compose") }
@@ -72,6 +80,11 @@ internal fun MainScreen(
         productsUiModels.forEach { productUiModel ->
             Text("Saved item: ${productUiModel.name}")
         }
+
+        Spacer(modifier = Modifier.height(20.dp))
+        Button(onClick = onClickNext) {
+            Text(text = "Go to cat Screen")
+        }
     }
 }
 
@@ -81,7 +94,14 @@ internal fun MainScreen(
 @Composable
 private fun DefaultPreview() {
     MyApplicationTheme {
-        MainScreen(persistentListOf(ProductUiModel(name = "Product 1", price = null)), onSave = {})
+        MainScreen(
+            productsUiModels = persistentListOf(
+                ProductUiModel(
+                    name = "Product 1",
+                    price = null,
+                ),
+            ),
+        )
     }
 }
 
@@ -89,6 +109,13 @@ private fun DefaultPreview() {
 @Composable
 private fun PortraitPreview() {
     MyApplicationTheme {
-        MainScreen(persistentListOf(ProductUiModel(name = "Product 1", price = null)), onSave = {})
+        MainScreen(
+            productsUiModels = persistentListOf(
+                ProductUiModel(
+                    name = "Product 1",
+                    price = null,
+                ),
+            ),
+        )
     }
 }

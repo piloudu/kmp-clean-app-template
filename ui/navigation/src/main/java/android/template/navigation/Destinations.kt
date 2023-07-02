@@ -1,6 +1,7 @@
 package android.template.navigation
 
 sealed class Destinations(val route: String) {
-    object MainScreen : Destinations("my_model_screen")
+    object MainScreen : Destinations("main_screen")
+    object CatScreen : Destinations("cat")
     // TODO: Fill destinations here using objects and data classes
 }
