@@ -26,6 +26,7 @@ dependencies {
 //    implementation(projects.data.repositories)
     implementation(projects.domain)
     implementation(projects.ui.core)
+    implementation(projects.ui.navigation)
     androidTestImplementation(projects.testing.core)
 
     // Core Android dependencies

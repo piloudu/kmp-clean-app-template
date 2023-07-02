@@ -46,7 +46,7 @@ fun MyModelScreen(modifier: Modifier = Modifier, viewModel: MyModelViewModel = k
     var isButtonVisible by remember { mutableStateOf(true) }
 
     if (isButtonVisible) {
-        Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
+        androidx.compose.foundation.layout.Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
             Button(modifier = Modifier.fillMaxWidth(), onClick = { count++ }) {
                 Text(text = "Count is: $count")
             }

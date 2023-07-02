@@ -16,6 +16,7 @@
 
 package android.template.ui
 
+import android.template.feature.mymodel.ui.MyModelScreen
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import android.template.feature.mymodel.ui.MyModelScreen
 
 @Composable
 fun MainNavigation() {
