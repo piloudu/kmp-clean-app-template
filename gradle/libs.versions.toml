@@ -15,16 +15,17 @@ junit = "4.13.2"
 kotlin = "1.8.21"
 ksp = "1.8.21-1.0.11"
 koin = "3.4.2"
-koin-compose = "3.4.5"
-koin-test = "3.4.1"
+koinCompose = "3.4.5"
+koinTest = "3.4.1"
 kotlinxImmutableCollections="0.3.5"
 kotlinxSerialization="1.5.1"
 kotlinxSerializationGradlePlugin="1.8.22"
 customPlugins="1.0.0"
 landscapist="2.2.2"
 retrofit="2.9.0"
-kotlinx-serialization-converter="1.0.0"
+kotlinxSerializationConverter="1.0.0"
 okhttp="4.11.0"
+androidxComposeRuntimeTracing = "1.0.0-alpha03"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
@@ -53,12 +54,13 @@ kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collec
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin-test" }
-koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin-compose" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koinTest" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinCompose" }
 landscapist-glide = { module = "com.github.skydoves:landscapist-glide", version.ref = "landscapist" }
 square-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 square-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
-retrofit-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "kotlinx-serialization-converter" }
+retrofit-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "kotlinxSerializationConverter" }
+androidx-compose-runtime-tracing = { group = "androidx.compose.runtime", name = "runtime-tracing", version.ref = "androidxComposeRuntimeTracing" }
 
 # Included build dependencies
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }

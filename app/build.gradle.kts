@@ -19,6 +19,9 @@ dependencies {
     // Koin Dependency Injection
     implementation(libs.koin.compose)
 
+    // Tracing
+    implementation(libs.androidx.compose.runtime.tracing)
+
     // Arch Components
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)

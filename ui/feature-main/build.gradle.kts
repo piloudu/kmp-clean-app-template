@@ -26,6 +26,9 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.kotlinx.collections.immutable)
 
+    // Tracing
+    implementation(libs.androidx.compose.runtime.tracing)
+
     // Tooling
     debugImplementation(libs.androidx.compose.ui.tooling)
 
