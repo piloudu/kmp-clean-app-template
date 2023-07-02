@@ -21,6 +21,7 @@ plugins {
     alias(libs.plugins.android.test) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.kotlin.library) apply false
 }
 
 // Root build.gradle.kts
