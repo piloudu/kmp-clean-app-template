@@ -18,6 +18,7 @@ class KotlinCompilerConventionPlugin : Plugin<Project> {
             tasks.withType<KotlinCompile>().configureEach {
                 kotlinOptions {
                     jvmTarget = JavaVersion.VERSION_17.toString()
+                    freeCompilerArgs += listOf("-Xcontext-receivers")
                 }
             }
         }
