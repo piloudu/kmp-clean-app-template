@@ -1,4 +1,4 @@
-package android.template.datasources.service
+package android.template.datasources.service.mock
 
 import android.template.datasources.apimodels.ProductApiModel
 import kotlinx.coroutines.Dispatchers
@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-internal object Service {
+internal object MockService {
 
     // TODO: Read data from the "data.json" file
     fun getData(): Flow<ProductApiModel> {

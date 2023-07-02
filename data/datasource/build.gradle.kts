@@ -20,13 +20,17 @@ plugins {
 }
 
 dependencies {
+    // Project dependencies
     implementation(projects.data.database)
 
     implementation(libs.koin.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization)
+    implementation(libs.square.retrofit)
+    implementation(libs.retrofit.kotlinx.serialization.converter)
+    implementation(libs.square.okhttp)
 
-    // Local tests: jUnit, coroutines, Android runner
+    // Local tests: jUnit, coroutines
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
 }
