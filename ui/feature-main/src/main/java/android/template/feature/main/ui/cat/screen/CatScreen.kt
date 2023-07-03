@@ -62,10 +62,9 @@ private fun CatScreen(
         width = (localConfiguration.screenWidthDp - 40).dp,
         height = (localConfiguration.screenHeightDp - 80).dp,
     )
-    Column(
+    Box(
         modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
+        contentAlignment = Alignment.Center,
     ) {
         CatImage(modifier = imageModifier, url = uiModel.url)
         if (uiModel.owner.isNotEmpty()) {
@@ -80,6 +79,7 @@ fun CatImage(modifier: Modifier = Modifier, url: String) {
     GlideImage(
         modifier = modifier,
         imageModel = { url },
+        loading = { CircularProgressIndicator(modifier = modifier.size(20.dp)) },
     )
 }
 
