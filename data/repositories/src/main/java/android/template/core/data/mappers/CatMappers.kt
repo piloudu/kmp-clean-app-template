@@ -9,7 +9,7 @@ import android.template.domain.models.Url
 
 fun CatApiModel.toDomainModel(): CatModel {
     return CatModel(
-        owner = Owner(this.owner.orEmpty()),
+        owner = Owner(if (this.owner == "null") "" else this.owner.orEmpty()),
         mimeType = MimeType(this.mimeType.orEmpty()),
         url = Url(BASE_CAT_URL + this.url.orEmpty()),
     )
