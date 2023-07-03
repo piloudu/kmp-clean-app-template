@@ -23,8 +23,8 @@ class FakeProductsRepository : ProductsRepository {
         return flowOf(listOf(ProductModel(name = "", price = Price(value = null))))
     }
 
-    override suspend fun add(name: String) {
-        throw NotImplementedError()
+    override suspend fun setProductModel(productsList: List<ProductModel>) {
+        TODO("Not yet implemented")
     }
 }
 

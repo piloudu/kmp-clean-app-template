@@ -1,6 +1,7 @@
 package android.template.core.data.mappers
 
 import android.template.api.apimodels.ProductApiModel
+import android.template.core.database.ProductDatabaseModel
 import android.template.domain.models.Price
 import android.template.domain.models.ProductModel
 
@@ -11,10 +12,6 @@ fun ProductApiModel.toDomainModel(): ProductModel {
     )
 }
 
-fun List<ProductApiModel>.toDomainModel(): List<ProductModel> {
-    return this.map(ProductApiModel::toDomainModel)
-}
-
 fun ProductModel.toApiModel(): ProductApiModel {
     return ProductApiModel(
         name = this.name,
@@ -22,6 +19,13 @@ fun ProductModel.toApiModel(): ProductApiModel {
     )
 }
 
-fun List<ProductModel>.toApiModel(): List<ProductApiModel> {
-    return this.map(ProductModel::toApiModel)
-}
+fun ProductDatabaseModel.toDomainModel() = ProductModel(
+    name = this.name,
+    price = Price(value = this.price),
+)
+
+fun ProductModel.toDatabaseModel() = ProductDatabaseModel(
+    name = this.name,
+    price = this.price.value,
+)
+

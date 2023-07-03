@@ -1,11 +1,12 @@
 package android.template.domain.usecases
 
+import android.template.domain.models.ProductModel
 import android.template.domain.repositories.ProductsRepository
 
 class AddModelUseCase(
     private val productsRepository: ProductsRepository,
-) : suspend (String) -> Unit {
-    override suspend fun invoke(model: String) {
-        return productsRepository.add(model)
+) : suspend (List<ProductModel>) -> Unit {
+    override suspend fun invoke(productsList: List<ProductModel>) {
+        return productsRepository.setProductModel(productsList)
     }
 }

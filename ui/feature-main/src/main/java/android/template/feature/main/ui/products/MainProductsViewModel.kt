@@ -29,9 +29,9 @@ class MainProductsViewModel(
             initialValue = Loading,
         )
 
-    fun addProduct(name: String) {
+    fun addProduct(productsList: List<ProductUiModel>) {
         viewModelScope.launch {
-            addProductUseCase(name)
+            addProductUseCase(productsList.toDomainModel())
         }
     }
 }

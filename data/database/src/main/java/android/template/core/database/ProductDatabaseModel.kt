@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Entity
 data class ProductDatabaseModel(
     val name: String,
+    val price: Double?,
 ) {
     @PrimaryKey(autoGenerate = true)
     var uid: Int = 0
@@ -21,5 +22,5 @@ interface ProductDao {
     fun getProductModels(): Flow<List<ProductDatabaseModel>>
 
     @Insert
-    suspend fun insertProductModel(item: ProductDatabaseModel)
+    suspend fun insertProductModel(productsList: List<ProductDatabaseModel>)
 }

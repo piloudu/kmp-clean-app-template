@@ -1,5 +1,6 @@
 package android.template.feature.main.ui.products
 
+import android.template.domain.models.Price
 import android.template.domain.models.ProductModel
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.toPersistentList
@@ -18,4 +19,15 @@ fun ProductModel.toUiModel(): ProductUiModel {
 
 fun List<ProductModel>.toUiModel(): PersistentList<ProductUiModel> {
     return this.map(ProductModel::toUiModel).toPersistentList()
+}
+
+fun ProductUiModel.toDomainModel(): ProductModel {
+    return ProductModel(
+        name = this.name,
+        price = Price(this.price),
+    )
+}
+
+fun List<ProductUiModel>.toDomainModel(): List<ProductModel> {
+    return this.map(ProductUiModel::toDomainModel)
 }

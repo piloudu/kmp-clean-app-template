@@ -1,9 +1,9 @@
 package android.template.core.data.repositories
 
 import android.template.api.apimodels.ProductApiModel
+import android.template.core.data.mappers.toApiModel
 import android.template.core.data.mappers.toDomainModel
 import android.template.core.database.ProductDao
-import android.template.core.database.ProductDatabaseModel
 import android.template.datasources.ProductDataSource
 import android.template.domain.models.ProductModel
 import android.template.domain.repositories.ProductsRepository
@@ -17,10 +17,11 @@ internal class ProductsRepositoryImpl(
 ) : ProductsRepository {
 
     override fun getProductModels(): Flow<List<ProductModel>> {
-        return productDataSource.getData().map(List<ProductApiModel>::toDomainModel)
+        return productDataSource.getProductsList().map { it.map(ProductApiModel::toDomainModel) }
     }
 
-    override suspend fun add(name: String) {
-        productDao.insertProductModel(ProductDatabaseModel(name = name))
+    override suspend fun setProductModel(productsList: List<ProductModel>) {
+        productDataSource.setProducts(productsList.map(ProductModel::toApiModel))
+//        productDao.insertProductModel(productsList.map(ProductModel::toDatabaseModel))
     }
 }

@@ -9,24 +9,29 @@ import kotlin.random.Random
 
 internal object MockService {
 
+    private var productsList: List<ProductApiModel> = emptyList()
+
     // TODO: Read data from the "data.json" file
-    fun getData(): Flow<List<ProductApiModel>> {
+    fun getProductsList(): Flow<List<ProductApiModel>> {
         return flow {
             var index = 0
             Thread.sleep(5_000)
             repeat(10) {
                 Thread.sleep(2_000)
-                emit(
-                    List(5) {
-                        index++
-                        ProductApiModel(
-                            id = it,
-                            name = "Product $index",
-                            price = Random.nextDouble(),
-                        )
-                    },
-                )
+                productsList = List(5) {
+                    index++
+                    ProductApiModel(
+                        id = it,
+                        name = "Product $index",
+                        price = Random.nextDouble(),
+                    )
+                }
             }
+            emit(productsList)
         }.flowOn(Dispatchers.IO)
+    }
+
+    fun setProductsList(products: List<ProductApiModel>) {
+        productsList = products
     }
 }

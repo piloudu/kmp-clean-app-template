@@ -1,7 +1,6 @@
 package android.template.feature.main.ui.products
 
 import android.template.core.ui.MyApplicationTheme
-import android.template.feature.main.ui.cat.CatUiState
 import android.template.feature.main.ui.products.MainProductsUiState.Success
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,6 +27,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
 import org.koin.androidx.compose.koinViewModel
+import kotlin.reflect.KFunction1
 
 @Composable
 fun MainScreen(
@@ -68,7 +68,7 @@ fun MainScreen(
 internal fun MainScreen(
     modifier: Modifier = Modifier,
     productsUiModels: PersistentList<ProductUiModel>,
-    onSave: (name: String) -> Unit = { },
+    onSave: (List<ProductUiModel>) -> Unit = { },
     onClickNext: () -> Unit = { },
 ) {
     Column(modifier) {
@@ -82,7 +82,7 @@ internal fun MainScreen(
                 onValueChange = { nameMyModel = it },
             )
 
-            Button(modifier = Modifier.width(96.dp), onClick = { onSave(nameMyModel) }) {
+            Button(modifier = Modifier.width(96.dp), onClick = { onSave(productsUiModels) }) {
                 Text("Save")
             }
         }
