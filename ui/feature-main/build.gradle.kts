@@ -7,6 +7,7 @@ dependencies {
     implementation(projects.domain)
     implementation(projects.ui.core)
     androidTestImplementation(projects.testing.core)
+    testImplementation(projects.testing.core)
 
     // Core Android dependencies
     implementation(libs.androidx.activity.compose)
@@ -47,6 +48,9 @@ dependencies {
     // Local tests: jUnit, coroutines, Android runner
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
+
+    // For testing flows
+    testImplementation(libs.square.cashapp.turbine)
 
     // Instrumented tests: jUnit rules and runners
     androidTestImplementation(libs.androidx.test.ext.junit)
