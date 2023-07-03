@@ -1,12 +1,11 @@
 package android.template.feature.main.ui
 
-import android.template.core.data.MyModelRepository
-import android.template.feature.main.ui.products.MainProductsViewModel
+import android.template.domain.repositories.ProductsRepository
+import android.template.domain.usecases.AddProductsUseCase
+import android.template.domain.usecases.GetProductsUseCase
 import android.template.feature.main.ui.products.MainProductsUiState
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
+import android.template.feature.main.ui.products.MainProductsViewModel
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -16,29 +15,19 @@ import org.junit.Test
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-@OptIn(ExperimentalCoroutinesApi::class) // TODO: Remove when stable
 class MainProductsViewModelTest {
+    private val repository: ProductsRepository by lazy(::FakeProductsRepository)
+    private val getProductsUseCase: GetProductsUseCase = GetProductsUseCase(repository)
+    private val addProductsUseCase: AddProductsUseCase = AddProductsUseCase(repository)
+    private val viewModel = MainProductsViewModel(getProductsUseCase, addProductsUseCase)
+
     @Test
-    fun uiState_initiallyLoading() = runTest {
-        val viewModel = MainProductsViewModel(FakeMyModelRepository())
+    fun `When the ViewModel is created Then its state is Loading`() = runTest {
         assertEquals(viewModel.uiState.first(), MainProductsUiState.Loading)
     }
 
     @Test
-    fun uiState_onItemSaved_isDisplayed() = runTest {
-        val viewModel = MainProductsViewModel(FakeMyModelRepository())
+    fun `Given  When  Then `() = runTest {
         assertEquals(viewModel.uiState.first(), MainProductsUiState.Loading)
-    }
-}
-
-private class FakeMyModelRepository : MyModelRepository {
-
-    private val data = mutableListOf<String>()
-
-    override val myModels: Flow<List<String>>
-        get() = flow { emit(data.toList()) }
-
-    override suspend fun add(name: String) {
-        data.add(0, name)
     }
 }

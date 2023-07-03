@@ -3,9 +3,7 @@ package android.template.data
 import android.template.core.data.repositories.ProductsRepositoryImpl
 import android.template.domain.models.Price
 import android.template.domain.models.ProductModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test

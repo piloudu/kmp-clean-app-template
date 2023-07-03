@@ -1,7 +1,7 @@
 package android.template.feature.main.ui.products
 
 import android.template.domain.models.ProductModel
-import android.template.domain.usecases.AddModelUseCase
+import android.template.domain.usecases.AddProductsUseCase
 import android.template.domain.usecases.GetProductsUseCase
 import android.template.feature.main.ui.products.MainProductsUiState.Error
 import android.template.feature.main.ui.products.MainProductsUiState.Loading
@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 
 class MainProductsViewModel(
     getProductsUseCase: GetProductsUseCase,
-    private val addProductUseCase: AddModelUseCase,
+    private val addProductUseCase: AddProductsUseCase,
 ) : ViewModel() {
 
     val uiState: StateFlow<MainProductsUiState> = getProductsUseCase()
