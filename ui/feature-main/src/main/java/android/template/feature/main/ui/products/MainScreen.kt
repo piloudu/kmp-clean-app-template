@@ -23,12 +23,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
 import org.koin.androidx.compose.koinViewModel
-import kotlin.reflect.KFunction1
 
 @Composable
 fun MainScreen(
@@ -47,6 +47,7 @@ fun MainScreen(
                 }
             }
         }
+
         is Success -> {
             MainScreen(
                 modifier = modifier,
@@ -98,17 +99,11 @@ internal fun MainScreen(
     }
 }
 
-@MultiplePreview
+//@MultiplePreview
+@Preview(showBackground = true)
 @Composable
-private fun PortraitPreview() {
+private fun PortraitPreview(@PreviewParameter(ProductsParameterProvider::class) data: PersistentList<ProductUiModel>) {
     MyApplicationTheme {
-        MainScreen(
-            productsUiModels = persistentListOf(
-                ProductUiModel(
-                    name = "Product 1",
-                    price = null,
-                ),
-            ),
-        )
+        MainScreen(productsUiModels = data)
     }
 }
