@@ -9,7 +9,7 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.test.runner)
     implementation(libs.koin.test)
+    implementation(libs.kotlinx.coroutines.test)
 }
