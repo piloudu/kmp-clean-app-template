@@ -1,5 +1,6 @@
 package android.template.feature.main.ui.products
 
+import android.template.core.ui.MultiplePreview
 import android.template.core.ui.MyApplicationTheme
 import android.template.feature.main.ui.products.MainProductsUiState.Success
 import androidx.compose.foundation.layout.Arrangement
@@ -97,24 +98,7 @@ internal fun MainScreen(
     }
 }
 
-// Previews
-
-@Preview(showBackground = true)
-@Composable
-private fun DefaultPreview() {
-    MyApplicationTheme {
-        MainScreen(
-            productsUiModels = persistentListOf(
-                ProductUiModel(
-                    name = "Product 1",
-                    price = null,
-                ),
-            ),
-        )
-    }
-}
-
-@Preview(showBackground = true, widthDp = 480)
+@MultiplePreview
 @Composable
 private fun PortraitPreview() {
     MyApplicationTheme {

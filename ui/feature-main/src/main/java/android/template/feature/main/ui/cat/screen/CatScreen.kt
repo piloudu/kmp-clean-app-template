@@ -1,5 +1,6 @@
 package android.template.feature.main.ui.cat.screen
 
+import android.template.core.ui.MultiplePreview
 import android.template.feature.main.ui.cat.CatUiModel
 import android.template.feature.main.ui.cat.CatUiState
 import android.template.feature.main.ui.cat.CatViewModel
@@ -83,7 +84,7 @@ fun CatImage(modifier: Modifier = Modifier, url: String) {
     )
 }
 
-@Preview(name = "CatScree")
+@MultiplePreview
 @Composable
 private fun PreviewCatScree() {
     CatScreen()
