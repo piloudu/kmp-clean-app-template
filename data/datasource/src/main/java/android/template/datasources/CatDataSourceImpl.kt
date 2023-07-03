@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.flowOn
 internal class CatDataSourceImpl(
     networkClient: NetworkClient,
 ) : CatDataSource {
-    val service = networkClient.retrofit.create(CatService::class.java)
+    private val service = networkClient.retrofit.create(CatService::class.java)
 
     override fun getCat(): Flow<CatApiModel> {
         return flow {
