@@ -1,8 +1,7 @@
-package android.template.ui
+package android.template.navigation
 
 import android.template.feature.main.ui.cat.screen.CatScreen
 import android.template.feature.main.ui.products.MainScreen
-import android.template.navigation.Destinations
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
