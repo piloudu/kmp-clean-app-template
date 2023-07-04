@@ -13,7 +13,7 @@ internal class CatDataSourceImpl(
 ) : CatDataSource {
     private val service = networkClient.retrofit.create(CatService::class.java)
 
-    override fun getCat(): Flow<CatApiModel> {
+    override fun getCatSequentially(): Flow<CatApiModel> {
         return flow {
             emit(service.getCat())
             while (true) {

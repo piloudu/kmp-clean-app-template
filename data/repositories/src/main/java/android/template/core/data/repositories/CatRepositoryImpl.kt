@@ -12,6 +12,6 @@ internal class CatRepositoryImpl(
     private val catDataSource: CatDataSource,
 ) : CatRepository {
     override fun getCat(): Flow<CatModel> {
-        return catDataSource.getCat().map(CatApiModel::toDomainModel)
+        return catDataSource.getCatSequentially().map(CatApiModel::toDomainModel)
     }
 }
