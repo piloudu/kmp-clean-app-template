@@ -17,3 +17,5 @@ val catsList: List<CatModel> = listOf(
         url = Url(value = "https://retained86mflqli.xw"),
     ),
 )
+
+val catException: Exception = Exception()

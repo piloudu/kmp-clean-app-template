@@ -20,7 +20,6 @@ class CatViewModelTest {
     private val fakeCatRepository = FakeCatRepository()
     private val getCatUseCase = GetCatUseCase(fakeCatRepository)
     private val getCatsListUseCase = GetCatsListUseCase(fakeCatRepository)
-
     private val viewModel by lazy { CatViewModel(getCatUseCase, getCatsListUseCase) }
 
     @Test
@@ -31,16 +30,43 @@ class CatViewModelTest {
     
     @Test
     fun `Given a time lapse When we read the ViewModel state Then it is Success`() = runTest {
+        // Given
         val catsUiModelList = catsList.map(CatModel::toUiModel).toPersistentList()
         val firstCat = CatUiState.Success(catsUiModelList.first())
         val secondCat = CatUiState.Success(catsUiModelList.last())
+
+        // When
         viewModel.catUiState.test {
+            // Then
             assertEquals(firstCat, awaitItem())
             assertEquals(secondCat, awaitItem())
         }
 
+        // When
         viewModel.catsListUiState.test {
+            // Then
             assertEquals(CatsListUiState.Success(catsUiModelList), awaitItem())
+        }
+    }
+    
+    @Test
+    fun `Given an exception is thrown When we read the ViewModel state Then it is Error`() = runTest {
+        // Given
+        val errorRepository = FakeCatRepository(isSuccess = false)
+        val getCatUseCase = GetCatUseCase(errorRepository)
+        val getCatsListUseCase = GetCatsListUseCase(errorRepository)
+        val viewModel by lazy { CatViewModel(getCatUseCase, getCatsListUseCase) }
+
+        // When
+        viewModel.catUiState.test {
+            // Then
+            assertEquals(CatUiState.Error(catException), awaitItem())
+        }
+
+        // When
+        viewModel.catsListUiState.test {
+            // Then
+            assertEquals(CatsListUiState.Error(catException), awaitItem())
         }
     }
 }

@@ -7,17 +7,25 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 
-class FakeCatRepository : CatRepository {
+class FakeCatRepository(val isSuccess: Boolean = true) : CatRepository {
     override fun getCat(): Flow<CatModel> {
         return flow {
             catsList.forEach { cat ->
-                emit(cat)
+                if (isSuccess) {
+                    emit(cat)
+                } else {
+                    throw catException
+                }
                 delay(1)
             }
         }
     }
 
     override fun getCatsList(): Flow<List<CatModel>> {
-        return flowOf(catsList)
+        return if (isSuccess) {
+            flowOf(catsList)
+        } else {
+            throw catException
+        }
     }
 }
