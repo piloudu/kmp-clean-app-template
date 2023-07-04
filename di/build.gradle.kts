@@ -10,6 +10,7 @@ dependencies {
     implementation(projects.data.database)
     implementation(projects.data.datasource)
     implementation(projects.domain)
+    testImplementation(projects.data.datasource)
 
     implementation(libs.koin.core)
 
