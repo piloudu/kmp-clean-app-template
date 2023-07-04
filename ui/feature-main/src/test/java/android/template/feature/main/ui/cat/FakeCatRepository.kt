@@ -5,27 +5,28 @@ import android.template.domain.repositories.CatRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
 
-class FakeCatRepository(val isSuccess: Boolean = true) : CatRepository {
+class FakeCatRepository(private val isSuccess: Boolean = true) : CatRepository {
     override fun getCat(): Flow<CatModel> {
         return flow {
-            catsList.forEach { cat ->
-                if (isSuccess) {
+            if (isSuccess) {
+                catsList.forEach { cat ->
                     emit(cat)
-                } else {
-                    throw catException
+                    delay(1)
                 }
-                delay(1)
+            } else {
+                throw catException
             }
         }
     }
 
     override fun getCatsList(): Flow<List<CatModel>> {
-        return if (isSuccess) {
-            flowOf(catsList)
-        } else {
-            throw catException
+        return flow {
+            if (isSuccess) {
+                emit(catsList)
+            } else {
+                throw catException
+            }
         }
     }
 }

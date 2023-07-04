@@ -56,7 +56,7 @@ class CatViewModelTest {
             val errorRepository = FakeCatRepository(isSuccess = false)
             val getCatUseCase = GetCatUseCase(errorRepository)
             val getCatsListUseCase = GetCatsListUseCase(errorRepository)
-            val viewModel by lazy { CatViewModel(getCatUseCase, getCatsListUseCase) }
+            val viewModel = CatViewModel(getCatUseCase, getCatsListUseCase)
 
             // When
             viewModel.catUiState.test {
