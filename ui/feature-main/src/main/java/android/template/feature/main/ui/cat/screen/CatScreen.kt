@@ -1,7 +1,7 @@
 package android.template.feature.main.ui.cat.screen
 
+import android.template.core.ui.result.UiState
 import android.template.feature.main.ui.cat.CatUiModel
-import android.template.feature.main.ui.cat.CatUiState
 import android.template.feature.main.ui.cat.CatViewModel
 import android.template.ui.core.R
 import androidx.compose.foundation.layout.Arrangement
@@ -33,23 +33,23 @@ fun CatScreen(
     val uiState by catViewModel.catUiState.collectAsStateWithLifecycle()
 
     when (uiState) {
-        CatUiState.Loading -> Box(
+        UiState.Loading -> Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center,
         ) {
             CircularProgressIndicator(modifier = Modifier)
         }
 
-        is CatUiState.Success -> {
+        is UiState.Success -> {
             CatScreenInternal(
                 modifier = modifier,
-                catUiModelProvider = (uiState as CatUiState.Success)::data,
+                catUiModelProvider = (uiState as UiState.Success)::data,
             )
         }
 
-        is CatUiState.Error -> {
+        is UiState.Error -> {
             Text(
-                text = "Exception thrown: ${(uiState as CatUiState.Error).throwable}",
+                text = "Exception thrown: ${(uiState as UiState.Error).throwable}",
                 color = Color.Red,
             )
         }

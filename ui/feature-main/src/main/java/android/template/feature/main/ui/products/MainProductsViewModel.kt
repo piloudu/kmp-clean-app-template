@@ -1,16 +1,15 @@
 package android.template.feature.main.ui.products
 
+import android.template.core.ui.result.UiState
+import android.template.core.ui.result.asUiState
 import android.template.domain.models.ProductModel
 import android.template.domain.usecases.AddProductsUseCase
 import android.template.domain.usecases.GetProductsUseCase
-import android.template.feature.main.ui.products.MainProductsUiState.Error
-import android.template.feature.main.ui.products.MainProductsUiState.Loading
-import android.template.feature.main.ui.products.MainProductsUiState.Success
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.collections.immutable.PersistentList
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -20,13 +19,13 @@ class MainProductsViewModel(
     private val addProductUseCase: AddProductsUseCase,
 ) : ViewModel() {
 
-    val uiState: StateFlow<MainProductsUiState> = getProductsUseCase()
-        .map<List<ProductModel>, MainProductsUiState> { Success(data = it.toUiModel()) }
-        .catch { emit(Error(it)) }
+    val uiState: StateFlow<UiState<PersistentList<ProductUiModel>>> = getProductsUseCase()
+        .map(List<ProductModel>::toUiModel)
+        .asUiState()
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
-            initialValue = Loading,
+            initialValue = UiState.Loading,
         )
 
     fun addProduct(productsList: List<ProductUiModel>) {

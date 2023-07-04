@@ -1,7 +1,7 @@
 package android.template.feature.main.ui.products
 
 import android.template.core.ui.MyApplicationTheme
-import android.template.feature.main.ui.products.MainProductsUiState.Success
+import android.template.core.ui.result.UiState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -38,7 +38,7 @@ fun MainScreen(
     var count: Int by remember { mutableStateOf(0) }
 
     when (uiState) {
-        MainProductsUiState.Loading -> {
+        UiState.Loading -> {
             Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
                 Button(modifier = Modifier.fillMaxWidth(), onClick = { count++ }) {
                     Text(text = "Count is: $count")
@@ -46,18 +46,18 @@ fun MainScreen(
             }
         }
 
-        is Success -> {
+        is UiState.Success -> {
             MainScreen(
                 modifier = modifier,
-                productsUiModels = (uiState as Success).data,
+                productsUiModels = (uiState as UiState.Success).data,
                 onSave = viewModel::addProduct,
                 onClickNext = onClickNext,
             )
         }
 
-        is MainProductsUiState.Error -> {
+        is UiState.Error -> {
             Text(
-                text = "Exception thrown: ${(uiState as MainProductsUiState.Error).throwable}",
+                text = "Exception thrown: ${(uiState as UiState.Error).throwable}",
                 color = Color.Red,
             )
         }

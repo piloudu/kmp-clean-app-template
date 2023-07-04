@@ -1,10 +1,10 @@
 package android.template.feature.main.ui
 
+import android.template.core.ui.result.UiState
 import android.template.domain.models.ProductModel
 import android.template.domain.repositories.ProductsRepository
 import android.template.domain.usecases.AddProductsUseCase
 import android.template.domain.usecases.GetProductsUseCase
-import android.template.feature.main.ui.products.MainProductsUiState
 import android.template.feature.main.ui.products.MainProductsViewModel
 import android.template.feature.main.ui.products.toUiModel
 import android.template.testing.core.MainDispatcherRule
@@ -33,13 +33,13 @@ class MainProductsViewModelTest {
 
     @Test
     fun `When the ViewModel is created Then its state is Loading`() = runTest {
-        assertEquals(viewModel.uiState.first(), MainProductsUiState.Loading)
+        assertEquals(viewModel.uiState.first(), UiState.Loading)
     }
 
     @Test
     fun `Given  When  Then `() = runTest {
         viewModel.uiState.test {
-            val expected = MainProductsUiState.Success(
+            val expected = UiState.Success(
                 productsList.map(ProductModel::toUiModel).toPersistentList(),
             )
             assertEquals(expected, awaitItem())
