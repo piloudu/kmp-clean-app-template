@@ -30,7 +30,7 @@ fun CatScreen(
     modifier: Modifier = Modifier,
     catViewModel: CatViewModel = koinViewModel(),
 ) {
-    val uiState by catViewModel.uiState.collectAsStateWithLifecycle()
+    val uiState by catViewModel.catUiState.collectAsStateWithLifecycle()
 
     when (uiState) {
         CatUiState.Loading -> Box(
