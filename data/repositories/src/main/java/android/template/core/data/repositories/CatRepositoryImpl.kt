@@ -11,7 +11,9 @@ import kotlinx.coroutines.flow.map
 internal class CatRepositoryImpl(
     private val catDataSource: CatDataSource,
 ) : CatRepository {
-    override fun getCat(): Flow<CatModel> {
-        return catDataSource.getCatSequentially().map(CatApiModel::toDomainModel)
-    }
+    override fun getCat(): Flow<CatModel> =
+        catDataSource.getCatSequentially().map(CatApiModel::toDomainModel)
+
+    override fun getCatsList(): Flow<List<CatModel>> =
+        catDataSource.getCatsList().map { it.map(CatApiModel::toDomainModel) }
 }

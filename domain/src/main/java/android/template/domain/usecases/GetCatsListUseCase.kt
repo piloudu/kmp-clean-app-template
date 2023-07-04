@@ -4,8 +4,8 @@ import android.template.domain.models.CatModel
 import android.template.domain.repositories.CatRepository
 import kotlinx.coroutines.flow.Flow
 
-class GetCatUseCase(
+class GetCatsListUseCase(
     private val catRepository: CatRepository,
-) : () -> Flow<CatModel> {
-    override fun invoke(): Flow<CatModel> = catRepository.getCat()
+) : () -> Flow<List<CatModel>> {
+    override fun invoke(): Flow<List<CatModel>> = catRepository.getCatsList()
 }

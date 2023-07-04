@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface CatRepository {
     fun getCat(): Flow<CatModel>
+    fun getCatsList(): Flow<List<CatModel>>
 }

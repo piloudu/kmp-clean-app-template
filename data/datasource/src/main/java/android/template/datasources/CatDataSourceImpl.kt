@@ -22,4 +22,14 @@ internal class CatDataSourceImpl(
             }
         }.flowOn(Dispatchers.IO)
     }
+
+    override fun getCatsList(): Flow<List<CatApiModel>> {
+        return flow {
+            emit(
+                List(15) {
+                    service.getCat()
+                },
+            )
+        }
+    }
 }

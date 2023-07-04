@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface CatDataSource {
     fun getCatSequentially(): Flow<CatApiModel>
+    fun getCatsList(): Flow<List<CatApiModel>>
 }
