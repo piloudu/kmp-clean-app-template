@@ -38,7 +38,7 @@ fun CatScreen(
         }
 
         is CatUiState.Success -> {
-            CatScreen(modifier = modifier, (uiState as CatUiState.Success).data)
+            CatScreenInternal(modifier = modifier, catUiModelProvider = (uiState as CatUiState.Success)::data)
         }
 
         is CatUiState.Error -> {
@@ -51,9 +51,9 @@ fun CatScreen(
 }
 
 @Composable
-private fun CatScreen(
+private fun CatScreenInternal(
     modifier: Modifier,
-    uiModel: CatUiModel,
+    catUiModelProvider: () -> CatUiModel,
 ) {
     val localConfiguration = LocalConfiguration.current
     val imageModifier = Modifier.size(
@@ -64,19 +64,19 @@ private fun CatScreen(
         modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
-        CatImage(modifier = imageModifier, url = uiModel.url)
-        if (uiModel.owner.isNotEmpty()) {
+        CatImage(modifier = imageModifier, urlProvider = catUiModelProvider()::url)
+        if (catUiModelProvider().owner.isNotEmpty()) {
             Spacer(modifier = Modifier.height(20.dp))
-            Text(text = "The owner of this cat is ${uiModel.owner}")
+            Text(text = "The owner of this cat is ${catUiModelProvider().owner}")
         }
     }
 }
 
 @Composable
-fun CatImage(modifier: Modifier = Modifier, url: String) {
+fun CatImage(modifier: Modifier = Modifier, urlProvider: () -> String) {
     GlideImage(
         modifier = modifier,
-        imageModel = { url },
+        imageModel = urlProvider,
         loading = { CircularProgressIndicator(modifier = modifier.size(20.dp)) },
     )
 }
