@@ -8,6 +8,7 @@ import android.template.domain.usecases.GetProductsUseCase
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.collections.immutable.PersistentList
+import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
@@ -20,7 +21,7 @@ class MainProductsViewModel(
 ) : ViewModel() {
 
     val uiState: StateFlow<UiState<PersistentList<ProductUiModel>>> = getProductsUseCase()
-        .map(List<ProductModel>::toUiModel)
+        .map { it.map(ProductModel::toUiModel).toPersistentList() }
         .asUiState()
         .stateIn(
             scope = viewModelScope,
@@ -30,7 +31,7 @@ class MainProductsViewModel(
 
     fun addProduct(productsList: List<ProductUiModel>) {
         viewModelScope.launch {
-            addProductUseCase(productsList.toDomainModel())
+            addProductUseCase(productsList.map(ProductUiModel::toDomainModel))
         }
     }
 }
