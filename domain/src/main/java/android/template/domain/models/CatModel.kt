@@ -1,6 +1,6 @@
 package android.template.domain.models
 
-class CatModel(
+data class CatModel(
     val owner: Owner,
     val mimeType: MimeType,
     val url: Url,
