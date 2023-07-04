@@ -14,12 +14,3 @@ val networkModule = module {
         )
     }
 }
-
-val fakeNetworkModule = module {
-    single<NetworkClient> {
-        NetworkClientImpl(
-            baseUrl = BASE_CAT_URL,
-            localInterceptor = getCatLocalInterceptor(),
-        )
-    }
-}

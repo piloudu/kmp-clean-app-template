@@ -16,3 +16,11 @@ val koinModules: List<Module> = listOf(
     useCasesModule,
     networkModule,
 )
+
+val koinTestModules: List<Module> = listOf(
+    dataModule,
+    featureMainModule,
+    databaseModule,
+    dataSourcesModule,
+    useCasesModule,
+)
