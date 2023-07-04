@@ -1,10 +1,12 @@
 package android.template.feature.main.ui.cat.screen
 
-import android.template.core.ui.MultiplePreview
 import android.template.feature.main.ui.cat.CatUiModel
 import android.template.feature.main.ui.cat.CatUiState
 import android.template.feature.main.ui.cat.CatViewModel
+import android.template.ui.core.R
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -17,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.skydoves.landscapist.glide.GlideImage
@@ -38,7 +41,10 @@ fun CatScreen(
         }
 
         is CatUiState.Success -> {
-            CatScreenInternal(modifier = modifier, catUiModelProvider = (uiState as CatUiState.Success)::data)
+            CatScreenInternal(
+                modifier = modifier,
+                catUiModelProvider = (uiState as CatUiState.Success)::data,
+            )
         }
 
         is CatUiState.Error -> {
@@ -52,7 +58,7 @@ fun CatScreen(
 
 @Composable
 private fun CatScreenInternal(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     catUiModelProvider: () -> CatUiModel,
 ) {
     val localConfiguration = LocalConfiguration.current
@@ -60,9 +66,10 @@ private fun CatScreenInternal(
         width = (localConfiguration.screenWidthDp - 40).dp,
         height = (localConfiguration.screenHeightDp - 80).dp,
     )
-    Box(
+    Column(
         modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         CatImage(modifier = imageModifier, urlProvider = catUiModelProvider()::url)
         if (catUiModelProvider().owner.isNotEmpty()) {
@@ -78,11 +85,18 @@ fun CatImage(modifier: Modifier = Modifier, urlProvider: () -> String) {
         modifier = modifier,
         imageModel = urlProvider,
         loading = { CircularProgressIndicator(modifier = modifier.size(20.dp)) },
+        previewPlaceholder = R.drawable.placeholder_image_24,
     )
 }
 
-@MultiplePreview
+@Preview(showBackground = true)
 @Composable
 private fun PreviewCatScree() {
-    CatScreen()
+    CatScreenInternal(catUiModelProvider = {
+        CatUiModel(
+            owner = "Owner",
+            mimeType = "image",
+            url = "https://updateo.vsb",
+        )
+    })
 }
