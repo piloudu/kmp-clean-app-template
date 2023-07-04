@@ -20,7 +20,7 @@ import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
 
-class CatViewModelTest : KoinTest {
+class CatViewModelIntegrationTest : KoinTest {
 
     @get:Rule
     val mainDispatcherRule: MainDispatcherRule = MainDispatcherRule()

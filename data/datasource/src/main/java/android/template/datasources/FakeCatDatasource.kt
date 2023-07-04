@@ -34,12 +34,12 @@ val catsList: List<CatApiModel> = listOf(
     CatApiModel(
         owner = "Owner 1",
         mimeType = "image",
-        url = "https://perthqxmu8.ci",
+        url = "c4df7890",
     ),
     CatApiModel(
         owner = "Owner 2",
         mimeType = "image",
-        url = "https://retained86mflqli.xw",
+        url = "bc74349c",
     ),
 )
 
