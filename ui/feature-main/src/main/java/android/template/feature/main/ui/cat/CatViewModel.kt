@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.stateIn
 
 class CatViewModel(
     getCatUseCase: GetCatUseCase,
-    getCatsListUseCase: GetCatsListUseCase
+    getCatsListUseCase: GetCatsListUseCase,
 ) : ViewModel() {
     val catUiState: StateFlow<CatUiState> = getCatUseCase()
         .map<CatModel, CatUiState> { CatUiState.Success(it.toUiModel()) }
@@ -27,7 +27,11 @@ class CatViewModel(
         )
 
     val catsListUiState: StateFlow<CatsListUiState> = getCatsListUseCase()
-        .map<List<CatModel>, CatsListUiState> { CatsListUiState.Success(it.map(CatModel::toUiModel).toPersistentList()) }
+        .map<List<CatModel>, CatsListUiState> {
+            CatsListUiState.Success(
+                it.map(CatModel::toUiModel).toPersistentList(),
+            )
+        }
         .catch { emit(CatsListUiState.Error(it)) }
         .stateIn(
             scope = viewModelScope,
