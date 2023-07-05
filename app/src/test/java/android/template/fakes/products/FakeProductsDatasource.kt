@@ -1,6 +1,7 @@
-package android.template.datasources
+package android.template.fakes.products
 
 import android.template.api.apimodels.ProductApiModel
+import android.template.datasources.ProductDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -21,16 +22,3 @@ class FakeProductsDatasource(private val isSuccess: Boolean) : ProductDataSource
         data = productsList
     }
 }
-
-internal val productsList = listOf(
-    ProductApiModel(
-        name = "Product 1",
-        price = 112.45,
-    ),
-    ProductApiModel(
-        name = "Product 2",
-        price = 2934.11,
-    ),
-)
-
-internal val productsException = Exception()

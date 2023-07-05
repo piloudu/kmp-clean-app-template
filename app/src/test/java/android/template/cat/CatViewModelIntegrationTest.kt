@@ -1,21 +1,20 @@
 package android.template.cat
 
 import android.template.core.ui.result.UiState
-import android.template.datasources.catException
-import android.template.di.getFakeDatasourceModule
+import android.template.di.TestCase
+import android.template.di.startKoinFor
 import android.template.domain.models.CatModel
+import android.template.fakes.cat.catException
 import android.template.feature.main.ui.cat.CatViewModel
 import android.template.feature.main.ui.cat.toUiModel
 import android.template.testing.core.MainDispatcherRule
 import app.cash.turbine.test
-import com.example.di.koinTestModules
 import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
-import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
@@ -31,7 +30,7 @@ class CatViewModelIntegrationTest : KoinTest {
     fun tearDown() {
         stopKoin()
     }
-    
+
     @Test
     fun `When the ViewModel is created Then its state is Loading`() {
         startKoinFor(TestCase.SUCCESS)
@@ -78,15 +77,4 @@ class CatViewModelIntegrationTest : KoinTest {
                 assertEquals(UiState.Error(catException), awaitItem())
             }
         }
-}
-
-fun startKoinFor(testCase: TestCase) {
-    startKoin {
-        val fakeNetworkModule = getFakeDatasourceModule(testCase.value)
-        modules(koinTestModules + fakeNetworkModule)
-    }
-}
-
-enum class TestCase(val value: Boolean) {
-    SUCCESS(true), FAILURE(false)
 }
