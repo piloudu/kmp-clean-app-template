@@ -22,14 +22,12 @@ class CatViewModelTest {
     private val getCatsListUseCase = GetCatsListUseCase(fakeCatRepository)
     private val viewModel by lazy { CatViewModel(getCatUseCase, getCatsListUseCase) }
 
-    @Ignore
     @Test
     fun `When the ViewModel is created Then its state is Loading`() {
         assertEquals(UiState.Loading, viewModel.catUiState.value)
         assertEquals(UiState.Loading, viewModel.catsListUiState.value)
     }
 
-    @Ignore
     @Test
     fun `Given a time lapse When we read the ViewModel state Then it is Success`() = runTest {
         // Given
@@ -51,7 +49,6 @@ class CatViewModelTest {
         }
     }
 
-    @Ignore
     @Test
     fun `Given an exception is thrown When we read the ViewModel state Then it is Error`() =
         runTest {

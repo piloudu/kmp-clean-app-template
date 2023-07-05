@@ -15,7 +15,6 @@ class ProductsRepositoryImplTest {
 
     private val repository = ProductsRepositoryImpl(FakeProductDao(), FakeDataSource())
 
-    @Ignore
     @Test
     fun `When execute getProductModels() Then retrieves the expected products`() {
         // When
@@ -25,7 +24,6 @@ class ProductsRepositoryImplTest {
         assertEquals(productModels, productsList)
     }
 
-    @Ignore
     @Test
     fun `Given a product model When we set it Then we can retrieve it`() = runTest {
         // Given

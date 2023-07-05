@@ -5,7 +5,6 @@ import android.template.domain.models.ProductModel
 import android.template.domain.repositories.ProductsRepository
 import android.template.domain.usecases.AddProductsUseCase
 import android.template.domain.usecases.GetProductsUseCase
-import android.template.feature.main.ui.cat.catException
 import android.template.feature.main.ui.products.MainProductsViewModel
 import android.template.feature.main.ui.products.productsException
 import android.template.feature.main.ui.products.productsList
@@ -33,13 +32,11 @@ class MainProductsViewModelTest {
     private val addProductsUseCase: AddProductsUseCase = AddProductsUseCase(repository)
     private val viewModel by lazy { MainProductsViewModel(getProductsUseCase, addProductsUseCase) }
 
-    @Ignore
     @Test
     fun `When the ViewModel is created Then its state is Loading`() = runTest {
         assertEquals(UiState.Loading, viewModel.uiState.value)
     }
 
-    @Ignore
     @Test
     fun `Given a time lapse When we read the ViewModel state Then it is Success`() = runTest {
         viewModel.uiState.test {
@@ -50,7 +47,6 @@ class MainProductsViewModelTest {
         }
     }
 
-    @Ignore
     @Test
     fun `Given an exception is thrown When we read the ViewModel state Then it is Error`() =
         runTest {

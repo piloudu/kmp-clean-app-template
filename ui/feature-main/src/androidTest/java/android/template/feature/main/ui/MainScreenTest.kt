@@ -27,7 +27,6 @@ class MainScreenTest {
         }
     }
 
-    @Ignore
     @Test
     fun firstItem_exists() {
         composeTestRule.onNodeWithText(FAKE_DATA.first()).assertExists().performClick()

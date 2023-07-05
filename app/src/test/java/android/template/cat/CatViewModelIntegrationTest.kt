@@ -32,7 +32,6 @@ class CatViewModelIntegrationTest : KoinTest {
         stopKoin()
     }
 
-    @Ignore
     @Test
     fun `When the ViewModel is created Then its state is Loading`() {
         startKoinFor(TestCase.SUCCESS)
@@ -40,7 +39,6 @@ class CatViewModelIntegrationTest : KoinTest {
         assertEquals(UiState.Loading, viewModel.catsListUiState.value)
     }
 
-    @Ignore
     @Test
     fun `Given a time lapse When we read the ViewModel state Then it is Success`() = runTest {
         // Given
@@ -63,7 +61,6 @@ class CatViewModelIntegrationTest : KoinTest {
         }
     }
 
-    @Ignore
     @Test
     fun `Given an exception is thrown When we read the ViewModel state Then it is Error`() =
         runTest {

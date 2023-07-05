@@ -4,7 +4,6 @@ import android.template.core.data.di.fakeMyModels
 import android.template.ui.MainActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 
@@ -13,7 +12,6 @@ class AppTest {
     @get:Rule(order = 1)
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 
-    @Ignore
     @Test
     fun test1() {
         // TODO: Add navigation tests
