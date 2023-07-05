@@ -20,7 +20,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<BaseAppModuleExtension> {
-                configureAndroid(this@with)
+                this.configureAndroid(this@with)
                 this@with.configureCompose(this, libs)
 
                 defaultConfig {

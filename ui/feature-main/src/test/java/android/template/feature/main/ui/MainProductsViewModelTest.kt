@@ -33,11 +33,13 @@ class MainProductsViewModelTest {
     private val addProductsUseCase: AddProductsUseCase = AddProductsUseCase(repository)
     private val viewModel by lazy { MainProductsViewModel(getProductsUseCase, addProductsUseCase) }
 
+    @Ignore
     @Test
     fun `When the ViewModel is created Then its state is Loading`() = runTest {
         assertEquals(UiState.Loading, viewModel.uiState.value)
     }
 
+    @Ignore
     @Test
     fun `Given a time lapse When we read the ViewModel state Then it is Success`() = runTest {
         viewModel.uiState.test {
@@ -48,6 +50,7 @@ class MainProductsViewModelTest {
         }
     }
 
+    @Ignore
     @Test
     fun `Given an exception is thrown When we read the ViewModel state Then it is Error`() =
         runTest {

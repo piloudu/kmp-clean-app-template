@@ -20,7 +20,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             }
 
             extensions.configure<LibraryExtension> {
-                configureAndroid(this@with)
+                this.configureAndroid(this@with)
                 
                 buildTypes { 
                     debug {

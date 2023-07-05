@@ -17,16 +17,17 @@ ksp = "1.8.21-1.0.11"
 koin = "3.4.2"
 koinCompose = "3.4.5"
 koinTest = "3.4.1"
-kotlinxImmutableCollections="0.3.5"
-kotlinxSerialization="1.5.1"
-kotlinxSerializationGradlePlugin="1.8.22"
-customPlugins="1.0.0"
-landscapist="2.2.2"
-retrofit="2.9.0"
-kotlinxSerializationConverter="1.0.0"
-okhttp="4.11.0"
+kotlinxImmutableCollections = "0.3.5"
+kotlinxSerialization = "1.5.1"
+kotlinxSerializationGradlePlugin = "1.8.22"
+customPlugins = "1.0.0"
+landscapist = "2.2.2"
+retrofit = "2.9.0"
+kotlinxSerializationConverter = "1.0.0"
+jacoco = "0.8.7"
+okhttp = "4.11.0"
 androidxComposeRuntimeTracing = "1.0.0-alpha03"
-turbine="1.0.0"
+turbine = "1.0.0"
 arrow = "1.2.0-RC"
 
 [libraries]
@@ -46,7 +47,7 @@ androidx-navigation-compose = { module = "androidx.navigation:navigation-compose
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidxRoom" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "androidxRoom" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidxRoom" }
-androidx-test-core  = { module = "androidx.test:core", version.ref = "androidxTestCore" }
+androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTestCore" }
 androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidxTestExt" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxTestRunner" }
 junit = { module = "junit:junit", version.ref = "junit" }
@@ -80,6 +81,7 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-library = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinxSerializationGradlePlugin" }
+jacoco = { id = "org.gradle.jacoco", version.ref = "jacoco" }
 
 # Custom plugins
 custom-application-convention = { id = "android.template.application", version.ref = "customPlugins" }

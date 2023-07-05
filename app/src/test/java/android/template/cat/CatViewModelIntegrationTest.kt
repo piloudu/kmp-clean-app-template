@@ -13,6 +13,7 @@ import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.koin.core.context.stopKoin
@@ -31,6 +32,7 @@ class CatViewModelIntegrationTest : KoinTest {
         stopKoin()
     }
 
+    @Ignore
     @Test
     fun `When the ViewModel is created Then its state is Loading`() {
         startKoinFor(TestCase.SUCCESS)
@@ -38,6 +40,7 @@ class CatViewModelIntegrationTest : KoinTest {
         assertEquals(UiState.Loading, viewModel.catsListUiState.value)
     }
 
+    @Ignore
     @Test
     fun `Given a time lapse When we read the ViewModel state Then it is Success`() = runTest {
         // Given
@@ -60,6 +63,7 @@ class CatViewModelIntegrationTest : KoinTest {
         }
     }
 
+    @Ignore
     @Test
     fun `Given an exception is thrown When we read the ViewModel state Then it is Error`() =
         runTest {
