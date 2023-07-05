@@ -6,33 +6,33 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.the
 
-fun CommonExtension<*, *, *, *>.configureAndroid(project: Project) {
-    val libs = project.the<LibrariesForLibs>()
+fun Project.configureAndroid(commonExtension: CommonExtension<*, *, *, *>) {
+    val libs = the<LibrariesForLibs>()
 
-    val projectName = if (project.parent!!.name != project.rootProject.name) {
+    val projectName = if (parent!!.name != rootProject.name) {
         "%s.%s".format(
-            project.parent!!.name,
-            project.name,
+            parent!!.name,
+            name,
         )
     } else {
-        project.name
+        name
     }
 
-    namespace = "android.template.${projectName.replace("-", ".")}"
-    compileSdk = 33
-    defaultConfig.minSdk = 26
+    commonExtension.namespace = "android.template.${projectName.replace("-", ".")}"
+    commonExtension.compileSdk = 33
+    commonExtension.defaultConfig.minSdk = 26
 
-    buildFeatures {
-        aidl = false
-        buildConfig = false
-        renderScript = false
-        shaders = false
+    commonExtension.buildFeatures {
+        this.aidl = false
+        this.buildConfig = false
+        this.renderScript = false
+        this.shaders = false
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+    commonExtension.compileOptions {
+        this.sourceCompatibility = JavaVersion.VERSION_17
+        this.targetCompatibility = JavaVersion.VERSION_17
     }
 
-    project.configureJacoco(libs)
+    configureJacoco(libs)
 }
