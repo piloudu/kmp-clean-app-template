@@ -13,6 +13,7 @@ class KotlinCompilerConventionPlugin : Plugin<Project> {
 
             with(pluginManager) {
                 apply(libs.plugins.kotlin.android.get().pluginId)
+                apply(libs.plugins.kotlin.parcelize.get().pluginId)
             }
 
             tasks.withType<KotlinCompile>().configureEach {
