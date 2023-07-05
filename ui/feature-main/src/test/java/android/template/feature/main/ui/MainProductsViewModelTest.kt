@@ -5,7 +5,6 @@ import android.template.domain.models.ProductModel
 import android.template.domain.repositories.ProductsRepository
 import android.template.domain.usecases.AddProductsUseCase
 import android.template.domain.usecases.GetProductsUseCase
-import android.template.feature.main.ui.cat.catException
 import android.template.feature.main.ui.products.MainProductsViewModel
 import android.template.feature.main.ui.products.productsException
 import android.template.feature.main.ui.products.productsList
