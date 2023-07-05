@@ -1,4 +1,4 @@
-package android.template.fakes.cat
+package android.template.integration.tests.fakes.cat
 
 import android.template.api.apimodels.CatApiModel
 

@@ -1,4 +1,4 @@
-package android.template.cat
+package android.template.integration.tests.cat
 
 import android.template.api.apimodels.BASE_CAT_URL
 import android.template.domain.models.CatModel

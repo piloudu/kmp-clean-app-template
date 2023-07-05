@@ -1,19 +1,18 @@
-package android.template.cat
+package android.template.integration.tests.cat
 
 import android.template.core.ui.result.UiState
-import android.template.di.TestCase
-import android.template.di.startKoinFor
 import android.template.domain.models.CatModel
-import android.template.fakes.cat.catException
 import android.template.feature.main.ui.cat.CatViewModel
 import android.template.feature.main.ui.cat.toUiModel
+import android.template.integration.tests.di.TestCase
+import android.template.integration.tests.di.startKoinFor
+import android.template.integration.tests.fakes.cat.catException
 import android.template.testing.core.MainDispatcherRule
 import app.cash.turbine.test
 import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.test.runTest
 import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Ignore
+import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 import org.koin.core.context.stopKoin
@@ -35,8 +34,8 @@ class CatViewModelIntegrationTest : KoinTest {
     @Test
     fun `When the ViewModel is created Then its state is Loading`() {
         startKoinFor(TestCase.SUCCESS)
-        assertEquals(UiState.Loading, viewModel.catUiState.value)
-        assertEquals(UiState.Loading, viewModel.catsListUiState.value)
+        Assert.assertEquals(UiState.Loading, viewModel.catUiState.value)
+        Assert.assertEquals(UiState.Loading, viewModel.catsListUiState.value)
     }
 
     @Test
@@ -50,14 +49,14 @@ class CatViewModelIntegrationTest : KoinTest {
         // When
         viewModel.catUiState.test {
             // Then
-            assertEquals(firstCat, awaitItem())
-            assertEquals(secondCat, awaitItem())
+            Assert.assertEquals(firstCat, awaitItem())
+            Assert.assertEquals(secondCat, awaitItem())
         }
 
         // When
         viewModel.catsListUiState.test {
             // Then
-            assertEquals(UiState.Success(catsUiModelList), awaitItem())
+            Assert.assertEquals(UiState.Success(catsUiModelList), awaitItem())
         }
     }
 
@@ -69,13 +68,13 @@ class CatViewModelIntegrationTest : KoinTest {
             // When
             viewModel.catUiState.test {
                 // Then
-                assertEquals(UiState.Error(catException), awaitItem())
+                Assert.assertEquals(UiState.Error(catException), awaitItem())
             }
 
             // When
             viewModel.catsListUiState.test {
                 // Then
-                assertEquals(UiState.Error(catException), awaitItem())
+                Assert.assertEquals(UiState.Error(catException), awaitItem())
             }
         }
 }
