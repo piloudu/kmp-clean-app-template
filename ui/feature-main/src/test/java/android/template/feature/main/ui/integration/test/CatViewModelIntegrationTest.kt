@@ -1,12 +1,13 @@
-package android.template.integration.tests.cat
+package android.template.feature.main.ui.integration.test
 
 import android.template.core.ui.result.UiState
 import android.template.domain.models.CatModel
 import android.template.feature.main.ui.cat.CatViewModel
 import android.template.feature.main.ui.cat.toUiModel
-import android.template.integration.tests.di.TestCase
-import android.template.integration.tests.di.startKoinFor
-import android.template.integration.tests.fakes.cat.catException
+import android.template.feature.main.ui.integration.test.cat.catsList
+import android.template.feature.main.ui.integration.test.di.TestCase
+import android.template.feature.main.ui.integration.test.di.startKoinFor
+import android.template.feature.main.ui.integration.test.fakes.cat.catException
 import android.template.testing.core.MainDispatcherRule
 import app.cash.turbine.test
 import kotlinx.collections.immutable.toPersistentList

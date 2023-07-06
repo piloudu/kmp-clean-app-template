@@ -1,9 +1,9 @@
-package android.template.feature.main.ui
+package android.template.feature.main.ui.unit.test
 
 import android.template.domain.models.ProductModel
 import android.template.domain.repositories.ProductsRepository
-import android.template.feature.main.ui.products.productsException
-import android.template.feature.main.ui.products.productsList
+import android.template.feature.main.ui.unit.test.cat.products.productsException
+import android.template.feature.main.ui.unit.test.cat.products.productsList
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

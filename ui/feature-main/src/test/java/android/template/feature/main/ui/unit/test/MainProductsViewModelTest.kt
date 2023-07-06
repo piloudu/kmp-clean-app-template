@@ -1,4 +1,4 @@
-package android.template.feature.main.ui
+package android.template.feature.main.ui.unit.test
 
 import android.template.core.ui.result.UiState
 import android.template.domain.models.ProductModel
@@ -6,9 +6,9 @@ import android.template.domain.repositories.ProductsRepository
 import android.template.domain.usecases.AddProductsUseCase
 import android.template.domain.usecases.GetProductsUseCase
 import android.template.feature.main.ui.products.MainProductsViewModel
-import android.template.feature.main.ui.products.productsException
-import android.template.feature.main.ui.products.productsList
 import android.template.feature.main.ui.products.toUiModel
+import android.template.feature.main.ui.unit.test.cat.products.productsException
+import android.template.feature.main.ui.unit.test.cat.products.productsList
 import android.template.testing.core.MainDispatcherRule
 import app.cash.turbine.test
 import kotlinx.collections.immutable.toPersistentList

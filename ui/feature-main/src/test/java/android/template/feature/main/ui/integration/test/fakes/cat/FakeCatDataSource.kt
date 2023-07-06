@@ -1,13 +1,13 @@
-package android.template.feature.main.ui.cat
+package android.template.feature.main.ui.integration.test.fakes.cat
 
-import android.template.domain.models.CatModel
-import android.template.domain.repositories.CatRepository
+import android.template.api.apimodels.CatApiModel
+import android.template.datasources.CatDataSource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class FakeCatRepository(private val isSuccess: Boolean = true) : CatRepository {
-    override fun getCat(): Flow<CatModel> {
+class FakeCatDatasource(private val isSuccess: Boolean) : CatDataSource {
+    override fun getCatSequentially(): Flow<CatApiModel> {
         return flow {
             if (isSuccess) {
                 catsList.forEach { cat ->
@@ -20,7 +20,7 @@ class FakeCatRepository(private val isSuccess: Boolean = true) : CatRepository {
         }
     }
 
-    override fun getCatsList(): Flow<List<CatModel>> {
+    override fun getCatsList(): Flow<List<CatApiModel>> {
         return flow {
             if (isSuccess) {
                 emit(catsList)

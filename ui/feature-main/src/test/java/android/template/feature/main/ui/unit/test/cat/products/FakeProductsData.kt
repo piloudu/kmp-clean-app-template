@@ -1,4 +1,4 @@
-package android.template.feature.main.ui.products
+package android.template.feature.main.ui.unit.test.cat.products
 
 import android.template.domain.models.Price
 import android.template.domain.models.ProductModel
