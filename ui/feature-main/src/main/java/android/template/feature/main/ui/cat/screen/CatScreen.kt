@@ -28,6 +28,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun CatScreen(
     modifier: Modifier = Modifier,
+    testParam: String,
     catViewModel: CatViewModel = koinViewModel(),
 ) {
     val uiState by catViewModel.catUiState.collectAsStateWithLifecycle()
