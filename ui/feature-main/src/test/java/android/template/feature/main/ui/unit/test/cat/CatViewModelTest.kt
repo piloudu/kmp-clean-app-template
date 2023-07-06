@@ -1,9 +1,11 @@
-package android.template.feature.main.ui.cat
+package android.template.feature.main.ui.unit.test.cat
 
 import android.template.core.ui.result.UiState
 import android.template.domain.models.CatModel
 import android.template.domain.usecases.GetCatUseCase
 import android.template.domain.usecases.GetCatsListUseCase
+import android.template.feature.main.ui.cat.CatViewModel
+import android.template.feature.main.ui.cat.toUiModel
 import android.template.testing.core.MainDispatcherRule
 import app.cash.turbine.test
 import kotlinx.collections.immutable.toPersistentList
