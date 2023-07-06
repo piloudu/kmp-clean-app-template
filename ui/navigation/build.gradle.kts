@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.custom.library.with.compose.convention)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 dependencies {
@@ -12,4 +13,7 @@ dependencies {
     implementation(composeBom)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.navigation.compose)
+
+    // Kotlinx-Serialization
+    implementation(libs.kotlinx.serialization)
 }
