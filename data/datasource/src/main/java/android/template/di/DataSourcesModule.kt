@@ -11,5 +11,5 @@ import org.koin.dsl.module
 
 val dataSourcesModule: Module = module {
     factoryOf(::ProductDataSourceImpl) bind ProductDataSource::class
-    factoryOf(::CatDataSourceImpl) bind CatDataSource::class
+    factoryOf(::CatDataSourceImpl) bind CatDataSource::class named CAT_SCOPE_NAME
 }
