@@ -10,23 +10,21 @@ import kotlinx.coroutines.flow.flow
 class FakeCatDatasource(private val testCase: TestCase) : CatDataSource {
     override fun getCatSequentially(): Flow<CatApiModel> {
         return flow {
-            if (testCase == TestCase.SUCCESS) {
-                catsApiList.forEach { cat ->
+            when (testCase) {
+                TestCase.SUCCESS -> catsApiList.forEach { cat ->
                     emit(cat)
                     delay(1)
                 }
-            } else {
-                throw catException
+                TestCase.FAILURE -> throw catException
             }
         }
     }
 
     override fun getCatsList(): Flow<List<CatApiModel>> {
         return flow {
-            if (testCase == TestCase.SUCCESS) {
-                emit(catsApiList)
-            } else {
-                throw catException
+            when (testCase) {
+                TestCase.SUCCESS -> emit(catsApiList)
+                TestCase.FAILURE -> throw catException
             }
         }
     }

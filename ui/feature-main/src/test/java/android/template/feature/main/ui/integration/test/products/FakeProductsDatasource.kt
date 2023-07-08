@@ -11,10 +11,9 @@ class FakeProductsDatasource(private val testCase: TestCase) : ProductDataSource
     private var data: List<ProductApiModel> = emptyList()
     override fun getProductsList(): Flow<List<ProductApiModel>> {
         return flow {
-            if (testCase == TestCase.SUCCESS) {
-                emit(productsList)
-            } else {
-                throw productsException
+            when (testCase) {
+                TestCase.SUCCESS -> emit(productsList)
+                TestCase.FAILURE -> throw productsException
             }
         }
     }
