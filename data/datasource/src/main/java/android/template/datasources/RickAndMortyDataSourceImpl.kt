@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.flow
 internal class RickAndMortyDataSourceImpl(
     networkClient: NetworkClient,
 ) : RickAndMortyDataSource {
+
     private val service = networkClient.retrofit.create(RickAndMortyService::class.java)
 
     override fun getRickAndMortyCharacter(): Flow<RickAndMortyApiModel> {
