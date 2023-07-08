@@ -2,7 +2,7 @@ package android.template.feature.main.ui.integration.test.rickandmorty
 
 import android.template.feature.main.ui.rickandmorty.RickAndMortyUiModel
 
-val rickAndMortyUiModel = RickAndMortyUiModel(
+val rickAndMortyUiModel: RickAndMortyUiModel = RickAndMortyUiModel(
     name = "Shawndra",
     status = "Alive",
     species = "Human",
@@ -10,3 +10,5 @@ val rickAndMortyUiModel = RickAndMortyUiModel(
     planet = "Earth",
     imageUrl = "https://doctork617xqvdvz.zy",
 )
+
+val rickAndMortyException: Exception = Exception()
