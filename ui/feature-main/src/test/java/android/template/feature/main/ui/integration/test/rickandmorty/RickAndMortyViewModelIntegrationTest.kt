@@ -16,7 +16,7 @@ import org.koin.test.KoinTest
 import org.koin.test.inject
 import kotlin.test.assertEquals
 
-class RickAndMortyViewModelTest : KoinTest {
+class RickAndMortyViewModelIntegrationTest : KoinTest {
 
     private val viewModel: RickAndMortyViewModel by inject()
 
