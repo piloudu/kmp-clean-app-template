@@ -1,6 +1,7 @@
 package android.template.feature.main.ui.integration.test.rickandmorty
 
 import android.template.core.ui.result.UiState
+import android.template.feature.main.ui.integration.test.cat.catException
 import android.template.feature.main.ui.integration.test.di.TestCase
 import android.template.feature.main.ui.integration.test.di.startKoinFor
 import android.template.feature.main.ui.rickandmorty.RickAndMortyViewModel
@@ -8,6 +9,7 @@ import android.template.testing.core.MainDispatcherRule
 import app.cash.turbine.test
 import kotlinx.coroutines.test.runTest
 import org.junit.After
+import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 import org.koin.core.context.stopKoin
@@ -46,6 +48,18 @@ class RickAndMortyViewModelTest : KoinTest {
             viewModel.rickAndMortyUiState.test {
                 // Then
                 assertEquals(UiState.Success(rickAndMortyUiModel), awaitItem())
+            }
+        }
+
+    @Test
+    fun `Given an exception is thrown When we read the ViewModel state Then it is Error`() =
+        runTest {
+            startKoinFor(TestCase.FAILURE)
+
+            // When
+            viewModel.rickAndMortyUiState.test {
+                // Then
+                Assert.assertEquals(UiState.Error(rickAndMortyException), awaitItem())
             }
         }
 }
