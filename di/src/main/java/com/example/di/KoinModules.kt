@@ -1,6 +1,6 @@
 package com.example.di
 
-import android.template.core.data.di.dataModule
+import android.template.core.data.di.repositoriesModule
 import android.template.core.database.di.databaseModule
 import android.template.di.dataSourcesModule
 import android.template.di.networkModule
@@ -9,7 +9,7 @@ import android.template.feature.main.di.featureMainModule
 import org.koin.core.module.Module
 
 val koinModules: List<Module> = listOf(
-    dataModule,
+    repositoriesModule,
     featureMainModule,
     databaseModule,
     dataSourcesModule,
@@ -18,7 +18,7 @@ val koinModules: List<Module> = listOf(
 )
 
 val koinTestModules: List<Module> = listOf(
-    dataModule,
+    repositoriesModule,
     featureMainModule,
     databaseModule,
     dataSourcesModule,
