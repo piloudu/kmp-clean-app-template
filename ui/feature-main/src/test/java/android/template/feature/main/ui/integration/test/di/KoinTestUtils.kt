@@ -11,16 +11,16 @@ import org.koin.dsl.module
 
 fun startKoinFor(testCase: TestCase) {
     startKoin {
-        val fakeNetworkModule = getFakeDatasourceModule(testCase.value)
+        val fakeNetworkModule = getFakeDatasourceModule(testCase)
         modules(koinTestModules + fakeNetworkModule)
     }
 }
 
-enum class TestCase(val value: Boolean) {
-    SUCCESS(true), FAILURE(false)
+enum class TestCase {
+    SUCCESS, FAILURE
 }
 
-fun getFakeDatasourceModule(isSuccess: Boolean): Module = module {
-    factory<ProductDataSource> { FakeProductsDatasource(isSuccess) }
-    factory<CatDataSource> { FakeCatDatasource(isSuccess) }
+fun getFakeDatasourceModule(testCase: TestCase): Module = module {
+    factory<ProductDataSource> { FakeProductsDatasource(testCase) }
+    factory<CatDataSource> { FakeCatDatasource(testCase) }
 }
