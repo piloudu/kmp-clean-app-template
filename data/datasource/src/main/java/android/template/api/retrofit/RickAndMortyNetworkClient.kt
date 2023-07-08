@@ -1,10 +1,9 @@
 package android.template.api.retrofit
 
 import okhttp3.Interceptor
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
-class NetworkClientImpl(
+class RickAndMortyNetworkClient(
     baseUrl: String,
     networkInterceptor: Interceptor? = null,
     localInterceptor: Interceptor? = null,
@@ -19,14 +18,4 @@ class NetworkClientImpl(
         )
         .addConverterFactory(jsonConverterFactory)
         .build()
-}
-
-private fun buildOkHttpClient(
-    networkInterceptor: Interceptor? = null,
-    localInterceptor: Interceptor? = null,
-): OkHttpClient {
-    return OkHttpClient.Builder().apply {
-        networkInterceptor?.let(::addNetworkInterceptor)
-        localInterceptor?.let(::addInterceptor)
-    }.build()
 }
