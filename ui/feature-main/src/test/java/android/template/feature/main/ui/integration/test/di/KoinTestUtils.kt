@@ -2,8 +2,8 @@ package android.template.feature.main.ui.integration.test.di
 
 import android.template.datasources.CatDataSource
 import android.template.datasources.ProductDataSource
-import android.template.feature.main.ui.integration.test.fakes.cat.FakeCatDatasource
-import android.template.feature.main.ui.integration.test.fakes.products.FakeProductsDatasource
+import android.template.feature.main.ui.integration.test.cat.FakeCatDatasource
+import android.template.feature.main.ui.integration.test.products.FakeProductsDatasource
 import com.example.di.koinTestModules
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module

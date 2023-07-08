@@ -1,4 +1,4 @@
-package android.template.feature.main.ui.integration.test.fakes.products
+package android.template.feature.main.ui.integration.test.products
 
 import android.template.api.apimodels.ProductApiModel
 import android.template.datasources.ProductDataSource

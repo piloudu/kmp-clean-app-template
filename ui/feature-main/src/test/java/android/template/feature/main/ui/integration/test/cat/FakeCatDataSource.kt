@@ -1,4 +1,4 @@
-package android.template.feature.main.ui.integration.test.fakes.cat
+package android.template.feature.main.ui.integration.test.cat
 
 import android.template.api.apimodels.CatApiModel
 import android.template.datasources.CatDataSource
