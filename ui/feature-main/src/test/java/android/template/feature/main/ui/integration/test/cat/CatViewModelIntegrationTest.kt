@@ -41,9 +41,8 @@ class CatViewModelIntegrationTest : KoinTest {
     fun `Given a time lapse When we read the ViewModel state Then it is Success`() = runTest {
         // Given
         startKoinFor(TestCase.SUCCESS)
-        val catsUiModelList = catsDomainList.map(CatModel::toUiModel).toPersistentList()
-        val firstCat = UiState.Success(catsUiModelList.first())
-        val secondCat = UiState.Success(catsUiModelList.last())
+        val firstCat = UiState.Success(catsUiList.first())
+        val secondCat = UiState.Success(catsUiList.last())
 
         // When
         viewModel.catUiState.test {
@@ -55,7 +54,7 @@ class CatViewModelIntegrationTest : KoinTest {
         // When
         viewModel.catsListUiState.test {
             // Then
-            Assert.assertEquals(UiState.Success(catsUiModelList), awaitItem())
+            Assert.assertEquals(UiState.Success(catsUiList), awaitItem())
         }
     }
 
