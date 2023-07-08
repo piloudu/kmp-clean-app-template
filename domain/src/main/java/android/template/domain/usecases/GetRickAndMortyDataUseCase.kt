@@ -10,7 +10,7 @@ import android.template.domain.models.Url
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
-class GetRickAndMortyUseCase(
+class GetRickAndMortyDataUseCase(
 
 ) : () -> Flow<RickAndMortyModel> {
     override fun invoke(): Flow<RickAndMortyModel> {
