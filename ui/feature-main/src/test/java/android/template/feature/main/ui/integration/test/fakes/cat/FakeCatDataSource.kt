@@ -10,7 +10,7 @@ class FakeCatDatasource(private val isSuccess: Boolean) : CatDataSource {
     override fun getCatSequentially(): Flow<CatApiModel> {
         return flow {
             if (isSuccess) {
-                catsList.forEach { cat ->
+                catsApiList.forEach { cat ->
                     emit(cat)
                     delay(1)
                 }
@@ -23,7 +23,7 @@ class FakeCatDatasource(private val isSuccess: Boolean) : CatDataSource {
     override fun getCatsList(): Flow<List<CatApiModel>> {
         return flow {
             if (isSuccess) {
-                emit(catsList)
+                emit(catsApiList)
             } else {
                 throw catException
             }

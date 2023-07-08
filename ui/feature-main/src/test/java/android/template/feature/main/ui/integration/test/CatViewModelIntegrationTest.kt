@@ -4,10 +4,10 @@ import android.template.core.ui.result.UiState
 import android.template.domain.models.CatModel
 import android.template.feature.main.ui.cat.CatViewModel
 import android.template.feature.main.ui.cat.toUiModel
-import android.template.feature.main.ui.integration.test.cat.catsList
+import android.template.feature.main.ui.integration.test.fakes.cat.catException
+import android.template.feature.main.ui.integration.test.fakes.cat.catsDomainList
 import android.template.feature.main.ui.integration.test.di.TestCase
 import android.template.feature.main.ui.integration.test.di.startKoinFor
-import android.template.feature.main.ui.integration.test.fakes.cat.catException
 import android.template.testing.core.MainDispatcherRule
 import app.cash.turbine.test
 import kotlinx.collections.immutable.toPersistentList
@@ -43,7 +43,7 @@ class CatViewModelIntegrationTest : KoinTest {
     fun `Given a time lapse When we read the ViewModel state Then it is Success`() = runTest {
         // Given
         startKoinFor(TestCase.SUCCESS)
-        val catsUiModelList = catsList.map(CatModel::toUiModel).toPersistentList()
+        val catsUiModelList = catsDomainList.map(CatModel::toUiModel).toPersistentList()
         val firstCat = UiState.Success(catsUiModelList.first())
         val secondCat = UiState.Success(catsUiModelList.last())
 
