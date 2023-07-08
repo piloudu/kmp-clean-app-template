@@ -18,4 +18,15 @@ class RickAndMortyViewModelTest : KoinTest {
         // Then
         assertEquals(UiState.Loading, viewModel.rickAndMortyUiState.value)
     }
+
+    @Test
+    fun `Given data is fetched When read the ViewModel state Then the output is the expected`() {
+        // Given
+
+        // When
+        val viewModel = RickAndMortyViewModel()
+
+        // Then
+        assertEquals(UiState.Success(rickAndMortyUiModel), viewModel.rickAndMortyUiState.value)
+    }
 }
