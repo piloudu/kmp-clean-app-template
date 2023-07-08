@@ -1,7 +1,6 @@
 package android.template.feature.main.ui.integration.test.rickandmorty
 
 import android.template.core.ui.result.UiState
-import android.template.feature.main.ui.integration.test.cat.catException
 import android.template.feature.main.ui.integration.test.di.TestCase
 import android.template.feature.main.ui.integration.test.di.startKoinFor
 import android.template.feature.main.ui.rickandmorty.RickAndMortyViewModel
