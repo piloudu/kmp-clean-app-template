@@ -19,14 +19,10 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 apply(libs.plugins.kotlin.compiler.convention.get().pluginId)
             }
 
+            extra.set(ENABLE_COMPOSE_COMPILER_REPORTS, true)
+
             extensions.configure<LibraryExtension> {
                 this@with.configureAndroid(this)
-                
-                buildTypes { 
-                    debug {
-                        extra.set(ENABLE_COMPOSE_COMPILER_REPORTS, true)
-                    }
-                }
 
                 defaultConfig.consumerProguardFile("consumer-rules.pro")
             }
