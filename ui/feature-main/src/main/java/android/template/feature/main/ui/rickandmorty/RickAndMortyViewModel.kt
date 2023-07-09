@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -30,17 +31,23 @@ class RickAndMortyViewModel(
     override fun onEvent(event: RickAndMortyEventHandler.Event) {
         when (event) {
             RickAndMortyEventHandler.Event.NextCharacter -> {
-                _rickAndMortyUiState.update { UiState.Loading }
-                viewModelScope.launch {
-                    getRickAndMortyDataUseCase().collect { rickAndMortyModel ->
-                        _rickAndMortyUiState.update {
-                            UiState.Success(
-                                rickAndMortyModel.toUiModel(),
-                            )
-                        }
+                updateUiState()
+            }
+        }
+    }
+
+    private fun updateUiState() {
+        _rickAndMortyUiState.update { UiState.Loading }
+        viewModelScope.launch {
+            getRickAndMortyDataUseCase()
+                .catch { UiState.Error(it) }
+                .collect { rickAndMortyModel ->
+                    _rickAndMortyUiState.update {
+                        UiState.Success(
+                            rickAndMortyModel.toUiModel(),
+                        )
                     }
                 }
-            }
         }
     }
 }
