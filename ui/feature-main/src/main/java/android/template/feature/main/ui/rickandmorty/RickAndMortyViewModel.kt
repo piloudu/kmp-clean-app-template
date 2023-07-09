@@ -40,14 +40,13 @@ class RickAndMortyViewModel(
     private fun updateUiState() {
         viewModelScope.launch {
             getRickAndMortyDataUseCase()
-                .onStart { UiState.Loading }
-                .catch { UiState.Error(it) }
+                .map<RickAndMortyModel, UiState<RickAndMortyUiModel>> { rickAndMortyModel ->
+                    UiState.Success(rickAndMortyModel.toUiModel())
+                }
+                .onStart { emit(UiState.Loading) }
+                .catch { throwable -> emit(UiState.Error(throwable)) }
                 .collect { rickAndMortyModel ->
-                    _rickAndMortyUiState.update {
-                        UiState.Success(
-                            rickAndMortyModel.toUiModel(),
-                        )
-                    }
+                    _rickAndMortyUiState.update { rickAndMortyModel }
                 }
         }
     }

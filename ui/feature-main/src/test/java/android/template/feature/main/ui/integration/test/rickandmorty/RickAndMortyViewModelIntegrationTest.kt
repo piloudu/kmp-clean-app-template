@@ -61,6 +61,28 @@ class RickAndMortyViewModelIntegrationTest : KoinTest {
         }
 
     @Test
+    fun `Given state update fails When read the ViewModel state Then the output is the expected`() =
+        runTest {
+            // Given
+            startKoinFor(TestCase.FAILURE_STATE_UPDATE)
+
+            // When
+            viewModel.rickAndMortyUiState.test {
+                awaitItem()
+                // Then
+                assertEquals(UiState.Success(rickAndMortyUiModel1), awaitItem())
+            }
+
+            // When
+            viewModel.onEvent(RickAndMortyEventHandler.Event.NextCharacter)
+            viewModel.rickAndMortyUiState.test {
+                awaitItem()
+                // Then
+                assertEquals(UiState.Error(rickAndMortyException), awaitItem())
+            }
+        }
+
+    @Test
     fun `Given an exception is thrown When we read the ViewModel state Then it is Error`() =
         runTest {
             startKoinFor(TestCase.FAILURE)

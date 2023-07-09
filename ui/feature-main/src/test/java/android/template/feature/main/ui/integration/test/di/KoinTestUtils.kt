@@ -19,7 +19,7 @@ fun startKoinFor(testCase: TestCase) {
 }
 
 enum class TestCase {
-    SUCCESS, FAILURE
+    SUCCESS, FAILURE_STATE_UPDATE, FAILURE
 }
 
 fun getFakeDatasourceModule(testCase: TestCase): Module = module {

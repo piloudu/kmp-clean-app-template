@@ -13,7 +13,7 @@ class FakeRickAndMortyDataSource(private val testCase: TestCase) : RickAndMortyD
         return flow {
             delay(timeMillis = 1)
             when (testCase) {
-                TestCase.SUCCESS -> emit(rickAndMortyApiModel)
+                TestCase.SUCCESS, TestCase.FAILURE_STATE_UPDATE -> emit(rickAndMortyApiModel)
                 TestCase.FAILURE -> throw rickAndMortyException
                 else -> error("Behaviour not defined")
             }
@@ -25,7 +25,7 @@ class FakeRickAndMortyDataSource(private val testCase: TestCase) : RickAndMortyD
             delay(timeMillis = 1)
             when (testCase) {
                 TestCase.SUCCESS -> emit(rickAndMortyCharacterApiModel)
-                TestCase.FAILURE -> throw rickAndMortyException
+                TestCase.FAILURE, TestCase.FAILURE_STATE_UPDATE -> throw rickAndMortyException
                 else -> error("Behaviour not defined")
             }
         }
