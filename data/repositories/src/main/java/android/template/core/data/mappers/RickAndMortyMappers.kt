@@ -23,6 +23,17 @@ fun RickAndMortyApiModel.toDomainModel(): RickAndMortyModel {
     )
 }
 
+fun RickAndMortyCharacterApiModel.toDomainModel(): RickAndMortyModel {
+    return RickAndMortyModel(
+        name = Name(this.name.orEmpty()),
+        status = Status(this.status.orEmpty()),
+        species = Species(this.species.orEmpty()),
+        gender = Gender(this.gender.orEmpty()),
+        planet = Planet(this.origin?.name.orEmpty()),
+        imageUrl = Url(this.image.orEmpty()),
+    )
+}
+
 fun RickAndMortyModel.toApiModel(): RickAndMortyApiModel {
     return RickAndMortyApiModel(
         info = null,
