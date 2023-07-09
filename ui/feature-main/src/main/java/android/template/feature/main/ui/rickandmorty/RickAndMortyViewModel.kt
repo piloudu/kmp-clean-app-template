@@ -30,6 +30,7 @@ class RickAndMortyViewModel(
     override fun onEvent(event: RickAndMortyEventHandler.Event) {
         when (event) {
             RickAndMortyEventHandler.Event.NextCharacter -> {
+                _rickAndMortyUiState.update { UiState.Loading }
                 viewModelScope.launch {
                     getRickAndMortyDataUseCase().collect { rickAndMortyModel ->
                         _rickAndMortyUiState.update {
