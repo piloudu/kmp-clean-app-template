@@ -3,6 +3,7 @@ package android.template.core.ui.utils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 fun <T> Flow<T>.toMutableStateFlow(
@@ -13,7 +14,7 @@ fun <T> Flow<T>.toMutableStateFlow(
 
     coroutineScope.launch {
         collect { value ->
-            mutableStateFlow.value = value
+            mutableStateFlow.update { value }
         }
     }
 
