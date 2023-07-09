@@ -2,6 +2,7 @@ package android.template.navigation
 
 import android.template.feature.main.ui.cat.screen.CatScreen
 import android.template.feature.main.ui.products.MainScreen
+import android.template.feature.main.ui.rickandmorty.RickAndMortyScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -21,6 +22,8 @@ fun MainNavigation() {
         composable(Destinations.CatScreen.route) {
             CatScreen()
         }
-        // TODO: Add more destinations
+        composable(Destinations.RickAndMorty.route) {
+            RickAndMortyScreen()
+        }
     }
 }
