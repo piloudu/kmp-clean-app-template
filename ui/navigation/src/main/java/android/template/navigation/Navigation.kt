@@ -16,7 +16,8 @@ fun MainNavigation() {
     NavHost(navController = navController, startDestination = Destinations.MainScreen.route) {
         composable(Destinations.MainScreen.route) {
             MainScreen(
-                onClickNext = { navController.navigate(Destinations.CatScreen.route) },
+                onClickGoToCatScreen = { navController.navigate(Destinations.CatScreen.route) },
+                onClickGoToRickAndMortyScreen = { navController.navigate(Destinations.RickAndMorty.route) },
             )
         }
         composable(Destinations.CatScreen.route) {

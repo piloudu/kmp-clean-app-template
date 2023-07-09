@@ -32,7 +32,8 @@ import org.koin.androidx.compose.koinViewModel
 fun MainScreen(
     modifier: Modifier = Modifier,
     viewModel: MainProductsViewModel = koinViewModel(),
-    onClickNext: () -> Unit = { },
+    onClickGoToCatScreen: () -> Unit = { },
+    onClickGoToRickAndMortyScreen: () -> Unit = { },
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var count: Int by remember { mutableStateOf(0) }
@@ -51,7 +52,8 @@ fun MainScreen(
                 modifier = modifier,
                 productsUiModels = (uiState as UiState.Success).data,
                 onSave = viewModel::addProduct,
-                onClickNext = onClickNext,
+                onClickGoToCatScreen = onClickGoToCatScreen,
+                onClickGoToRickAndMortyScreen = onClickGoToRickAndMortyScreen,
             )
         }
 
@@ -69,7 +71,8 @@ internal fun MainScreen(
     modifier: Modifier = Modifier,
     productsUiModels: PersistentList<ProductUiModel>,
     onSave: (List<ProductUiModel>) -> Unit = { },
-    onClickNext: () -> Unit = { },
+    onClickGoToCatScreen: () -> Unit = { },
+    onClickGoToRickAndMortyScreen: () -> Unit = { },
 ) {
     Column(modifier) {
         var nameMyModel by remember { mutableStateOf("Compose") }
@@ -91,8 +94,12 @@ internal fun MainScreen(
         }
 
         Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = onClickNext) {
-            Text(text = "Go to cat Screen")
+        Button(onClick = onClickGoToCatScreen) {
+            Text(text = "Go to cat screen")
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+        Button(onClick = onClickGoToRickAndMortyScreen) {
+            Text(text = "Go to Rick And Morty screen")
         }
     }
 }
