@@ -73,7 +73,7 @@ fun RickAndMortyDescriptionContent(
     planetProvider: () -> String,
 ) {
     Column(modifier = modifier) {
-        Text(text = "Status: ${characterStatusProvider().lowercase()}")
+        Text(text = "Status: ${characterStatusProvider().capitalize()}")
         Text(text = "Species: ${speciesProvider().capitalize()}")
         Text(text = "Character gender: ${genderProvider().capitalize()}")
         Text(text = "Original from planet: ${planetProvider().capitalize()}")
