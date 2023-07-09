@@ -5,7 +5,9 @@ import android.template.core.ui.utils.capitalize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -34,7 +36,38 @@ fun RickAndMortyScreen(
         is UiState.Success -> RickAndMortyScreenInternal(
             modifier = modifier,
             stateProvider = (uiState as UiState.Success)::data,
+            onEvent = viewModel::onEvent,
         )
+    }
+}
+
+@Composable
+private fun RickAndMortyScreenInternal(
+    modifier: Modifier = Modifier,
+    stateProvider: () -> RickAndMortyUiModel,
+    onEvent: (RickAndMortyEventHandler.Event) -> Unit,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        RickAndMortyCard(
+            imageUrlsProvider = { listOf(stateProvider().imageUrl) },
+            descriptionHeaderProvider = stateProvider()::name,
+        ) {
+            RickAndMortyDescriptionContent(
+                characterStatusProvider = stateProvider()::status,
+                speciesProvider = stateProvider()::species,
+                genderProvider = stateProvider()::gender,
+                planetProvider = stateProvider()::planet,
+            )
+        }
+        ElevatedButton(
+            modifier = Modifier.wrapContentSize(),
+            onClick = { onEvent(RickAndMortyEventHandler.Event.NextCharacter) },
+        ) {
+            Text(text = "Next Character")
+        }
     }
 }
 
@@ -45,25 +78,6 @@ private fun ErrorScreen(uiState: UiState<RickAndMortyUiModel>) {
         contentAlignment = Alignment.Center,
     ) {
         Text(text = (uiState as UiState.Error).throwable.toString(), color = Color.Red)
-    }
-}
-
-@Composable
-private fun RickAndMortyScreenInternal(
-    modifier: Modifier = Modifier,
-    stateProvider: () -> RickAndMortyUiModel,
-) {
-    RickAndMortyCard(
-        imageUrlsProvider = { listOf(stateProvider().imageUrl) },
-        descriptionHeaderProvider = stateProvider()::name,
-    ) {
-        RickAndMortyDescriptionContent(
-            modifier = modifier,
-            characterStatusProvider = stateProvider()::status,
-            speciesProvider = stateProvider()::species,
-            genderProvider = stateProvider()::gender,
-            planetProvider = stateProvider()::planet,
-        )
     }
 }
 

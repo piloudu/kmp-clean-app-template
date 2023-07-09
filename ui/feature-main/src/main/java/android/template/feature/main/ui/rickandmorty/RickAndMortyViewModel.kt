@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.stateIn
 
 class RickAndMortyViewModel(
     getRickAndMortyDataUseCase: GetRickAndMortyDataUseCase,
-) : ViewModel() {
+) : ViewModel(), RickAndMortyEventHandler {
     val rickAndMortyUiState: StateFlow<UiState<RickAndMortyUiModel>> = getRickAndMortyDataUseCase()
         .map(RickAndMortyModel::toUiModel)
         .asUiState()
@@ -22,4 +22,10 @@ class RickAndMortyViewModel(
             started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 5000),
             initialValue = UiState.Loading,
         )
+
+    override fun onEvent(event: RickAndMortyEventHandler.Event) {
+        when (event) {
+            RickAndMortyEventHandler.Event.NextCharacter -> TODO()
+        }
+    }
 }
