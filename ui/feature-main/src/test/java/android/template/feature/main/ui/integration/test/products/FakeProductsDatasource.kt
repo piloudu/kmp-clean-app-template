@@ -14,6 +14,7 @@ class FakeProductsDatasource(private val testCase: TestCase) : ProductDataSource
             when (testCase) {
                 TestCase.SUCCESS -> emit(productsList)
                 TestCase.FAILURE -> throw productsException
+                else -> error("Behaviour not defined")
             }
         }
     }
