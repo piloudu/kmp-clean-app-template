@@ -84,14 +84,14 @@ fun CatImage(modifier: Modifier = Modifier, urlProvider: () -> String) {
     GlideImage(
         modifier = modifier,
         imageModel = urlProvider,
-        loading = { CircularProgressIndicator(modifier = modifier.size(20.dp)) },
+        loading = { CircularProgressIndicator(modifier = Modifier.size(20.dp)) },
         previewPlaceholder = R.drawable.placeholder_image_24,
     )
 }
 
 @Preview(showBackground = true)
 @Composable
-private fun PreviewCatScree() {
+private fun CatScreenPreview() {
     CatScreenInternal(catUiModelProvider = {
         CatUiModel(
             owner = "Owner",
