@@ -10,5 +10,5 @@ data class RickAndMortyApiModel(
     @SerialName("info")
     val info: RickAndMortyInfoApiModel?,
     @SerialName("results")
-    val results: List<RickAndMortyCharacterApiModel?>?,
+    val results: List<RickAndMortyCharacterApiModel>?,
 )
