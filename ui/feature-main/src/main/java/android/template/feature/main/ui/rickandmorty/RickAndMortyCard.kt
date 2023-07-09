@@ -146,6 +146,7 @@ fun RickAndMortyCard(
                             Icons.Filled.Favorite,
                             contentDescription = "Favorite",
                             modifier = Modifier.size(28.dp),
+                            tint = Color.Red,
                         )
                     } else {
                         Icon(
