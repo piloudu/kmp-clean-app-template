@@ -1,5 +1,6 @@
 package android.template.feature.main.ui.rickandmorty
 
+import android.template.core.ui.utils.loadingLayoutModifier
 import android.template.ui.core.R
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -75,7 +76,10 @@ fun RickAndMortyCard(
             repeat(pageCount) { iteration ->
                 val color = if (currentPage == iteration) selectedColor else inactiveColor
                 Box(
-                    modifier = Modifier.padding(2.dp).clip(CircleShape).background(color)
+                    modifier = Modifier
+                        .padding(2.dp)
+                        .clip(CircleShape)
+                        .background(color)
                         .size(if (currentPage == iteration) 8.dp else 6.dp),
                 )
             }
@@ -94,18 +98,28 @@ fun RickAndMortyCard(
                 val cardShape = MaterialTheme.shapes.large
                 HorizontalPager(state = pagerState, pageCount = pageCount) { index ->
                     Box(
-                        Modifier.fillMaxWidth().aspectRatio(1f).padding(horizontal = 16.dp)
+                        Modifier
+                            .fillMaxWidth()
+                            .aspectRatio(1f)
+                            .padding(horizontal = 16.dp)
                             .clip(cardShape),
                     ) {
                         GlideImage(
                             modifier = Modifier.matchParentSize(),
                             imageModel = { imageUrlsProvider()[index] },
-                            loading = { CircularProgressIndicator(modifier = Modifier.size(20.dp)) },
+                            loading = {
+                                CircularProgressIndicator(
+                                    modifier = loadingLayoutModifier,
+                                )
+                            },
                             imageOptions = ImageOptions(contentScale = ContentScale.Crop),
                             previewPlaceholder = R.drawable.placeholder_image_24,
                         )
                         Box(
-                            Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(64.dp)
+                            Modifier
+                                .align(Alignment.BottomCenter)
+                                .fillMaxWidth()
+                                .height(64.dp)
                                 .background(
                                     Brush.verticalGradient(
                                         listOf(
@@ -116,7 +130,10 @@ fun RickAndMortyCard(
                                 ),
                         )
                         Box(
-                            Modifier.align(Alignment.TopCenter).fillMaxWidth().height(64.dp)
+                            Modifier
+                                .align(Alignment.TopCenter)
+                                .fillMaxWidth()
+                                .height(64.dp)
                                 .background(
                                     Brush.verticalGradient(
                                         listOf(
@@ -129,13 +146,17 @@ fun RickAndMortyCard(
                     }
                 }
                 PagerIndicator(
-                    modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 8.dp),
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(bottom = 8.dp),
                     pageCount = pageCount,
                     currentPage = pagerState.currentPage,
                 )
                 IconButton(
                     onClick = { isFavorite = !isFavorite },
-                    modifier = Modifier.align(Alignment.TopEnd).padding(horizontal = 16.dp)
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(horizontal = 16.dp)
                         .padding(4.dp),
                 ) {
                     if (isFavorite) {
