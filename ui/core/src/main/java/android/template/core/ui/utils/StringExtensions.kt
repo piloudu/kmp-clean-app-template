@@ -2,12 +2,8 @@ package android.template.core.ui.utils
 
 import java.util.Locale
 
-fun String.capitalize(): String = replaceFirstChar { char ->
-    if (char.isLowerCase()) {
-        char.titlecase(
-            Locale.getDefault(),
-        )
-    } else {
-        "$char"
-    }
+fun String.capitalize(): String = this.lowercase().replaceFirstChar { char ->
+    char.titlecase(
+        Locale.getDefault(),
+    )
 }
