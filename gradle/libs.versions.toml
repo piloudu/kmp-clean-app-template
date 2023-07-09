@@ -69,7 +69,6 @@ retrofit-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:
 androidx-compose-runtime-tracing = { group = "androidx.compose.runtime", name = "runtime-tracing", version.ref = "androidxComposeRuntimeTracing" }
 arrow-core = { module = "io.arrow-kt:arrow-core", version.ref = "arrow" }
 arrow-fx-coroutines = { module = "io.arrow-kt:arrow-fx-coroutines", version.ref = "arrow" }
-coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 
 # Included build dependencies
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
