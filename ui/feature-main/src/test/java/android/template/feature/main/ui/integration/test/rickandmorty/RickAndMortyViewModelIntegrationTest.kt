@@ -46,7 +46,7 @@ class RickAndMortyViewModelIntegrationTest : KoinTest {
             // When
             viewModel.rickAndMortyUiState.test {
                 // Then
-                assertEquals(UiState.Success(rickAndMortyUiModel), awaitItem())
+                assertEquals(UiState.Success(rickAndMortyUiModel1), awaitItem())
             }
         }
 
