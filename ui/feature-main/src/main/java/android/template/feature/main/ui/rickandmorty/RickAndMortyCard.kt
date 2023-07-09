@@ -20,6 +20,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.twotone.Favorite
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
@@ -38,13 +39,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
+import com.skydoves.landscapist.ImageOptions
+import com.skydoves.landscapist.glide.GlideImage
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -57,7 +56,6 @@ fun RickAndMortyCard(
     descriptionContent: @Composable () -> Unit = {},
 ) {
     var isFavorite by remember { mutableStateOf(false) }
-    val context = LocalContext.current
 
     @Composable
     fun PagerIndicator(
@@ -99,13 +97,12 @@ fun RickAndMortyCard(
                         Modifier.fillMaxWidth().aspectRatio(1f).padding(horizontal = 16.dp)
                             .clip(cardShape),
                     ) {
-                        AsyncImage(
-                            model = ImageRequest.Builder(context).data(imageUrlsProvider()[index])
-                                .crossfade(true).build(),
+                        GlideImage(
                             modifier = Modifier.matchParentSize(),
-                            contentScale = ContentScale.Crop,
-                            contentDescription = "Room photo",
-                            placeholder = painterResource(id = R.drawable.placeholder_image_24),
+                            imageModel = { imageUrlsProvider()[index] },
+                            loading = { CircularProgressIndicator(modifier = Modifier.size(20.dp)) },
+                            imageOptions = ImageOptions(contentScale = ContentScale.Crop),
+                            previewPlaceholder = R.drawable.placeholder_image_24,
                         )
                         Box(
                             Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(64.dp)
