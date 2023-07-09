@@ -20,7 +20,7 @@ class FakeRickAndMortyDataSource(private val testCase: TestCase) : RickAndMortyD
     override fun getRickAndMortyCharacterFor(characterId: Int): Flow<RickAndMortyCharacterApiModel> {
         return flow {
             when (testCase) {
-                TestCase.SUCCESS -> emit(rickAndMortyApiModel.results!!.first())
+                TestCase.SUCCESS -> emit(rickAndMortyCharacterApiModel)
                 TestCase.FAILURE -> throw rickAndMortyException
             }
         }
