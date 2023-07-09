@@ -8,11 +8,16 @@ import android.template.datasources.RickAndMortyDataSource
 import android.template.datasources.RickAndMortyDataSourceImpl
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
+import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val dataSourcesModule: Module = module {
     factoryOf(::ProductDataSourceImpl) bind ProductDataSource::class
-    factoryOf(::CatDataSourceImpl) bind CatDataSource::class named CAT_SCOPE_NAME
-    factoryOf(::RickAndMortyDataSourceImpl) bind RickAndMortyDataSource::class named RICK_AND_MORTY_SCOPE_NAME
+    factory<CatDataSource> {
+        CatDataSourceImpl(networkClient = get(named(CAT_SCOPE_NAME)))
+    }
+    factory<RickAndMortyDataSource> {
+        RickAndMortyDataSourceImpl(networkClient = get(named(RICK_AND_MORTY_SCOPE_NAME)))
+    }
 }

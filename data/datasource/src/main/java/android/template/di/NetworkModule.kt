@@ -14,19 +14,15 @@ const val RICK_AND_MORTY_SCOPE_NAME: String = "RickAndMortyScopeName"
 const val CAT_SCOPE_NAME: String = "CatScopeName"
 
 val networkModule: Module = module {
-    scope(named(CAT_SCOPE_NAME)) {
-        scoped<NetworkClient> {
-            CatNetworkClient(
-                baseUrl = BASE_CAT_URL,
-                localInterceptor = getCatLocalInterceptor(),
-            )
-        }
+    single<NetworkClient>(named(CAT_SCOPE_NAME)) {
+        CatNetworkClient(
+            baseUrl = BASE_CAT_URL,
+            localInterceptor = getCatLocalInterceptor(),
+        )
     }
-    scope(named(RICK_AND_MORTY_SCOPE_NAME)) {
-        scoped<NetworkClient> {
-            RickAndMortyNetworkClient(
-                baseUrl = RICK_AND_MORTY_BASE_URL,
-            )
-        }
+    single<NetworkClient>(named(RICK_AND_MORTY_SCOPE_NAME)) {
+        RickAndMortyNetworkClient(
+            baseUrl = RICK_AND_MORTY_BASE_URL,
+        )
     }
 }
