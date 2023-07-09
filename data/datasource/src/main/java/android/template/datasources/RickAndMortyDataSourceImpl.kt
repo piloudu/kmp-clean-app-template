@@ -14,7 +14,7 @@ internal class RickAndMortyDataSourceImpl(
 
     override fun getRickAndMortyCharacter(): Flow<RickAndMortyApiModel> {
         return flow {
-            service.getRickAndMortyCharacter()
+            emit(service.getRickAndMortyCharacter())
         }
     }
 }
