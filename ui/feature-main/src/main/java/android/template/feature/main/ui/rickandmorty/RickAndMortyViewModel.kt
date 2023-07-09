@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -37,9 +38,9 @@ class RickAndMortyViewModel(
     }
 
     private fun updateUiState() {
-        _rickAndMortyUiState.update { UiState.Loading }
         viewModelScope.launch {
             getRickAndMortyDataUseCase()
+                .onStart { UiState.Loading }
                 .catch { UiState.Error(it) }
                 .collect { rickAndMortyModel ->
                     _rickAndMortyUiState.update {
