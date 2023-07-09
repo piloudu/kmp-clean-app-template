@@ -1,5 +1,5 @@
 package android.template.core.data.cache
 
-internal object RickAndMortyCache {
+internal class RickAndMortyCache {
     var characterCount: Int? = null
 }

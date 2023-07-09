@@ -12,13 +12,14 @@ import kotlin.random.Random
 
 internal class RickAndMortyRepositoryImpl(
     private val rickAndMortyDataSource: RickAndMortyDataSource,
+    private val rickAndMortyCache: RickAndMortyCache
 ) : RickAndMortyRepository {
     override fun getRickAndMortyData(): Flow<RickAndMortyModel> {
-        return RickAndMortyCache.characterCount
+        return rickAndMortyCache.characterCount
             ?.let(::getRandomCharacterInRange)
             ?: rickAndMortyDataSource.getRickAndMortyCharacter()
                 .map { rickAndMortyApiModel ->
-                    RickAndMortyCache.characterCount = rickAndMortyApiModel.info?.count
+                    rickAndMortyCache.characterCount = rickAndMortyApiModel.info?.count
                     rickAndMortyApiModel.toDomainModel()
                 }
     }
