@@ -16,6 +16,7 @@ class FakeCatDatasource(private val testCase: TestCase) : CatDataSource {
                     delay(1)
                 }
                 TestCase.FAILURE -> throw catException
+                else -> error("Behaviour not defined")
             }
         }
     }
@@ -25,6 +26,7 @@ class FakeCatDatasource(private val testCase: TestCase) : CatDataSource {
             when (testCase) {
                 TestCase.SUCCESS -> emit(catsApiList)
                 TestCase.FAILURE -> throw catException
+                else -> error("Behaviour not defined")
             }
         }
     }
