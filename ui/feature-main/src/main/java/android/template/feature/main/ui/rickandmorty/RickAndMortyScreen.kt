@@ -5,6 +5,7 @@ import android.template.core.ui.utils.capitalize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,17 +22,19 @@ fun RickAndMortyScreen(
 ) {
     val uiState: UiState<RickAndMortyUiModel> by viewModel.rickAndMortyUiState.collectAsStateWithLifecycle()
     when (uiState) {
-        is UiState.Error -> {
-            ErrorScreen(uiState)
+        is UiState.Error -> ErrorScreen(uiState)
+
+        UiState.Loading -> Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center,
+        ) {
+            CircularProgressIndicator(modifier = Modifier)
         }
 
-        UiState.Loading -> {}
-        is UiState.Success -> {
-            RickAndMortyScreenInternal(
-                modifier = modifier,
-                stateProvider = (uiState as UiState.Success)::data,
-            )
-        }
+        is UiState.Success -> RickAndMortyScreenInternal(
+            modifier = modifier,
+            stateProvider = (uiState as UiState.Success)::data,
+        )
     }
 }
 
