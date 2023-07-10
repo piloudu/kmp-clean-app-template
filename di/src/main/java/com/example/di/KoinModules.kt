@@ -21,6 +21,5 @@ val koinTestModules: List<Module> = listOf(
     repositoriesModule,
     featureMainModule,
     databaseModule,
-    dataSourcesModule,
     useCasesModule,
 )
