@@ -3,7 +3,10 @@ package android.template.feature.main.ui.integration.test.test2
 import android.template.core.ui.result.UiState
 import android.template.feature.main.ui.integration.test.di.TestCase
 import android.template.feature.main.ui.integration.test.di.startKoinFor
+import android.template.feature.main.ui.integration.test.test1.test1UiModel
 import android.template.feature.main.ui.test2.Test2ViewModel
+import app.cash.turbine.test
+import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Test
 import org.koin.core.context.stopKoin
@@ -28,4 +31,17 @@ class Test2ViewModelIntegrationTest : KoinTest {
         // Then
         assertEquals(UiState.Loading, viewModel.test2UiState.value)
     }
+
+    @Test
+    fun `Given data is fetched When read the ViewModel state Then the output is the expected`() =
+        runTest {
+            // Given
+            startKoinFor(TestCase.SUCCESS)
+
+            // When
+            viewModel.test2UiState.test {
+                // Then
+                assertEquals(UiState.Success(test1UiModel), awaitItem())
+            }
+        }
 }
