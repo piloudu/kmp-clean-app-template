@@ -5,7 +5,9 @@ import android.template.core.data.repositories.CatRepositoryImpl
 import android.template.core.data.repositories.ProductsRepositoryImpl
 import android.template.core.data.repositories.RickAndMortyRepositoryImpl
 import android.template.core.data.repositories.Test1RepositoryImpl
+import android.template.core.data.repositories.Test2Repository
 import android.template.domain.repositories.CatRepository
+import android.template.domain.repositories.ITest2Repository
 import android.template.domain.repositories.ProductsRepository
 import android.template.domain.repositories.RickAndMortyRepository
 import android.template.domain.repositories.Test1Repository
@@ -21,4 +23,5 @@ val repositoriesModule: Module = module {
     factoryOf(::RickAndMortyRepositoryImpl) bind RickAndMortyRepository::class
     singleOf(::RickAndMortyCache)
     factoryOf(::Test1RepositoryImpl) bind Test1Repository::class
+    factoryOf(::Test2Repository) bind ITest2Repository::class
 }
