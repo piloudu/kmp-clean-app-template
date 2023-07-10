@@ -5,6 +5,7 @@ import android.template.domain.usecases.GetCatUseCase
 import android.template.domain.usecases.GetCatsListUseCase
 import android.template.domain.usecases.GetProductsUseCase
 import android.template.domain.usecases.GetRickAndMortyDataUseCase
+import android.template.domain.usecases.GetTest1DataUseCase
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
@@ -15,4 +16,5 @@ val useCasesModule: Module = module {
     factoryOf(::GetCatUseCase)
     factoryOf(::GetCatsListUseCase)
     factoryOf(::GetRickAndMortyDataUseCase)
+    factoryOf(::GetTest1DataUseCase)
 }
