@@ -1,12 +1,13 @@
 package android.template.domain.usecases
 
 import android.template.domain.models.Test1Model
-import android.template.domain.models.Url
+import android.template.domain.repositories.ITest2Repository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
 
-class GetTest2DataUseCase() : () -> Flow<Test1Model> {
+class GetTest2DataUseCase(
+    private val test2Repository: ITest2Repository,
+) : () -> Flow<Test1Model> {
     override fun invoke(): Flow<Test1Model> {
-        return flowOf(Test1Model(url = Url("https://chefjhjofzp.rb")))
+        return test2Repository.getTest2Data()
     }
 }
