@@ -3,7 +3,7 @@ package android.template.feature.main.ui.integration.test.test2
 import android.template.core.ui.result.UiState
 import android.template.feature.main.ui.integration.test.di.TestCase
 import android.template.feature.main.ui.integration.test.di.startKoinFor
-import android.template.feature.main.ui.integration.test.test1.test1UiModel
+import android.template.feature.main.ui.integration.test.test1.test1Exception
 import android.template.feature.main.ui.integration.test.test1.test2UiModel
 import android.template.feature.main.ui.test2.Test2ViewModel
 import android.template.testing.core.MainDispatcherRule
