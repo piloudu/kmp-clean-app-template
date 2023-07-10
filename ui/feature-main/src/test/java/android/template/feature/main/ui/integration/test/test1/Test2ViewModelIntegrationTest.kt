@@ -4,9 +4,11 @@ import android.template.core.ui.result.UiState
 import android.template.feature.main.ui.integration.test.di.TestCase
 import android.template.feature.main.ui.integration.test.di.startKoinFor
 import android.template.feature.main.ui.test2.Test2ViewModel
+import android.template.testing.core.MainDispatcherRule
 import app.cash.turbine.test
 import kotlinx.coroutines.test.runTest
 import org.junit.After
+import org.junit.Rule
 import org.junit.Test
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
@@ -16,6 +18,9 @@ import kotlin.test.assertEquals
 class Test2ViewModelIntegrationTest : KoinTest {
 
     private val viewModel: Test2ViewModel by inject()
+
+    @get:Rule
+    val mainDispatcherRule: MainDispatcherRule = MainDispatcherRule()
 
     @After
     fun tearDown() {
