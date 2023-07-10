@@ -53,7 +53,7 @@ class Test2ViewModelIntegrationTest : KoinTest {
     fun `Given an exception is thrown When we read the ViewModel state Then it is Error`() =
         runTest {
             // Given
-            startKoinFor(TestCase.SUCCESS)
+            startKoinFor(TestCase.FAILURE)
 
             // When
             viewModel.test2UiState.test {
