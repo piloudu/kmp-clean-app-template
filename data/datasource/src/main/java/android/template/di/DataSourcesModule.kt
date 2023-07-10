@@ -6,6 +6,8 @@ import android.template.datasources.ProductDataSource
 import android.template.datasources.ProductDataSourceImpl
 import android.template.datasources.RickAndMortyDataSource
 import android.template.datasources.RickAndMortyDataSourceImpl
+import android.template.datasources.Test1DataSource
+import android.template.datasources.Test1DataSourceImpl
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.qualifier.named
@@ -20,4 +22,5 @@ val dataSourcesModule: Module = module {
     factory<RickAndMortyDataSource> {
         RickAndMortyDataSourceImpl(networkClient = get(named(RICK_AND_MORTY_SCOPE_NAME)))
     }
+    factoryOf(::Test1DataSourceImpl) bind Test1DataSource::class
 }
