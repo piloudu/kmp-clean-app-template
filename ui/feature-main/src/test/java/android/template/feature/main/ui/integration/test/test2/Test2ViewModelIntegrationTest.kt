@@ -50,4 +50,17 @@ class Test2ViewModelIntegrationTest : KoinTest {
                 assertEquals(UiState.Success(test2UiModel), awaitItem())
             }
         }
+
+    @Test
+    fun `Given an exception is thrown When we read the ViewModel state Then it is Error`() =
+        runTest {
+            // Given
+            startKoinFor(TestCase.FAILURE)
+
+            // When
+            viewModel.test2UiState.test {
+                // Then
+                assertEquals(UiState.Error(test1Exception), awaitItem())
+            }
+        }
 }
