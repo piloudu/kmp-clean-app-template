@@ -58,7 +58,7 @@ class Test1ViewModelIntegrationTest : KoinTest {
             // When
             viewModel.test1UiState.test {
                 // Then
-                assertEquals(UiState.Error(test1Exception), viewModel.test1UiState.value)
+                assertEquals(UiState.Error(test1Exception), awaitItem())
             }
         }
 }
