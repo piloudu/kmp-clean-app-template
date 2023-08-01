@@ -8,7 +8,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 const val ENABLE_COMPOSE_COMPILER_REPORTS: String = "enableComposeCompilerReports"
 
-fun Project.configureCompose(commonExtension: CommonExtension<*, *, *, *>, libs: LibrariesForLibs) {
+fun Project.configureCompose(commonExtension: CommonExtension<*, *, *, *, *>, libs: LibrariesForLibs) {
     commonExtension.buildFeatures {
         compose = true
     }
