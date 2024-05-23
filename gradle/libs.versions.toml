@@ -1,8 +1,8 @@
 [versions]
 androidGradlePlugin = "8.4.1"
 androidxActivity = "1.9.0"
-androidxComposeBom = "2023.06.01"
-androidxComposeCompiler = "1.5.0"
+androidxComposeBom = "2024.05.00"
+androidxComposeCompiler = "1.5.14"
 androidxCore = "1.10.1"
 androidxLifecycle = "2.6.1"
 androidxNavigation = "2.6.0"
@@ -12,8 +12,8 @@ androidxTestExt = "1.1.5"
 androidxTestRunner = "1.5.2"
 coroutines = "1.7.2"
 junit = "4.13.2"
-kotlin = "1.9.0"
-ksp = "1.9.0-1.0.11"
+kotlin = "2.0.0"
+ksp = "2.0.0-1.0.21"
 koin = "3.4.2"
 koinCompose = "3.4.5"
 koinTest = "3.4.1"
@@ -84,6 +84,7 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinxSerializationGradlePlugin" }
 kotlin-parcelize = { id = "kotlin-parcelize", version.ref = "kotlinParcelize" }
 jacoco = { id = "org.gradle.jacoco", version.ref = "jacoco" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 # Custom plugins
 custom-application-convention = { id = "android.template.application", version.ref = "customPlugins" }
