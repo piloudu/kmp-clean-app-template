@@ -20,7 +20,6 @@ class KotlinCompilerConventionPlugin : Plugin<Project> {
                 kotlinOptions {
                     jvmTarget = JavaVersion.VERSION_17.toString()
                     freeCompilerArgs += listOf("-Xcontext-receivers")
-                    languageVersion = "2.0"
                 }
             }
         }
