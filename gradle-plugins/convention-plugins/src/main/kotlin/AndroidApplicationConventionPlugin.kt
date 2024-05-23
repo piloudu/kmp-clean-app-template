@@ -17,6 +17,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply(libs.plugins.android.application.get().pluginId)
                 apply(libs.plugins.kotlin.compiler.convention.get().pluginId)
+                apply(libs.plugins.compose.compiler.get().pluginId)
             }
 
             extensions.configure<BaseAppModuleExtension> {
@@ -24,7 +25,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 this@with.configureCompose(this, libs)
 
                 defaultConfig {
-                    targetSdk = 33
+                    targetSdk = 34
                     versionCode = 1
                     versionName = "1.0"
 
