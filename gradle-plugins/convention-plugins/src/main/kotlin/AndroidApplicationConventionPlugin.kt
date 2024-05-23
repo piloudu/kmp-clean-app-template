@@ -24,7 +24,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 this@with.configureCompose(this, libs)
 
                 defaultConfig {
-                    targetSdk = 33
+                    targetSdk = 34
                     versionCode = 1
                     versionName = "1.0"
 

@@ -19,7 +19,7 @@ fun Project.configureAndroid(commonExtension: CommonExtension<*, *, *, *, *, *>)
     }
 
     commonExtension.namespace = "android.template.${projectName.replace("-", ".")}"
-    commonExtension.compileSdk = 33
+    commonExtension.compileSdk = 34
     commonExtension.defaultConfig.minSdk = 26
 
     commonExtension.buildFeatures {
