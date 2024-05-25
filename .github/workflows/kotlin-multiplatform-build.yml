@@ -32,11 +32,12 @@ jobs:
       - name: Build Android App
         run: ./gradlew :androidApp:assembleDebug
 
-      - name: Build iOS X64
-        run: ./gradlew :iosX64:build
-
-      - name: Build iOS Arm64
-        run: ./gradlew :iosArm64:build
+          # TODO: Uncomment lines when the iOS app is setup
+          #      - name: Build iOS X64
+          #        run: ./gradlew :iosX64:build
+          #
+          #      - name: Build iOS Arm64
+          #        run: ./gradlew :iosArm64:build
 
       # Fail the workflow if any step fails
       - name: Fail on build failure
