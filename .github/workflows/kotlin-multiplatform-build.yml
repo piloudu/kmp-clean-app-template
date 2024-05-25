@@ -31,7 +31,7 @@ jobs:
 
       # Build for all targets
       - name: Build Android App
-        run: ./gradlew :androidApp:assembleDebug
+        run: ./gradlew :app:assembleDebug
 
           # TODO: Uncomment lines when the iOS app is setup
           #      - name: Build iOS X64
