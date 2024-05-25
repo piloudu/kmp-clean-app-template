@@ -18,11 +18,10 @@ class KMPLibraryConventionPlugin : Plugin<Project> {
 
       extensions.configure<KotlinMultiplatformExtension> {
         androidTarget()
+        iosX64()
+        iosArm64()
+        iosSimulatorArm64()
         applyDefaultHierarchyTemplate()
-
-        with(sourceSets) {
-          listOf(iosMain, iosTest, androidMain).forEach { it.get().dependsOn(sourceSets.commonMain.get()) }
-        }
       }
 
       extensions.configure<LibraryExtension> {
