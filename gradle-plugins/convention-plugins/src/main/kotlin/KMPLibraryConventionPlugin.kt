@@ -4,7 +4,6 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.the
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
-import org.jetbrains.kotlin.gradle.dsl.KotlinTargetContainerWithPresetFunctions
 
 class KMPLibraryConventionPlugin : Plugin<Project> {
   override fun apply(target: Project) {
@@ -17,7 +16,11 @@ class KMPLibraryConventionPlugin : Plugin<Project> {
 
       extensions.configure<KotlinMultiplatformExtension> {
         androidTarget()
-        iosX64()
+        applyDefaultHierarchyTemplate()
+
+        with(sourceSets) {
+          listOf(iosMain, iosTest, androidMain).forEach { it.get().dependsOn(sourceSets.commonMain.get()) }
+        }
       }
     }
   }
