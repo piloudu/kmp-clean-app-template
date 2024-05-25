@@ -17,6 +17,7 @@ class KMPLibraryConventionPlugin : Plugin<Project> {
 
       extensions.configure<KotlinMultiplatformExtension> {
         androidTarget()
+        iosX64()
       }
     }
   }
