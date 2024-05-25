@@ -1,3 +1,5 @@
+import android.template.gradle.convention.plugins.common.configureAndroid
+import com.android.build.gradle.LibraryExtension
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -21,6 +23,11 @@ class KMPLibraryConventionPlugin : Plugin<Project> {
         with(sourceSets) {
           listOf(iosMain, iosTest, androidMain).forEach { it.get().dependsOn(sourceSets.commonMain.get()) }
         }
+      }
+
+      extensions.configure<LibraryExtension> {
+        this@with.configureAndroid(this)
+        defaultConfig.consumerProguardFile("consumer-rules.pro")
       }
     }
   }
