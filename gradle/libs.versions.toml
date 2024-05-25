@@ -85,7 +85,6 @@ kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", vers
 kotlin-parcelize = { id = "kotlin-parcelize", version.ref = "kotlinParcelize" }
 jacoco = { id = "org.gradle.jacoco", version.ref = "jacoco" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 
 # Custom plugins
 custom-application-convention = { id = "android.template.application", version.ref = "customPlugins" }
@@ -94,4 +93,3 @@ custom-library-with-compose-convention = { id = "android.template.library.with.c
 custom-ksp-convention = { id = "android.template.ksp", version.ref = "customPlugins" }
 kotlin-compiler-convention = { id = "android.template.kotlin.compiler", version.ref = "customPlugins" }
 test-convention = { id = "android.template.test", version.ref = "customPlugins" }
-custom-kotlin-multiplatform-library-convention = { id = "kotlin.multiplatform.library.convention", version.ref = "customPlugins" }
