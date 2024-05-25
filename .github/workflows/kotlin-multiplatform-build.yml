@@ -1,4 +1,4 @@
-name: KMP Build and Test
+name: Android and iOS Build
 
 on:
   push:
