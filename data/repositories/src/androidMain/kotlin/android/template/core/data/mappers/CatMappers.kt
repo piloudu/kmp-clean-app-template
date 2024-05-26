@@ -1,7 +1,7 @@
 package android.template.core.data.mappers
 
-import android.template.api.apimodels.BASE_CAT_URL
 import android.template.api.apimodels.CatApiModel
+import android.template.api.httpClient.BASE_CAT_URL
 import android.template.domain.models.CatModel
 import android.template.domain.models.MimeType
 import android.template.domain.models.Owner
