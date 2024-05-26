@@ -4,15 +4,25 @@ plugins {
 
 kotlin {
     sourceSets {
+        androidMain {
+            dependencies {
+                // Project dependencies
+                implementation(projects.data.database)
+                implementation(projects.data.datasource)
+                implementation(projects.ui.core)
+            }
+        }
         commonMain {
             dependencies {
-                // Koin Dependency Injection
-                implementation(libs.koin.core)
+                // Project dependencies
+                implementation(projects.domain)
 
+                // Library dependencies
+                implementation(libs.koin.core)
                 implementation(libs.kotlinx.coroutines.common)
             }
         }
-        commonTest {
+        androidUnitTest {
             dependencies {
                 // Local tests: jUnit, coroutines, Android runner
                 implementation(libs.junit)
@@ -20,12 +30,4 @@ kotlin {
             }
         }
     }
-}
-
-dependencies {
-    // Project dependencies
-    implementation(projects.data.database)
-    implementation(projects.data.datasource)
-    implementation(projects.domain)
-    implementation(projects.ui.core)
 }
