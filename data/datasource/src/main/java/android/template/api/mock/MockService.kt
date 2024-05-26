@@ -11,13 +11,10 @@ internal object MockService {
 
     private var productsList: List<ProductApiModel> = emptyList()
 
-    // TODO: Read data from the "data.json" file
     fun getProductsList(): Flow<List<ProductApiModel>> {
         return flow {
             var index = 0
-            Thread.sleep(5_000)
             repeat(10) {
-                Thread.sleep(2_000)
                 productsList = List(5) {
                     index++
                     ProductApiModel(
