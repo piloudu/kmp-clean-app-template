@@ -16,7 +16,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "MultimoduleTemplate"
+rootProject.name = "KMP-Clean-App-Template"
 
 include(":app")
 include(":di")
