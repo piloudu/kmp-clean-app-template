@@ -4,9 +4,6 @@ plugins {
 }
 
 dependencies {
-    // Project dependencies
-    implementation(projects.data.database)
-
     implementation(libs.koin.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization)
