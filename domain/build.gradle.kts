@@ -1,10 +1,17 @@
 plugins {
-    alias(libs.plugins.custom.library.convention)
+    alias(libs.plugins.custom.kotlin.multiplatform.library.convention)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
-dependencies {
-
-    // Library dependencies
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.koin.core)
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
+                // Library dependencies
+                implementation(libs.kotlinx.coroutines.common)
+                implementation(libs.koin.core)
+                implementation(libs.kotlinx.serialization)
+            }
+        }
+    }
 }
