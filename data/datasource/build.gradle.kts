@@ -7,8 +7,15 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization)
-    implementation(libs.square.retrofit)
-    implementation(libs.retrofit.kotlinx.serialization.converter)
+
+    // Api
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.logging)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.utils)
+    // Engine required for each platform
+    implementation(libs.ktor.client.okhttp)
     implementation(libs.square.okhttp)
 
     // Local tests: jUnit, coroutines
