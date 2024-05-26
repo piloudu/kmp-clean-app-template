@@ -19,9 +19,7 @@ internal fun createKtorHttpClient() = HttpClient(OkHttp) {
         url(BASE_CAT_URL)
     }
     install(ContentNegotiation) { json() }
-    install(Logging) {
-        level = ALL
-    }
+    install(Logging) { level = ALL }
 }
 
 internal fun getCatLocalInterceptor() = Interceptor { interceptorChain ->
