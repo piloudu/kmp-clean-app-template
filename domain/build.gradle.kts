@@ -7,7 +7,7 @@ kotlin {
         commonMain {
             dependencies {
                 // Library dependencies
-                implementation(libs.kotlinx.coroutines.android)
+                implementation(libs.kotlinx.coroutines.common)
                 implementation(libs.koin.core)
             }
         }
