@@ -28,6 +28,10 @@ gradlePlugin {
             id = "android.template.test"
             implementationClass = "AndroidTestConventionPlugin"
         }
+        register("kotlinMultiplatformLibraryConvention") {
+            id = "kotlin.multiplatform.library.convention"
+            implementationClass = "KMPLibraryConventionPlugin"
+        }
     }
 }
 

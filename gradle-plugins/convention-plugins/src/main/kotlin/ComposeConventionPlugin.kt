@@ -12,6 +12,7 @@ class ComposeConventionPlugin : Plugin<Project> {
             val libs = the<LibrariesForLibs>()
             with(pluginManager) {
                 apply(libs.plugins.custom.library.convention.get().pluginId)
+                apply(libs.plugins.compose.compiler.get().pluginId)
             }
 
             extensions.configure<LibraryExtension> {

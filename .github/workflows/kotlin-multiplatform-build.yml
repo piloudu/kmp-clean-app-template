@@ -1,0 +1,45 @@
+name: Android and iOS Build
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Setup Kotlin and tools
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'zulu'
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('build.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Install Gradle dependencies
+        run: ./gradlew dependencies
+
+      # Build for all targets
+      - name: Build Android App
+        run: ./gradlew :app:assembleDebug
+
+          # TODO: Uncomment lines when the iOS app is setup
+          #      - name: Build iOS X64
+          #        run: ./gradlew :iosX64:build
+          #
+          #      - name: Build iOS Arm64
+          #        run: ./gradlew :iosArm64:build
+
+      # Fail the workflow if any step fails
+      - name: Fail on build failure
+        uses: actions/checkout@v3
+        with:
+          fail-on-errors: true

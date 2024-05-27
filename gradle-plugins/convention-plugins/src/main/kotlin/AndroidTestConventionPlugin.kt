@@ -21,7 +21,7 @@ class AndroidTestConventionPlugin : Plugin<Project> {
                 targetProjectPath = ":app"
 
                 defaultConfig {
-                    targetSdk = 33
+                    targetSdk = 34
                 }
             }
         }

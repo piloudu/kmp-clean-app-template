@@ -6,7 +6,7 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.the
 
-fun Project.configureAndroid(commonExtension: CommonExtension<*, *, *, *, *>) {
+fun Project.configureAndroid(commonExtension: CommonExtension<*, *, *, *, *, *>) {
     val libs = the<LibrariesForLibs>()
 
     val projectName = if (parent!!.name != rootProject.name) {
@@ -19,7 +19,7 @@ fun Project.configureAndroid(commonExtension: CommonExtension<*, *, *, *, *>) {
     }
 
     commonExtension.namespace = "android.template.${projectName.replace("-", ".")}"
-    commonExtension.compileSdk = 33
+    commonExtension.compileSdk = 34
     commonExtension.defaultConfig.minSdk = 26
 
     commonExtension.buildFeatures {
