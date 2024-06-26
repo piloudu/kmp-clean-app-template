@@ -17,5 +17,5 @@ fun <T> Flow<T>.asUiState(): Flow<UiState<T>> {
             UiState.Success(it)
         }
         .onStart { emit(UiState.Loading) }
-        .catch { emit(UiState.Error(it)) }
+        .catch { throw(it) }
 }
