@@ -7,6 +7,7 @@ import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.LogLevel.ALL
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 
 const val BASE_CAT_URL = "https://cataas.com/"
@@ -18,7 +19,9 @@ internal fun createKtorHttpClient() = HttpClient(OkHttp) {
     defaultRequest {
         url(BASE_CAT_URL)
     }
-    install(ContentNegotiation) { json() }
+    install(ContentNegotiation) {
+        json(Json { ignoreUnknownKeys = true })
+    }
     install(Logging) { level = ALL }
 }
 
