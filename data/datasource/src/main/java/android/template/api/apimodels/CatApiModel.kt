@@ -5,10 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CatApiModel(
-    @SerialName("owner")
-    val owner: String?,
+    val tags: List<String>,
     @SerialName("mimetype")
-    val mimeType: String?,
-    @SerialName("url")
-    val url: String?,
+    val mimeType: String,
+    val size: Int?,
 )
