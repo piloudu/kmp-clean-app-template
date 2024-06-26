@@ -1,6 +1,6 @@
 [versions]
 # Latest version compatible with KMP (see https://kotlinlang.org/docs/multiplatform-compatibility-guide.html#version-compatibility)
-androidGradlePlugin = "8.3.0"
+androidGradlePlugin = "8.5.0"
 
 androidxActivity = "1.9.0"
 androidxComposeBom = "2024.06.00"
