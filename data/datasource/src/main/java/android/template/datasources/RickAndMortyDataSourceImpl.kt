@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-internal class CatDataSourceImpl(
+internal class RickAndMortyDataSourceImpl(
     private val networkClient: HttpClient,
-) : CatDataSource {
-    override fun getCatSequentially(): Flow<CatApiModel> {
+) : RickAndMortyDataSource {
+    override fun getCharacter(): Flow<CatApiModel> {
         return flow {
             emit(networkClient.getCat())
             while (true) {

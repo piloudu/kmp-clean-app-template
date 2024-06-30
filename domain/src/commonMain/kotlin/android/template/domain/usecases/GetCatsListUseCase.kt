@@ -1,11 +1,11 @@
 package android.template.domain.usecases
 
-import android.template.domain.models.CatModel
-import android.template.domain.repositories.CatRepository
+import android.template.domain.models.RickAndMortyModel
+import android.template.domain.repositories.RickAndMortyRepository
 import kotlinx.coroutines.flow.Flow
 
 class GetCatsListUseCase(
-    private val catRepository: CatRepository,
-) : () -> Flow<List<CatModel>> {
-    override fun invoke(): Flow<List<CatModel>> = catRepository.getCatsList()
+    private val rickAndMortyRepository: RickAndMortyRepository,
+) : () -> Flow<List<RickAndMortyModel>> {
+    override fun invoke(): Flow<List<RickAndMortyModel>> = rickAndMortyRepository.getCatsList()
 }

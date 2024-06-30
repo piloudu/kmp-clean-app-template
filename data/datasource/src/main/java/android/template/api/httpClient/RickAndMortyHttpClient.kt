@@ -10,14 +10,14 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 
-const val BASE_CAT_URL = "https://cataas.com/"
+const val BASE_RICK_AND_MORTY_URL = "https://rickandmortyapi.com"
 
 internal fun createKtorHttpClient() = HttpClient(OkHttp) {
     engine {
-        addInterceptor(getCatLocalInterceptor())
+        addInterceptor(createLocalInterceptor())
     }
     defaultRequest {
-        url(BASE_CAT_URL)
+        url(BASE_RICK_AND_MORTY_URL)
     }
     install(ContentNegotiation) {
         json(Json { ignoreUnknownKeys = true })
@@ -25,9 +25,9 @@ internal fun createKtorHttpClient() = HttpClient(OkHttp) {
     install(Logging) { level = ALL }
 }
 
-internal fun getCatLocalInterceptor() = Interceptor { interceptorChain ->
+internal fun createLocalInterceptor() = Interceptor { interceptorChain ->
     val httpUrl = interceptorChain.request().url.newBuilder().apply {
-        addQueryParameter("json", "true")
+        addPathSegment("api")
     }.build()
     val newRequest = interceptorChain.request().newBuilder().url(httpUrl).build()
     interceptorChain.proceed(newRequest)

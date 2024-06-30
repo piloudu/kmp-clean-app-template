@@ -1,7 +1,7 @@
 package android.template.feature.main.ui.unit.test.cat
 
 import android.template.core.ui.result.UiState
-import android.template.domain.models.CatModel
+import android.template.domain.models.RickAndMortyModel
 import android.template.domain.usecases.GetCatUseCase
 import android.template.domain.usecases.GetCatsListUseCase
 import android.template.feature.main.ui.cat.CatViewModel
@@ -19,7 +19,7 @@ class CatViewModelTest {
     @get:Rule
     val mainDispatcherRule: MainDispatcherRule = MainDispatcherRule()
 
-    private val fakeCatRepository = FakeCatRepository()
+    private val fakeCatRepository = FakeRickAndMortyRepository()
     private val getCatUseCase = GetCatUseCase(fakeCatRepository)
     private val getCatsListUseCase = GetCatsListUseCase(fakeCatRepository)
     private val viewModel by lazy { CatViewModel(getCatUseCase, getCatsListUseCase) }
@@ -33,7 +33,7 @@ class CatViewModelTest {
     @Test
     fun `Given a time lapse When we read the ViewModel state Then it is Success`() = runTest {
         // Given
-        val catsUiModelList = catsList.map(CatModel::toUiModel).toPersistentList()
+        val catsUiModelList = catsList.map(RickAndMortyModel::toUiModel).toPersistentList()
         val firstCat = UiState.Success(catsUiModelList.first())
         val secondCat = UiState.Success(catsUiModelList.last())
 
@@ -55,7 +55,7 @@ class CatViewModelTest {
     fun `Given an exception is thrown When we read the ViewModel state Then it is Error`() =
         runTest {
             // Given
-            val errorRepository = FakeCatRepository(isSuccess = false)
+            val errorRepository = FakeRickAndMortyRepository(isSuccess = false)
             val getCatUseCase = GetCatUseCase(errorRepository)
             val getCatsListUseCase = GetCatsListUseCase(errorRepository)
             val viewModel = CatViewModel(getCatUseCase, getCatsListUseCase)

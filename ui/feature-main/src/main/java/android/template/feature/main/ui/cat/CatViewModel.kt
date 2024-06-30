@@ -2,7 +2,7 @@ package android.template.feature.main.ui.cat
 
 import android.template.core.ui.result.UiState
 import android.template.core.ui.result.asUiState
-import android.template.domain.models.CatModel
+import android.template.domain.models.RickAndMortyModel
 import android.template.domain.usecases.GetCatUseCase
 import android.template.domain.usecases.GetCatsListUseCase
 import androidx.lifecycle.ViewModel
@@ -19,7 +19,7 @@ class CatViewModel(
     getCatsListUseCase: GetCatsListUseCase,
 ) : ViewModel() {
     val catUiState: StateFlow<UiState<CatUiModel>> = getCatUseCase()
-        .map(CatModel::toUiModel)
+        .map(RickAndMortyModel::toUiModel)
         .asUiState()
         .stateIn(
             scope = viewModelScope,
@@ -28,7 +28,7 @@ class CatViewModel(
         )
 
     val catsListUiState: StateFlow<UiState<PersistentList<CatUiModel>>> = getCatsListUseCase()
-        .map { it.map(CatModel::toUiModel).toPersistentList() }
+        .map { it.map(RickAndMortyModel::toUiModel).toPersistentList() }
         .asUiState()
         .stateIn(
             scope = viewModelScope,

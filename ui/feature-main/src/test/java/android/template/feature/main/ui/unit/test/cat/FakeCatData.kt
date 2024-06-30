@@ -1,20 +1,28 @@
 package android.template.feature.main.ui.unit.test.cat
 
-import android.template.domain.models.CatModel
-import android.template.domain.models.MimeType
-import android.template.domain.models.Owner
-import android.template.domain.models.Url
+import android.template.domain.models.Location
+import android.template.domain.models.Origin
+import android.template.domain.models.RickAndMortyModel
 
-val catsList: List<CatModel> = listOf(
-    CatModel(
-        owner = Owner(value = "Owner 1"),
-        mimeType = MimeType(value = "image"),
-        url = Url(value = "https://perthqxmu8.ci"),
-    ),
-    CatModel(
-        owner = Owner(value = "Owner 2"),
-        mimeType = MimeType(value = "image"),
-        url = Url(value = "https://retained86mflqli.xw"),
+val catsList: List<RickAndMortyModel> = listOf(
+    RickAndMortyModel(
+        id = 2635,
+        name = "Antoinette Schultz",
+        status = "legimus",
+        species = "mentitum",
+        type = "scripserit",
+        gender = "eius",
+        origin = Origin(
+            name = "Nita Hudson",
+            url = "http://www.bing.com/search?q=condimentum"
+        ),
+        location = Location(
+            name = "Carly Sandoval",
+            url = "https://duckduckgo.com/?q=invenire"
+        ),
+        image = "definiebas",
+        episode = listOf(),
+        url = "https://search.yahoo.com/search?p=sodales"
     ),
 )
 

@@ -1,11 +1,11 @@
 package android.template.feature.main.ui.cat
 
-import android.template.domain.models.CatModel
+import android.template.domain.models.RickAndMortyModel
 import android.template.domain.models.MimeType
 import android.template.domain.models.Owner
 import android.template.domain.models.Url
 
-fun CatModel.toUiModel(): CatUiModel {
+fun RickAndMortyModel.toUiModel(): CatUiModel {
     return CatUiModel(
         owner = this.owner.value,
         mimeType = this.mimeType.value,
@@ -13,8 +13,8 @@ fun CatModel.toUiModel(): CatUiModel {
     )
 }
 
-fun CatUiModel.toDomainModel(): CatModel {
-    return CatModel(
+fun CatUiModel.toDomainModel(): RickAndMortyModel {
+    return RickAndMortyModel(
         owner = Owner(this.owner),
         mimeType = MimeType(this.mimeType),
         url = Url(this.url),

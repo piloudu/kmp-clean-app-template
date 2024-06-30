@@ -1,16 +1,22 @@
 package android.template.core.data.mappers
 
-import android.template.api.apimodels.CatApiModel
-import android.template.api.httpClient.BASE_CAT_URL
-import android.template.domain.models.CatModel
-import android.template.domain.models.MimeType
-import android.template.domain.models.Owner
-import android.template.domain.models.Url
+import android.template.api.apimodels.rickAndMorty.RickAndMortyCharacterApiModel
+import android.template.domain.models.Location
+import android.template.domain.models.Origin
+import android.template.domain.models.RickAndMortyModel
 
-fun CatApiModel.toDomainModel(): CatModel {
-    return CatModel(
-        owner = Owner(""),
-        mimeType = MimeType(this.mimeType),
-        url = Url(BASE_CAT_URL),
+fun RickAndMortyCharacterApiModel.toDomainModel(): RickAndMortyModel {
+    return RickAndMortyModel(
+        id = id,
+        name = name,
+        status = status,
+        species = species,
+        type = type,
+        gender = gender,
+        origin = Origin(name = name, url = url),
+        location = Location(name = name, url = url),
+        image = image,
+        episode = episode,
+        url = url
     )
 }
