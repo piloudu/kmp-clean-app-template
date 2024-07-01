@@ -2,5 +2,6 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
-  ]
+  ],
+  "ignoreDeps": ["com.android.tools.build", "com.android.application", "com.android.library", "com.android.test"]
 }
